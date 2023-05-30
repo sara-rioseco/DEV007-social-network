@@ -5,7 +5,9 @@ html {
 }
 
 body {
-
+  background-image: url(img/background-web.png);
+  background-position: bottom right;
+  background-size: cover;
 }
 header {
 
