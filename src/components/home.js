@@ -1,3 +1,5 @@
+import { onNavigate } from '../main.js';
+
 export const home = () => {
   const homeDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
@@ -6,9 +8,12 @@ export const home = () => {
   const registerBttn = document.createElement('button');
 
   headerDiv.textContent = ("PETS' DIARIES");
-  msgDiv.textContent = ('¡Bienvenid@ a la red social para los amantes de los animales!')
+  msgDiv.textContent = ('¡Bienvenid@ a la red social para los amantes de los animales!');
   loginBttn.textContent = ('Inicia sesión');
   registerBttn.textContent = ('Regístrate');
+
+  loginBttn.addEventListener('click', onNavigate('/login'));
+  registerBttn.addEventListener('click', onNavigate('/register'));
 
   homeDiv.appendChild(headerDiv);
   homeDiv.appendChild(msgDiv);
