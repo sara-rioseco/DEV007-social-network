@@ -1,6 +1,4 @@
-import { onNavigate } from '../main.js';
-
-export const register = () => {
+export const Register = (onNavigate) => {
   const registerDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
   const msgDiv = document.createElement('div');
@@ -12,8 +10,8 @@ export const register = () => {
   registerBttn.textContent = 'Registrarme';
   homeBttn.textContent = 'Volver al inicio';
 
-  registerBttn.addEventListener('click', onNavigate('/register'));
-  homeBttn.addEventListener('click', onNavigate('/'));
+  registerBttn.addEventListener('click', () => onNavigate('/register'));
+  homeBttn.addEventListener('click', () => onNavigate('/'));
 
   registerDiv.appendChild(headerDiv);
   registerDiv.appendChild(msgDiv);

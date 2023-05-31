@@ -1,6 +1,4 @@
-import { onNavigate } from '../main.js';
-
-export const login = () => {
+export const Login = (onNavigate) => {
   const loginDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
   const msgDiv = document.createElement('div');
@@ -12,8 +10,8 @@ export const login = () => {
   loginBttn.textContent = 'Iniciar sesión';
   homeBttn.textContent = 'Volver al inicio';
 
-  loginBttn.addEventListener('click', onNavigate('/login'));
-  homeBttn.addEventListener('click', onNavigate('/'));
+  loginBttn.addEventListener('click', () => onNavigate('/login'));
+  homeBttn.addEventListener('click', () => onNavigate('/'));
 
   loginDiv.appendChild(headerDiv);
   loginDiv.appendChild(msgDiv);

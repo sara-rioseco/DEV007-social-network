@@ -1,15 +1,15 @@
-import { home } from './components/home.js';
-import { login } from './components/login.js';
-import { register } from './components/register.js';
-import { timeline } from './components/timeline.js';
+import { Home } from './components/home.js';
+import { Login } from './components/login.js';
+import { Register } from './components/register.js';
+import { Timeline } from './components/timeline.js';
 
 const rootDiv = document.getElementById('root');
 
 const routes = {
-  '/': home,
-  '/login': login,
-  '/register': register,
-  '/timeline': timeline,
+  '/': Home,
+  '/login': Login,
+  '/register': Register,
+  '/timeline': Timeline,
 };
 
 export const onNavigate = (pathname) => {
@@ -18,18 +18,15 @@ export const onNavigate = (pathname) => {
     pathname,
     window.location.origin + pathname,
   );
-
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
-
-  rootDiv.appendChild(routes[pathname]());
+  rootDiv.appendChild(routes[pathname](onNavigate));
 };
-
-const component = routes[window.location.pathname];
-
 window.onpopstate = () => {
-  rootDiv.appendChild(component());
+  while (rootDiv.firstChild) {
+    rootDiv.removeChild(rootDiv.firstChild);
+  }
+  rootDiv.appendChild(routes[window.location.pathname](onNavigate));
 };
-
-rootDiv.appendChild(component());
+rootDiv.appendChild(routes[window.location.pathname](onNavigate));

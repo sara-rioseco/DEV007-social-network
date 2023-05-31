@@ -1,6 +1,4 @@
-import { onNavigate } from '../main.js';
-
-export const timeline = () => {
+export const Timeline = (onNavigate) => {
   const timelineDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
   const msgDiv = document.createElement('div');
@@ -10,7 +8,7 @@ export const timeline = () => {
   msgDiv.textContent = 'Publicaciones más recientes';
   homeBttn.textContent = 'Volver al inicio';
 
-  homeBttn.addEventListener('click', onNavigate('/'));
+  homeBttn.addEventListener('click', () => onNavigate('/'));
 
   timelineDiv.appendChild(headerDiv);
   timelineDiv.appendChild(msgDiv);
