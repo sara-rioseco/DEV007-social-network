@@ -5,9 +5,10 @@ html {
 }
 
 body {
-  background-image: url(img/background-web.png);
+  background-image: url(img/background-mobile-big.png);
   background-position: bottom right;
   background-size: cover;
+  text-align: center;
 }
 header {
 
