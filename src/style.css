@@ -21,17 +21,24 @@ div.header-div * {
   display: flex;
   justify-content: center;
   margin-bottom: 1em;
+  flex-flow: row wrap;
+}
+
+div.header-div img#logo{
+  height: 6em;
+  width: 6em;
+  margin: 0 0 0 -20px;
 }
 
 div.header-div h1 {
-  font-family: "Rubik Bubbles", serif;
+  font-family: "Concert One", serif;
   font-size: 3em;
 }
 
 div.header-div h2 {
   font-family: "Unbounded", serif;
   font-size: 2em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 div.content-div {
@@ -42,6 +49,8 @@ div.content-div {
   justify-content: center;
   flex-flow: row wrap;
   gap:4em 10em;
+  min-width: 300px;
+  max-width: 2000px;
 }
 
 div.content-div button {
@@ -50,7 +59,7 @@ div.content-div button {
   font-family: Unbounded, serif;
   background-color: rgba(181, 43, 64, 1);
   border-style: none;
-  border-radius: 20px;
+  border-radius: 40px;
   height: 3em;
-  width: 16em;
+  width: 10em;
 }
