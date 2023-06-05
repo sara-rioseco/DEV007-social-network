@@ -12,7 +12,7 @@ export const Home = (onNavigate) => {
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
 
-  headerDiv.innerHTML = `<img src="./img/logo-big.png" alt="logo" id="logo">`;
+  headerDiv.innerHTML = '<img src="./img/logo-big.png" alt="logo" id="logo">';
   title.textContent = "PETS' DIARIES";
   subtitle.textContent = '¡Bienvenid@ a la red social para los amantes de los animales!';
   loginBttn.textContent = 'Iniciar sesión';
