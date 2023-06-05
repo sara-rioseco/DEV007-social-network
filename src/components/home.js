@@ -17,6 +17,7 @@ export const Home = (onNavigate) => {
   contentImgDiv.className = 'content-img';
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
+
   subtitle.textContent = '¡Bienvenid@ a la red social para los amantes de los animales!';
   loginBttn.textContent = 'Ingresar';
   registerBttn.textContent = 'Registrarme';
