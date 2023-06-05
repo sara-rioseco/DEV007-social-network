@@ -1,66 +1,183 @@
-html {
-  height: 100%;
-  width: 100%;
-  font-family: Arimo, serif;
-}
-
+html,
 body {
-  background-image: url(img/background-mobile-big.png);
-  background-position: bottom right;
-  background-size: cover;
-  text-align: center;
-  margin: 1em;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arimo, serif;
+  font-size: 16px;
 }
 
 div#root {
-  padding: 1.5em;
+  height: 100%;
+  background: linear-gradient(to bottom right, #FACB80, #FFEAD2);
+  z-index: 0;
 }
 
-div.header-div * {
-  color: rgba(181, 43, 64, 1);
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1em;
-  flex-flow: row wrap;
+/* Vista Home */
+div.home-div {
+  position: relative;
+  height: 100%;
+  z-index: 1;
 }
 
-div.header-div img#logo{
-  height: 6em;
-  width: 6em;
-  margin: 0 0 0 -20px;
+div.header-div {
+  margin: 0 1.2em;
+  text-align: center;
 }
 
-div.header-div h1 {
-  font-family: "Concert One", serif;
-  font-size: 3em;
-}
+.heart{
+  height: 116px;
+  width: 216px;
+  margin: 97px 77px 51px 80px;
+  
+  }
 
 div.header-div h2 {
-  font-family: "Unbounded", serif;
-  font-size: 2em;
-  margin-bottom: 1em;
+  font-family: 'Karla';
+  font-size: 1.8em;
+  margin-bottom: 0.4em;
+  text-align: center;
+  color: #B52B40;
+  font-weight: inherit;
 }
 
 div.content-div {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
-  padding: 10% 0;
-  display:flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  gap:4em 10em;
-  min-width: 300px;
-  max-width: 2000px;
+  margin: -38px 1.2em;
+  padding: 10px;
+}
+  
+div.content-div button {
+  display: block;
+  background-color: #B52B40;
+  color: #FBD8B0;
+  border: 3px solid #FFFBFB;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  margin: 13px auto;
+  padding: 10px 0px;
+  width: 100%;
+  font-size: 1em;
 }
 
-div.content-div button {
-  color:rgba(251, 216, 176, 1);
-  font-size: 24px;
-  font-family: Unbounded, serif;
-  background-color: rgba(181, 43, 64, 1);
-  border-style: none;
-  border-radius: 40px;
-  height: 3em;
-  width: 10em;
+.content-div button:hover {
+  background-color: #E58677;
+}
+
+.content-div button:active {
+  background-color: #CC553E;
+}
+
+.corner-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  height: 300px;
+}
+
+/* Estilos para tablet */
+
+@media (min-width: 728px) and (max-width: 1023px) {
+  .corner-image {
+    height: 500px;
+  }
+  div.content-div button{
+    font-size: 1.13em;
+    height: 56px;
+    margin-bottom: 18px;
+  }
+}
+
+/* Estilos para laptops */
+
+@media (min-width: 1024px) {
+
+  .home-div {
+    display: grid;
+    grid-template-columns: 1fr 0% 40%;
+    grid-gap: 10px;
+  }
+  
+  div.header-div{
+    grid-column: 1 / span 3;
+  }
+  
+  div.content-div{  
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 10px;
+    position: absolute;
+    left: 59px;
+    top: 413px;
+    padding: 35px;
+    width: 550px;
+  }
+  div.header-div img#logo{
+    margin-top: 50px;
+  }
+  div.header-div h1{
+    font-size: 3em;
+  }
+  div.header-div h2{
+    font-size: 2.0em;
+    margin-bottom: 1.8em;
+  }
+
+  div.content-div button{
+    font-size: 1.3em;
+    margin: 18px auto;
+    padding: 18px 0px;
+  }
+ 
+  .corner-image {
+    display: inline-flex;
+    height: 700px;
+  }
+
+  .heart{
+    height: 181px;
+    width: 357px;
+    margin: 187px 54px 33px 179px;
+ }
+
+  h1{ 
+  font-size: 2.8em;
+ }
+
+  }
+  .inputBox{
+    margin: 18px auto;
+    padding: 18px 0px;
+  }
+
+/* Vista login */
+.inputBox{
+  margin: 13px auto;
+  padding: 18px 2%;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid orange;
+  font-size: 16px;
+  display: block;
+  width: 95%;
+}
+
+h1 {
+  display: block;
+  font-family: 'Karla';
+  font-size: 1.8em;
+  margin-bottom: 0.4em;
+  text-align: center;
+  color: #B52B40;
+  font-weight: inherit;
+}
+h3 {
+  display: block;
+  font-size: 1.0em;
+  font-family: 'Karla';
+  text-align: center;
+  color: #B52B40;
 }
 
