@@ -5,30 +5,33 @@ export const Register = (onNavigate) => {
   const subtitle = document.createElement('h3');
   const contentDiv = document.createElement('div');
   const firstDiv = document.createElement('div');
+  const userInput = document.createElement('input');
   const emailInput = document.createElement('input');
-  const registerTitle = document.createElement('h4');
+  const loginTitle = document.createElement('h4');
   const passwordInput = document.createElement('input');
   const registerBttn = document.createElement('button');
-  const googleBttn = document.createElement('button');
+  const registerHomeBttn = document.createElement('button');
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
+  const buttonRegisterGoogle = document.createElement('button');
+  const logoGoogleRegister = document.createElement('img');
+  const divTitleRegister = document.createElement('li');
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
   emailInput.classList.add('inputBox');
-  emailInput.placeholder = 'Email';
+  emailInput.placeholder = 'Ingresa tu email';
+  userInput.classList.add('inputBox');
+  userInput.placeholder = 'Ingresa tu nombre';
   passwordInput.classList.add('inputBox');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
-  passwordInput.placeholder = 'Contraseña';
+  passwordInput.placeholder = 'Ingresa tu contraseña';
   passwordInput.minLength = 6;
   passwordInput.required = true;
-
   backgroundImg.classList.add('pets');
-  const divTitleRegister = document.createElement('li');
-
-  divTitleRegister.classList.add('divTitleRegister');
+  divTitleRegister.classList.add('divTitleLogin');
   registerDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
@@ -36,28 +39,34 @@ export const Register = (onNavigate) => {
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
+  buttonRegisterGoogle.classList.add('buttonRegisterGoogle');
 
+  logoGoogleRegister.src = 'https://i.ibb.co/D49QQs0/logo-Google.png';
+  logoGoogleRegister.classList.add('logoGoogleRegister');
+  registerBttn.classList.add('loginBttn');
+  buttonRegisterGoogle.innerHTML = 'Registrarte con <i class="fa fa-google"></i>oogle';
   title.textContent = 'Regístrate';
   subtitle.textContent = 'O con tu cuenta de gmail';
-  registerBttn.textContent = 'iniciar sesión';
-  googleBttn.textContent = 'Iniciar Sesión con Google';
-  registerBttn.textContent = 'Iniciar sesión';
+  registerBttn.textContent = 'Guardar y registrar';
+  registerHomeBttn.classList.add('loginHomeBttn');
+  registerHomeBttn.textContent = 'Volver atrás';
 
-  registerBttn.addEventListener('click', () => onNavigate('/login'));
-  googleBttn.addEventListener('click', () => onNavigate('/'));
+  registerBttn.addEventListener('click', () => onNavigate('/timeline'));
+  registerHomeBttn.addEventListener('click', () => onNavigate('/'));
 
   registerDiv.appendChild(heartImg);
-
   contentImgDiv.appendChild(backgroundImg);
   registerDiv.appendChild(contentImgDiv);
-
   contentDiv.appendChild(title);
+  contentDiv.appendChild(userInput);
   contentDiv.appendChild(emailInput);
   contentDiv.appendChild(passwordInput);
   contentDiv.appendChild(registerBttn);
   contentDiv.appendChild(subtitle);
-  contentDiv.appendChild(googleBttn);
-  firstDiv.appendChild(registerTitle);
+  contentDiv.appendChild(buttonRegisterGoogle);
+  buttonRegisterGoogle.appendChild(logoGoogleRegister);
+  firstDiv.appendChild(loginTitle);
+  contentDiv.appendChild(registerHomeBttn);
   registerDiv.appendChild(contentDiv);
 
   return registerDiv;

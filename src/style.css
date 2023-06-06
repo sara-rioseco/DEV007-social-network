@@ -3,8 +3,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Arimo, serif;
-  font-size: 16px;
+  font-family: 'Roboto Flex', sans-serif;
 }
 
 div#root {
@@ -29,12 +28,10 @@ div.header-div {
   height: 116px;
   width: 216px;
   margin: 97px 77px 51px 80px;
-  
   }
 
 div.header-div h2 {
-  font-family: 'Karla';
-  font-size: 1.8em;
+  font-size: 1.6em;
   margin-bottom: 0.4em;
   text-align: center;
   color: #B52B40;
@@ -45,22 +42,48 @@ div.content-div {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
   margin: -38px 1.2em;
-  padding: 10px;
+  padding: 13px;
+  box-shadow: 7px 0px 9px 0px #B52B40;
 }
   
-div.content-div button {
+.buttonLogin, 
+.loginBttn,
+.registerBttn,
+.loginHomeBttn 
+{
   display: block;
   background-color: #B52B40;
   color: #FBD8B0;
-  border: 3px solid #FFFBFB;
+  border: 2px solid #facb80;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin: 13px auto;
+  padding: 17px 0px;
+  font-family:'Roboto Flex', sans-serif;
+  font-weight: 100;
+  font-size: 1.0em;
+}
+
+.loginBttnGoogle, .buttonRegisterGoogle{
+  display: block;
+  background-color: #FBD8B0;
+  border: 2px solid #facb80;
+  border-radius: 10px;
   border-radius: 10px;
   transition: background-color 0.3s ease;
   margin: 13px auto;
-  padding: 10px 0px;
+  padding: 15px 0px;
   width: 100%;
-  font-size: 1em;
+  color: #B52B40;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 100;
+  font-size: 1.0em;
 }
 
+.loginHomeBttn{
+  color: #FBD8B0;
+}
 .content-div button:hover {
   background-color: #E58677;
 }
@@ -77,6 +100,60 @@ div.content-div button {
   height: 300px;
 }
 
+.inputBox{
+  margin: 18px auto;
+  padding: 18px 0px;
+}
+
+.logoGoogle, 
+.logoGoogleRegister
+{
+  margin: 97px 77px 51px 80px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: -27px;
+  top: 399px;
+}
+.logoGoogleRegister{
+  left: -25px;
+  top: 456px;
+  }
+
+/* Vista login */
+.inputBox{
+margin: 10px auto;
+padding: 10px 2%;
+background-color: white;
+border-radius: 10px;
+border: 2px solid orange;
+display: block;
+width: 95%;
+color: rgb(189, 176, 176);
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 100;
+font-size: 1em;
+}
+
+h1 {
+display: block;
+margin-bottom: 0.4em;
+text-align: center;
+color: #B52B40;
+width: 180px;
+font-size: 1.8em;
+font-weight: 500;
+margin: auto;
+}
+
+h3 {
+display: block;
+font-size: 0.7em;
+text-align: center;
+color: #B52B40;
+font-family: 'Roboto Flex', sans-serif;
+}
+
 /* Estilos para tablet */
 
 @media (min-width: 728px) and (max-width: 1023px) {
@@ -88,13 +165,45 @@ div.content-div button {
     height: 56px;
     margin-bottom: 18px;
   }
+
+  .heart{
+    height: 181px;
+    width: 357px;
+    margin: 29px 54px 33px 195px;
+ }
+
+ .logoGoogle, 
+ .logoGoogleRegister {
+  margin: 97px 77px 51px 80px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: -3px;
+  top: 259px;
+}
+div.content-div{  
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  position: absolute;
+  left: 59px;
+  top: 413px;
+  padding: 35px;
+  width: 400px;
+  margin: -184px -0.8em;
+  font-family: 'Roboto Flex', sans-serif;
+}
+div.content-div button{
+  font-size: 1.3em;
+  margin: 18px auto;
+  padding: 18px 0px;
+}
 }
 
 /* Estilos para laptops */
 
 @media (min-width: 1024px) {
 
-  .home-div {
+  .home-div{
     display: grid;
     grid-template-columns: 1fr 0% 40%;
     grid-gap: 10px;
@@ -107,12 +216,14 @@ div.content-div button {
   div.content-div{  
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
-    padding: 10px;
     position: absolute;
     left: 59px;
     top: 413px;
     padding: 35px;
     width: 550px;
+    margin:-102px 2.2em;
+    font-family: 'Roboto Flex', sans-serif;
+    
   }
   div.header-div img#logo{
     margin-top: 50px;
@@ -122,7 +233,7 @@ div.content-div button {
   }
   div.header-div h2{
     font-size: 2.0em;
-    margin-bottom: 1.8em;
+    margin-bottom: 0.8em;
   }
 
   div.content-div button{
@@ -139,45 +250,21 @@ div.content-div button {
   .heart{
     height: 181px;
     width: 357px;
-    margin: 187px 54px 33px 179px;
+    margin: 117px 54px 33px 195px;
  }
 
-  h1{ 
-  font-size: 2.8em;
- }
-
-  }
-  .inputBox{
-    margin: 18px auto;
-    padding: 18px 0px;
-  }
-
-/* Vista login */
-.inputBox{
-  margin: 13px auto;
-  padding: 18px 2%;
-  background-color: white;
-  border-radius: 10px;
-  border: 2px solid orange;
-  font-size: 16px;
-  display: block;
-  width: 95%;
+ .logoGoogle, 
+ .logoGoogleRegister {
+  margin: 43px 77px 49px 69px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 69px;
+  top: 274px;
 }
 
-h1 {
-  display: block;
-  font-family: 'Karla';
-  font-size: 1.8em;
-  margin-bottom: 0.4em;
-  text-align: center;
-  color: #B52B40;
-  font-weight: inherit;
+.logoGoogleRegister{
+  left: 60px;
+  top: 328px;
 }
-h3 {
-  display: block;
-  font-size: 1.0em;
-  font-family: 'Karla';
-  text-align: center;
-  color: #B52B40;
 }
-
