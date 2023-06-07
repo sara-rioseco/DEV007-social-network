@@ -1,3 +1,21 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, app, db } from '../lib/index.js';
+
+export const validatePassword = (password1, password2) => {
+  if (password1 === password2) {
+    return true;
+  }
+  return false;
+};
+
+export const validateEmail = (email) => {
+  /* const validFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; */
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    return true;
+  }
+  return false;
+};
+
 export const Register = (onNavigate) => {
   const registerDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
@@ -5,25 +23,41 @@ export const Register = (onNavigate) => {
   const subtitle = document.createElement('h3');
   const contentDiv = document.createElement('div');
   const firstDiv = document.createElement('div');
+  const nameInput = document.createElement('input');
   const emailInput = document.createElement('input');
   const registerTitle = document.createElement('h4');
   const passwordInput = document.createElement('input');
+  const passwordInput2 = document.createElement('input');
   const registerBttn = document.createElement('button');
-  const googleBttn = document.createElement('button');
+  const homeBttn = document.createElement('button');
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
+  nameInput.classList.add('inputBox');
+  nameInput.id = 'myNameInput';
+  nameInput.placeholder = 'Nombre';
+  nameInput.required = true;
   emailInput.classList.add('inputBox');
+  emailInput.id = 'myEmailInput';
   emailInput.placeholder = 'Email';
+  emailInput.required = true;
   passwordInput.classList.add('inputBox');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
   passwordInput.placeholder = 'Contraseña';
   passwordInput.minLength = 6;
   passwordInput.required = true;
+  passwordInput2.classList.add('inputBox');
+  passwordInput2.type = 'password';
+  passwordInput2.id = 'myPasswordInput2';
+  passwordInput2.placeholder = 'Repetir contraseña';
+  passwordInput2.minLength = 6;
+  passwordInput2.required = true;
+  registerBttn.id = 'registerbutton';
+  homeBttn.id = 'home-button';
 
   backgroundImg.classList.add('pets');
   const divTitleRegister = document.createElement('li');
@@ -39,12 +73,24 @@ export const Register = (onNavigate) => {
 
   title.textContent = 'Regístrate';
   subtitle.textContent = 'O con tu cuenta de gmail';
-  registerBttn.textContent = 'iniciar sesión';
-  googleBttn.textContent = 'Iniciar Sesión con Google';
-  registerBttn.textContent = 'Iniciar sesión';
+  registerBttn.textContent = 'Registrarme';
+  homeBttn.textContent = 'Volver al inicio';
 
-  registerBttn.addEventListener('click', () => onNavigate('/login'));
-  googleBttn.addEventListener('click', () => onNavigate('/'));
+  homeBttn.addEventListener('click', () => onNavigate('/'));
+  registerBttn.addEventListener('click', () => {
+    const name = document.getElementById('myNameInput').value;
+    const email = document.getElementById('myEmailInput').value;
+    const password1 = document.getElementById('myPasswordInput').value;
+    const password2 = document.getElementById('myPasswordInput2').value;
+    if (validatePassword(password1, password2) === false) {
+      console.log('la contraseña ingresada no coincide');
+    } else if (validateEmail(email) === false) {
+      console.log('la contraseña sí coincide pero el correo electrónico no es válido');
+    } else {
+      createUserWithEmailAndPassword(auth, email, password1);
+      console.log('¡Usuario ' + name + ' registrado!');
+    }
+  });
 
   registerDiv.appendChild(heartImg);
 
@@ -52,13 +98,18 @@ export const Register = (onNavigate) => {
   registerDiv.appendChild(contentImgDiv);
 
   contentDiv.appendChild(title);
+  contentDiv.appendChild(nameInput);
   contentDiv.appendChild(emailInput);
   contentDiv.appendChild(passwordInput);
+  contentDiv.appendChild(passwordInput2);
   contentDiv.appendChild(registerBttn);
-  contentDiv.appendChild(subtitle);
-  contentDiv.appendChild(googleBttn);
+  contentDiv.appendChild(homeBttn);
   firstDiv.appendChild(registerTitle);
   registerDiv.appendChild(contentDiv);
 
   return registerDiv;
+};
+
+export const registerFunction = (email, password1, password2) => {
+
 };

@@ -10,12 +10,14 @@ export const Login = (onNavigate) => {
   const passwordInput = document.createElement('input');
   const loginBttn = document.createElement('button');
   const googleBttn = document.createElement('button');
+  const homeBttn = document.createElement('button');
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
+  emailInput.id = 'myEmailInput';
   emailInput.classList.add('inputBox');
   emailInput.placeholder = 'Email';
   passwordInput.classList.add('inputBox');
@@ -24,6 +26,7 @@ export const Login = (onNavigate) => {
   passwordInput.placeholder = 'Contraseña';
   passwordInput.minLength = 6;
   passwordInput.required = true;
+  homeBttn.id = 'home-button';
 
   backgroundImg.classList.add('pets');
   const divTitleLogin = document.createElement('li');
@@ -42,9 +45,11 @@ export const Login = (onNavigate) => {
   loginBttn.textContent = 'iniciar sesión';
   googleBttn.textContent = 'Iniciar Sesión con Google';
   loginBttn.textContent = 'Iniciar sesión';
+  homeBttn.textContent = 'Volver al inicio';
 
   loginBttn.addEventListener('click', () => onNavigate('/login'));
   googleBttn.addEventListener('click', () => onNavigate('/'));
+  homeBttn.addEventListener('click', () => onNavigate('/'));
 
   loginDiv.appendChild(heartImg);
 
@@ -57,6 +62,7 @@ export const Login = (onNavigate) => {
   contentDiv.appendChild(loginBttn);
   contentDiv.appendChild(subtitle);
   contentDiv.appendChild(googleBttn);
+  contentDiv.appendChild(homeBttn);
   firstDiv.appendChild(loginTitle);
   loginDiv.appendChild(contentDiv);
 
