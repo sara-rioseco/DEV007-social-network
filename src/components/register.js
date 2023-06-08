@@ -30,6 +30,9 @@ export const Register = (onNavigate) => {
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
+  const buttonRegisterGoogle = document.createElement('button');
+  const logoGoogleRegister = document.createElement('img');
+  const divTitleRegister = document.createElement('li');
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
@@ -44,7 +47,7 @@ export const Register = (onNavigate) => {
   passwordInput.classList.add('inputBox');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
-  passwordInput.placeholder = 'Contraseña';
+  passwordInput.placeholder = 'Ingresa tu contraseña';
   passwordInput.minLength = 6;
   passwordInput.required = true;
   passwordInput2.classList.add('inputBox');
@@ -57,9 +60,7 @@ export const Register = (onNavigate) => {
   homeBttn.id = 'home-button';
 
   backgroundImg.classList.add('pets');
-  const divTitleRegister = document.createElement('li');
-
-  divTitleRegister.classList.add('divTitleRegister');
+  divTitleRegister.classList.add('divTitleLogin');
   registerDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
@@ -67,7 +68,12 @@ export const Register = (onNavigate) => {
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
+  buttonRegisterGoogle.classList.add('buttonRegisterGoogle');
 
+  logoGoogleRegister.src = 'https://i.ibb.co/D49QQs0/logo-Google.png';
+  logoGoogleRegister.classList.add('logoGoogleRegister');
+  registerBttn.classList.add('loginBttn');
+  buttonRegisterGoogle.innerHTML = 'Registrarte con <i class="fa fa-google"></i>oogle';
   title.textContent = 'Regístrate';
   subtitle.textContent = 'O con tu cuenta de gmail';
   registerBttn.textContent = 'Registrarme';
@@ -91,10 +97,8 @@ export const Register = (onNavigate) => {
   });
 
   registerDiv.appendChild(heartImg);
-
   contentImgDiv.appendChild(backgroundImg);
   registerDiv.appendChild(contentImgDiv);
-
   contentDiv.appendChild(title);
   contentDiv.appendChild(nameInput);
   contentDiv.appendChild(emailInput);

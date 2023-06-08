@@ -16,12 +16,15 @@ export const Login = (onNavigate) => {
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
+  const buttonLoginGoogle = document.createElement('button');
+  const logoGoogle = document.createElement('img');
+  const divTitleLogin = document.createElement('li');
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
   emailInput.id = 'myEmailInput';
   emailInput.classList.add('inputBox');
-  emailInput.placeholder = 'Email';
+  emailInput.placeholder = 'Ingresa tu Correo';
   passwordInput.classList.add('inputBox');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
@@ -31,8 +34,6 @@ export const Login = (onNavigate) => {
   homeBttn.id = 'home-button';
 
   backgroundImg.classList.add('pets');
-  const divTitleLogin = document.createElement('li');
-
   divTitleLogin.classList.add('divTitleLogin');
   loginDiv.className = 'home-div';
   headerDiv.className = 'header-div';
@@ -42,6 +43,11 @@ export const Login = (onNavigate) => {
   backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
 
+  logoGoogle.src = 'https://i.ibb.co/D49QQs0/logo-Google.png';
+  logoGoogle.classList.add('logoGoogle');
+  loginBttn.classList.add('loginBttn');
+  buttonLoginGoogle.innerHTML = 'Iniciar sesión con <i class="fa fa-google"></i>oogle';
+  buttonLoginGoogle.classList.add('loginBttnGoogle');
   title.textContent = 'Iniciar Sesión';
   subtitle.textContent = 'O con tu cuenta de gmail';
   loginBttn.textContent = 'iniciar sesión';
@@ -78,10 +84,8 @@ export const Login = (onNavigate) => {
   });
 
   loginDiv.appendChild(heartImg);
-
   contentImgDiv.appendChild(backgroundImg);
   loginDiv.appendChild(contentImgDiv);
-
   contentDiv.appendChild(title);
   contentDiv.appendChild(emailInput);
   contentDiv.appendChild(passwordInput);
@@ -90,6 +94,7 @@ export const Login = (onNavigate) => {
   contentDiv.appendChild(googleBttn);
   contentDiv.appendChild(homeBttn);
   firstDiv.appendChild(loginTitle);
+  contentDiv.appendChild(loginHomeBttn);
   loginDiv.appendChild(contentDiv);
 
   return loginDiv;
