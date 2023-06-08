@@ -1,3 +1,5 @@
+import { userGoogleLogin, userLogin } from '../lib/index.js';
+
 export const Login = (onNavigate) => {
   const loginDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
@@ -47,9 +49,33 @@ export const Login = (onNavigate) => {
   loginBttn.textContent = 'Iniciar sesión';
   homeBttn.textContent = 'Volver al inicio';
 
-  loginBttn.addEventListener('click', () => onNavigate('/login'));
-  googleBttn.addEventListener('click', () => onNavigate('/'));
   homeBttn.addEventListener('click', () => onNavigate('/'));
+  loginBttn.addEventListener('click', () => {
+    const email = document.getElementById('myEmailInput').value;
+    const password = document.getElementById('myPasswordInput').value;
+    userLogin(email, password).then(
+      (result) => {
+        onNavigate('/timeline');
+        console.log('Estás loguead@');
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
+        // The signed-in user info.
+        // const user = result.user;
+      },
+      () => console.log('Credenciales incorrectas'),
+    );
+  });
+
+  googleBttn.addEventListener('click', () => {
+    userGoogleLogin().then(
+      () => {
+        onNavigate('/timeline');
+        console.log('Estás loguead@');
+      },
+      () => console.log('Credenciales incorrectas'),
+    );
+  });
 
   loginDiv.appendChild(heartImg);
 

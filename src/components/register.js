@@ -1,5 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, app, db } from '../lib/index.js';
+import { createUser } from '../lib/index.js';
 
 export const validatePassword = (password1, password2) => {
   if (password1 === password2) {
@@ -22,10 +21,8 @@ export const Register = (onNavigate) => {
   const title = document.createElement('h1');
   const subtitle = document.createElement('h3');
   const contentDiv = document.createElement('div');
-  const firstDiv = document.createElement('div');
   const nameInput = document.createElement('input');
   const emailInput = document.createElement('input');
-  const registerTitle = document.createElement('h4');
   const passwordInput = document.createElement('input');
   const passwordInput2 = document.createElement('input');
   const registerBttn = document.createElement('button');
@@ -77,7 +74,8 @@ export const Register = (onNavigate) => {
   homeBttn.textContent = 'Volver al inicio';
 
   homeBttn.addEventListener('click', () => onNavigate('/'));
-  registerBttn.addEventListener('click', () => {
+  registerBttn.addEventListener('click', (e) => {
+    e.preventDefault();
     const name = document.getElementById('myNameInput').value;
     const email = document.getElementById('myEmailInput').value;
     const password1 = document.getElementById('myPasswordInput').value;
@@ -87,8 +85,8 @@ export const Register = (onNavigate) => {
     } else if (validateEmail(email) === false) {
       console.log('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
-      createUserWithEmailAndPassword(auth, email, password1);
-      console.log('¡Usuario ' + name + ' registrado!');
+      createUser(email, password1);
+      console.log(`¡Usuario ${name} registrado!`);
     }
   });
 
@@ -104,12 +102,7 @@ export const Register = (onNavigate) => {
   contentDiv.appendChild(passwordInput2);
   contentDiv.appendChild(registerBttn);
   contentDiv.appendChild(homeBttn);
-  firstDiv.appendChild(registerTitle);
   registerDiv.appendChild(contentDiv);
 
   return registerDiv;
-};
-
-export const registerFunction = (email, password1, password2) => {
-
 };
