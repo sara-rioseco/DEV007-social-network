@@ -75,7 +75,7 @@ export const Register = (onNavigate) => {
   registerBttn.classList.add('loginBttn');
   buttonRegisterGoogle.innerHTML = 'Registrarte con <i class="fa fa-google"></i>oogle';
   title.textContent = 'Regístrate';
-  subtitle.textContent = 'O con tu cuenta de gmail';
+  subtitle.textContent = 'O con tu cuenta de Google';
   registerBttn.textContent = 'Registrarme';
   homeBttn.textContent = 'Volver al inicio';
 

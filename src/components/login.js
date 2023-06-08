@@ -94,7 +94,6 @@ export const Login = (onNavigate) => {
   contentDiv.appendChild(googleBttn);
   contentDiv.appendChild(homeBttn);
   firstDiv.appendChild(loginTitle);
-  contentDiv.appendChild(loginHomeBttn);
   loginDiv.appendChild(contentDiv);
 
   return loginDiv;
