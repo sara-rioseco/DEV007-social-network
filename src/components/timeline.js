@@ -1,5 +1,6 @@
-import { doc, onSnapshot } from 'firebase/firestore';
-import { createPost } from '../lib/index.js';
+import { collection, query, where, doc, onSnapshot, getDocs } from 'firebase/firestore';
+import { createPost, createPostDiv } from '../lib/index.js';
+import { db } from '../firebase.js';
 
 /* const timelineChg = onSnapshot(doc(db, "cities", "SF"), (doc) => {
   console.log("Current data: ", doc.data());
@@ -44,12 +45,18 @@ export const Timeline = (onNavigate) => {
   homeBttn.textContent = 'Volver al inicio';
 
   homeBttn.addEventListener('click', () => onNavigate('/'));
-  publishBttn.addEventListener('click', (e) => {
+  publishBttn.addEventListener('click', async (e) => {
     e.preventDefault();
-    const post = document.getElementById('myPostInput').value;
-    createPost(post);
+    const postText = document.getElementById('myPostInput').value;
+    createPost(postText);
     console.log('Se ha creado tu post');
   });
+    /*const postsRef = collection(db, 'posts');
+    const q = query(postsRef, where('content', '=', true));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((post) => {
+      console.log(post.id, ' => ', post.content());*
+    });*/
 
   timelineDiv.appendChild(heartImg);
 
