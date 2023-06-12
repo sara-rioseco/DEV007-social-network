@@ -1,10 +1,10 @@
-import { collection, query, where, doc, onSnapshot, getDocs } from 'firebase/firestore';
-import { createPost, createPostDiv } from '../lib/index.js';
+import {
+  collection, query, where, doc, onSnapshot, getDocs, getDoc, deleteDoc, orderBy,
+} from 'firebase/firestore';
+import {
+  createPost, createPostDiv, getUserEmail, getUsername
+} from '../lib/index.js';
 import { db } from '../firebase.js';
-
-/* const timelineChg = onSnapshot(doc(db, "cities", "SF"), (doc) => {
-  console.log("Current data: ", doc.data());
-}); */
 
 export const Timeline = (onNavigate) => {
   const timelineDiv = document.createElement('div');
@@ -50,13 +50,16 @@ export const Timeline = (onNavigate) => {
     const postText = document.getElementById('myPostInput').value;
     createPost(postText);
     console.log('Se ha creado tu post');
+    const postsRef = collection(db, 'posts');
+    const q = query(postsRef, where('content', '=', true), orderBy('time', 'desc'));
+    onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach(async (post) => {
+        const username = getUsername(post.data().email);
+        const usernametoshow = username === 'google' ? post.data().displayName : username;
+        console.log(usernametoshow);
+      });
+    });
   });
-    /*const postsRef = collection(db, 'posts');
-    const q = query(postsRef, where('content', '=', true));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((post) => {
-      console.log(post.id, ' => ', post.content());*
-    });*/
 
   timelineDiv.appendChild(heartImg);
 

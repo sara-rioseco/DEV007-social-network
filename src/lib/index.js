@@ -18,8 +18,17 @@ import {
 import { Database } from 'firebase/database';
 import { auth, db } from '../firebase.js';
 
-export const createUser = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
+export const createUser = (email, password, name) => {
+  createUserWithEmailAndPassword(auth, email, password).then(
+    (user) => {
+      updateProfile(user, {
+        displayName: name,
+      });
+    },
+    () => {
+      console.log('error registrando usuario');
+    },
+  );
 };
 
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
@@ -34,6 +43,18 @@ export const getUserEmail = () => {
   loggedInUser.getIdToken(true)
     .then(
       () => console.log(loggedInUser.email),
+      () => console.log('error'),
+    )
+    .catch((error) => {
+      console.log('Error fetching user data:', error);
+    });
+};
+
+export const getUsername = () => {
+  const loggedInUser = auth.currentUser;
+  loggedInUser.getIdToken(true)
+    .then(
+      () => console.log(loggedInUser.displayName),
       () => console.log('error'),
     )
     .catch((error) => {
@@ -57,6 +78,13 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
   content: text,
   time: serverTimestamp(),
   email: auth.currentUser.email,
+  displayName: auth.currentUser.displayName,
+});
+
+export const createUserDoc = (email, name, profileUrl) => addDoc.(collection(db, 'users'), {
+  email: auth.currentUser.email,
+  displayName; ,
+  profileUrl: ,
 });
 
 export const showLikes = (boolean) => {
