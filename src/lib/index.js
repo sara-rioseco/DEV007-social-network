@@ -83,8 +83,9 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
 
 export const createUserDoc = (email, name, profileUrl) => addDoc.(collection(db, 'users'), {
   email: auth.currentUser.email,
-  displayName; ,
-  profileUrl: ,
+  displayName: auth.currentUser.displayName,
+  profileUrl: '',
+  uid: auth.createUser.uid,
 });
 
 export const showLikes = (boolean) => {
