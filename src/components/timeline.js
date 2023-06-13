@@ -96,35 +96,6 @@ export const Timeline = (onNavigate) => {
   timelineDiv.appendChild(contentPostDiv);
   timelineDiv.appendChild(contentImgDiv);
 
-  /* const divTitleRegister = document.createElement('li');
-  divTitleRegister.classList.add('divTitleRegister');
-  timelineDiv.className = 'home-div';// 'timeline-div';
-  headerDiv.className = 'header-div';
-
-  contentImgDiv.className = 'content-img';
-  backgroundImg.src = 'img/background_pets.png';
-  backgroundImg.className = 'corner-image';
-  headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
-
-  title.textContent = 'Comparte tu historia';
-  homeBttn.textContent = 'Volver al inicio';
-
-  nav.appendChild(logoImg);
-  nav.appendChild(profileButton);
-  nav.appendChild(homeButton);
-  nav.appendChild(logoutButton);
-  contentImgDiv.appendChild(backgroundImg);
-  timelineDiv.appendChild(contentImgDiv);
-
-  contentDiv.appendChild(title);
-  contentDiv.appendChild(postInput);
-  contentDiv.appendChild(publishButton);
-  contentDiv.appendChild(homeBttn);
-  timelineDiv.appendChild(nav);
-  timelineDiv.appendChild(contentDiv);
-  timelineDiv.appendChild(postsDiv);
-*/
-
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';
     querySnapshot.forEach((post) => {
