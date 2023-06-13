@@ -1,8 +1,20 @@
 import {
-  collection, query, where, doc, onSnapshot, getDocs, getDoc, deleteDoc, orderBy,
+  collection,
+  query,
+  where,
+  doc,
+  onSnapshot,
+  getDocs,
+  getDoc,
+  deleteDoc,
+  orderBy,
+  QuerySnapshot,
 } from 'firebase/firestore';
 import {
-  createPost, createPostDiv, getUserEmail, getUsername
+  createPost,
+  createPostDiv,
+  getUserEmail,
+  getUsername
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
@@ -11,12 +23,15 @@ export const Timeline = (onNavigate) => {
   const headerDiv = document.createElement('div');
   const title = document.createElement('h1');
   const contentDiv = document.createElement('div');
+  const postsDiv = document.createElement('div');
   const postInput = document.createElement('input');
   const publishBttn = document.createElement('button');
   const homeBttn = document.createElement('button');
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
+  const postsRef = collection(db, 'posts');
+  const q = query(postsRef, where('content', '=', true), orderBy('time', 'desc'));
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
@@ -24,7 +39,7 @@ export const Timeline = (onNavigate) => {
   postInput.id = 'myPostInput';
   postInput.placeholder = 'Escribe lo que quieras publicar';
   postInput.required = true;
-
+  postsDiv.id = 'posts-div';
   publishBttn.id = 'publishbutton';
   homeBttn.id = 'home-button';
 
@@ -32,9 +47,10 @@ export const Timeline = (onNavigate) => {
   const divTitleRegister = document.createElement('li');
 
   divTitleRegister.classList.add('divTitleRegister');
-  timelineDiv.className = 'home-div';
+  timelineDiv.className = 'timeline-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
+  postsDiv.className = 'content-div';
   contentImgDiv.className = 'content-img';
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
@@ -44,21 +60,32 @@ export const Timeline = (onNavigate) => {
   publishBttn.textContent = 'Publicar';
   homeBttn.textContent = 'Volver al inicio';
 
+  onSnapshot(postsRef, (querySnapshot) => {
+    postsDiv.innerHTML = '';
+    querySnapshot.forEach((post) => {
+      const username = getUsername();
+
+      const postDiv = `
+      <div class="publicacionPost">
+      <p class="usuario">${username} publicó:</p>
+      <p class="descripcionPost">${post.data().content}</p>
+      <div class="editarPublicacion">
+        <button class="editar">Editar</button>
+      </div>
+      <div class="eliminarPublicacion">
+        <button class="eliminar">Eliminar</button>
+      </div>
+      </div>
+      `;
+      postsDiv.innerHTML += postDiv;
+    });
+  });
+
   homeBttn.addEventListener('click', () => onNavigate('/'));
   publishBttn.addEventListener('click', async (e) => {
     e.preventDefault();
     const postText = document.getElementById('myPostInput').value;
     createPost(postText);
-    console.log('Se ha creado tu post');
-    const postsRef = collection(db, 'posts');
-    const q = query(postsRef, where('content', '=', true), orderBy('time', 'desc'));
-    onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach(async (post) => {
-        const username = getUsername(post.data().email);
-        const usernametoshow = username === 'google' ? post.data().displayName : username;
-        console.log(usernametoshow);
-      });
-    });
   });
 
   timelineDiv.appendChild(heartImg);
@@ -71,6 +98,8 @@ export const Timeline = (onNavigate) => {
   contentDiv.appendChild(publishBttn);
   contentDiv.appendChild(homeBttn);
   timelineDiv.appendChild(contentDiv);
+  timelineDiv.appendChild(postsDiv);
 
   return timelineDiv;
-};
+}
+;

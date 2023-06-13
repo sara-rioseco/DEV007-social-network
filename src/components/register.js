@@ -92,8 +92,7 @@ export const Register = (onNavigate) => {
       console.log('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
       createUser(email, password1, name);
-      console.log(`¡Usuario ${name} registrado!`);
-    } createUserDoc();
+    }
   });
 
   registerDiv.appendChild(heartImg);

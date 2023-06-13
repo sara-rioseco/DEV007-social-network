@@ -45,6 +45,14 @@ div.content-div {
   padding: 13px;
   box-shadow: 7px 0px 9px 0px #B52B40;
 }
+
+div.content-div#posts-div {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  margin: 200px 1.2em;
+  padding: 13px;
+  box-shadow: 7px 0px 9px 0px #B52B40;
+}
   
 .buttonLogin, 
 .loginBttn,
