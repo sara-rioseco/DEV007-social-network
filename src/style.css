@@ -56,8 +56,16 @@ div.content-div {
   position: absolute;
   width: 334px;
 }
+/*Nuevo*/
+div.content-div#posts-div {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  margin: 200px 1.2em;
+  padding: 13px;
+  box-shadow: 7px 0px 9px 0px #B52B40;
+}
 
-.buttonLogin, 
+.buttonLogin,
 .loginBttn,
 .registerBttn,
 .loginHomeBttn,
@@ -78,8 +86,8 @@ div.content-div {
   cursor: pointer;
 }
 
-.loginBttnGoogle, 
-.buttonRegisterGoogle 
+.loginBttnGoogle,
+.buttonRegisterGoogle
 {
   display: block;
   background-color: #FBD8B0;
@@ -145,23 +153,21 @@ div.content-div {
 }
 
 h1 {
-display: block;
-color: #B52B40;
-width: 180px;
-font-size: 1.5em;
-font-weight: 700;
-margin: 6px 88px 9px 86px;
+    display: block;
+    color: #B52B40;
+    width: 180px;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 6px 88px 9px 86px;
 }
 
 h3 {
-display: block;
-font-size: 0.7em;
-text-align: center;
-color: #B52B40;
-font-family: 'Roboto Flex', sans-serif;
+    display: block;
+    font-size: 0.7em;
+    text-align: center;
+    color: #B52B40;
+    font-family: 'Roboto Flex', sans-serif;
 }
-
-
 
 /* Estilos para tablet */
 
@@ -192,40 +198,38 @@ font-family: 'Roboto Flex', sans-serif;
 
 .inputBox{
   padding: 17px 2%;
-}
+    }
 
-h1 {
-display: block;
-    color: #B52B40;
-    width: 180px;
-    font-size: 1.7em;
-    font-weight: 700;
-    margin: 7px 90px 11px 134px;
-}
+    h1 {
+        display: block;
+        color: #B52B40;
+        width: 180px;
+        font-size: 1.7em;
+        font-weight: 700;
+        margin: 7px 90px 11px 134px;
+    }
 
-div.content-div{  
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  position: absolute;
-  left: 59px;
-  top: 413px;
-  padding: 35px;
-  width: 400px;
-  margin: -184px -0.8em;
-  font-family: 'Roboto Flex', sans-serif;
-}
-
-
-div.content-div button{
-  font-size: 1.3em;
-  margin: 18px auto;
-  padding: 18px 0px;
-}
-.homeButton {
-  margin: 7px auto;
-  padding: 13px 0px;
-  width: 100%;
-}
+    div.content-div{
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      position: absolute;
+      left: 59px;
+      top: 413px;
+      padding: 35px;
+      width: 400px;
+      margin: -184px -0.8em;
+      font-family: 'Roboto Flex', sans-serif;
+    }
+    div.content-div button{
+      font-size: 1.3em;
+      margin: 18px auto;
+      padding: 18px 0px;
+    }
+    .homeButton {
+      margin: 7px auto;
+      padding: 13px 0px;
+      width: 100%;
+    }
 }
 
 /* Estilos para laptops */
@@ -250,11 +254,11 @@ div.content-div button{
     position: absolute;
     width: 492px;
   }
-  
+
   div.header-div img#logo{
     margin-top: 50px;
   }
- 
+
   div.content-div button{
     font-size: 1.3em;
     margin: 18px auto;
@@ -292,10 +296,10 @@ h1 {
   font-weight: 700;
   }
  }
- 
+
 
 /*Estilos para timeline*/
- 
+
 .navigation {
   display: flex;
   justify-content: space-between;
