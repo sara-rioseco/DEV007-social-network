@@ -10,13 +10,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto Flex', sans-serif;
-  overflow-y: scroll;
 }
 
 div#root {
   height: 100%;
   background: linear-gradient(to bottom right, #FACB80, #FFEAD2);
   z-index: 0;
+  overflow-y: scroll;
 }
 
 /* Vista Home */
@@ -120,7 +120,7 @@ div.content-div {
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 700px;
+  height: 300px;
 }
 
 .logoGoogle,
@@ -204,7 +204,6 @@ h4 {
   width: 180px;
   font-size: 1.0em;
   font-weight: 700;
-  margin: 5px 242px 11px 134px;
 }
 
 /* Vista  timeline */
@@ -240,17 +239,16 @@ h4 {
 }
 
 .timelineContentDiv {
-  display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: rgb(255, 234, 210);
   border-radius: 20px;
-  margin: 225px 9px -13px 19px;
   padding: inherit;
   box-shadow: 7px 2px 9px 0px #B52B40;
-  position: absolute;
   width: 334px;
+  margin: 0 auto;
+  margin-top: 23px;
 }
 
 /* Estilos para el contenido */
@@ -262,6 +260,14 @@ h4 {
 
 #publishButton {
   margin-top: 10px;
+}
+
+.timelineSection,.timelinePosts{
+  background: #FACB80;
+}
+
+.timelinePosts{
+  margin-top: 24px;
 }
 
 /* Estilos para tablet */
@@ -342,7 +348,9 @@ h4 {
 /* Estilos para laptops */
 
 @media (min-width: 1024px) {
-
+  .timelineCornerImage {
+    height: 700px;
+  }
   .home-div {
     display: grid;
     grid-template-columns: 1fr 0% 40%;
@@ -444,9 +452,8 @@ h4 {
   }
 
   .timelineContentDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: inherit;
+    display: block;
     padding: 20px;
     background-color: rgb(255, 234, 210);
     margin-top: 20px;

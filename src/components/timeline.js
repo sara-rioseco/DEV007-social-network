@@ -27,6 +27,7 @@ export const Timeline = (onNavigate) => {
   const logoutButton = document.createElement('button');
 
   const contentDiv = document.createElement('div');
+  const contentPostDiv = document.createElement('div');
   const postsDiv = document.createElement('div');
 
   const title = document.createElement('h4');
@@ -57,9 +58,10 @@ export const Timeline = (onNavigate) => {
   backgroundImg.className = 'timelineCornerImage';
   navigationDiv.className = 'navigation';
 
+  timelineDiv.className = 'timelineSection';
   contentDiv.className = 'timelineContentDiv';
+  contentPostDiv.className = 'timelinePosts';
   postsDiv.className = '';
-
   contentImgDiv.className = 'timelineContentImg';
 
   homeButton.addEventListener('click', () => onNavigate('/'));
@@ -88,10 +90,11 @@ export const Timeline = (onNavigate) => {
   contentDiv.appendChild(publishButton);
   contentImgDiv.appendChild(backgroundImg);
   timelineDiv.appendChild(navigationDiv);
+  contentPostDiv.appendChild(postsDiv);
 
   timelineDiv.appendChild(contentDiv);
+  timelineDiv.appendChild(contentPostDiv);
   timelineDiv.appendChild(contentImgDiv);
-  timelineDiv.appendChild(postsDiv);
 
   /* const divTitleRegister = document.createElement('li');
   divTitleRegister.classList.add('divTitleRegister');
