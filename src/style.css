@@ -31,13 +31,13 @@ div.header-div {
   text-align: center;
 }
 
-.heart{
+.heart {
   height: 117px;
   width: 222px;
   position: absolute;
   left: 68px;
   top: 94px;
-  }
+}
 
 div.header-div h2 {
   font-size: 1.5em;
@@ -56,21 +56,12 @@ div.content-div {
   position: absolute;
   width: 334px;
 }
-/*Nuevo*/
-div.content-div#posts-div {
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  margin: 200px 1.2em;
-  padding: 13px;
-  box-shadow: 7px 0px 9px 0px #B52B40;
-}
 
 .buttonLogin,
 .loginBttn,
 .registerBttn,
 .loginHomeBttn,
-.homeButton
-{
+.homeButton {
   display: block;
   background-color: #B52B40;
   color: #FBD8B0;
@@ -87,8 +78,7 @@ div.content-div#posts-div {
 }
 
 .loginBttnGoogle,
-.buttonRegisterGoogle
-{
+.buttonRegisterGoogle {
   display: block;
   background-color: #FBD8B0;
   border: 2px solid #facb80;
@@ -102,11 +92,14 @@ div.content-div#posts-div {
   font-family: 'Roboto Flex', sans-serif;
   font-weight: 100;
   font-size: 1.0em;
+  cursor: pointer;
 }
 
-.loginHomeBttn{
+.loginHomeBttn {
   color: #FBD8B0;
+  cursor: pointer;
 }
+
 .content-div button:hover {
   background-color: #E58677;
 }
@@ -123,22 +116,57 @@ div.content-div#posts-div {
   height: 300px;
 }
 
+.timelineCornerImage {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 700px;
+}
+
 .logoGoogle,
-.logoGoogleRegister
-{
+.logoGoogleRegister {
   width: 166px;
   height: 41px;
   margin: 8px 23px -9px 74px;
   margin-top: -5px;
+  cursor: pointer;
+}
+
+footer {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
+  width: 100%;
+  height: 44px;
+  background-color: #B52B40;
+  position: fixed;
+  bottom: 0px;
+}
+
+.footer p {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  text-align: center;
+  color: rgb(245, 241, 241);
+}
+
+footer a {
+  font-size: 1.2rem;
+  color: #282828;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  text-align: center;
+  color: rgb(245, 241, 241);
 }
 
 /* Vista login */
-.inputBox,
-.myEmailInput,
-.registerInputBox,
-.registerPasswordInput,
-.registerPasswordInputDos{
-  margin: 6px auto;
+.inputBox {
+  margin: 7px 26px 21px 18px;
   padding: 10px 2%;
   background-color: white;
   border-radius: 10px;
@@ -149,103 +177,182 @@ div.content-div#posts-div {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 0.9em;
-  height: 40px;
+  height: 42px;
+  cursor: pointer;
 }
 
 h1 {
-    display: block;
-    color: #B52B40;
-    width: 180px;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin: 6px 88px 9px 86px;
+  display: block;
+  color: #B52B40;
+  width: 180px;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 6px 88px 9px 86px;
 }
 
 h3 {
-    display: block;
-    font-size: 0.7em;
-    text-align: center;
-    color: #B52B40;
-    font-family: 'Roboto Flex', sans-serif;
+  display: block;
+  font-size: 0.7em;
+  text-align: center;
+  color: #B52B40;
+  font-family: 'Roboto Flex', sans-serif;
+}
+
+h4 {
+  display: block;
+  color: #B52B40;
+  width: 180px;
+  font-size: 1.0em;
+  font-weight: 700;
+  margin: 5px 242px 11px 134px;
+}
+
+/* Vista  timeline */
+.navigation {
+  display: flex;
+  align-items: center;
+  padding: 1px;
+  background-color: #ffead2;
+  justify-content: flex-start;
+  width: 375px;
+  border: 2px solid #B52B40;
+}
+
+.timelineLogo {
+  height: 45px;
+  margin: 6px 14px 6px 6px;
+  padding: 6px 10px 10px 10px;
+}
+
+.navigation button {
+  background-color: #b52b40;
+  border: 2px solid #facb80;
+  border-radius: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  margin: -8px 21px -6px -13px;
+  padding: 9px 0px;
+  width: 113%;
+  color: #fff;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 90;
+  font-size: 0.7em;
+}
+
+.timelineContentDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(255, 234, 210);
+  border-radius: 20px;
+  margin: 225px 9px -13px 19px;
+  padding: inherit;
+  box-shadow: 7px 2px 9px 0px #B52B40;
+  position: absolute;
+  width: 334px;
+}
+
+/* Estilos para el contenido */
+.timelineInputBox {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#publishButton {
+  margin-top: 10px;
 }
 
 /* Estilos para tablet */
 
 @media (min-width: 728px) and (max-width: 1023px) {
-  .corner-image {
-    height: 500px;
-  }
-  div.content-div button{
+
+  div.content-div button {
     font-size: 1.13em;
     height: 56px;
     margin-bottom: 18px;
   }
 
-  .heart{
+  .timelineHeart {
     height: 181px;
     width: 357px;
     margin: 29px 54px 33px 195px;
- }
+  }
 
- .logoGoogle,
- .logoGoogleRegister {
-  margin: -12px 3px -15px 95px;
-  width: 251px;
-  height: 55px;
-  left: 60px;
-  top: 328px;
-}
+  .logoGoogle,
+  .logoGoogleRegister {
+    margin: -12px 3px -15px 95px;
+    width: 251px;
+    height: 55px;
+    left: 60px;
+    top: 328px;
+  }
 
-.inputBox{
-  padding: 17px 2%;
-    }
+  h1 {
+    display: block;
+    color: #B52B40;
+    width: 180px;
+    font-size: 1.7em;
+    font-weight: 700;
+    margin: 7px 90px 11px 134px;
+  }
 
-    h1 {
-        display: block;
-        color: #B52B40;
-        width: 180px;
-        font-size: 1.7em;
-        font-weight: 700;
-        margin: 7px 90px 11px 134px;
-    }
+  footer p {
+    font-size: 1.5rem;
+  }
 
-    div.content-div{
-      background-color: rgba(255, 255, 255, 0.7);
-      border-radius: 20px;
-      position: absolute;
-      left: 59px;
-      top: 413px;
-      padding: 35px;
-      width: 400px;
-      margin: -184px -0.8em;
-      font-family: 'Roboto Flex', sans-serif;
-    }
-    div.content-div button{
-      font-size: 1.3em;
-      margin: 18px auto;
-      padding: 18px 0px;
-    }
-    .homeButton {
-      margin: 7px auto;
-      padding: 13px 0px;
-      width: 100%;
-    }
+  footer a {
+    font-size: 1.5rem;
+  }
+
+  div.content-div {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    position: absolute;
+    left: 59px;
+    top: 413px;
+    padding: 35px;
+    width: 400px;
+    margin: -184px -0.8em;
+    font-family: 'Roboto Flex', sans-serif;
+  }
+
+  div.content-div button {
+    font-size: 1.3em;
+    margin: 18px auto;
+    padding: 18px 0px;
+  }
+
+  .homeButton {
+    margin: 7px auto;
+    padding: 13px 0px;
+    width: 100%;
+  }
+
+  footer p {
+    font-size: 1.5rem;
+  }
+
+  footer a {
+    font-size: 1.5rem;
+  }
 }
 
 /* Estilos para laptops */
 
 @media (min-width: 1024px) {
 
-  .home-div{
+  .home-div {
     display: grid;
     grid-template-columns: 1fr 0% 40%;
     grid-gap: 10px;
   }
-  
-  div.header-div{
+
+  div.header-div {
     grid-column: 1 / span 3;
   }
-  
+
   div.content-div {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
@@ -255,22 +362,49 @@ h3 {
     width: 492px;
   }
 
-  div.header-div img#logo{
+  div.header-div img#logo {
     margin-top: 50px;
   }
 
-  div.content-div button{
+  .inputBox,
+  .myEmailInput,
+  .myPasswordInput {
+    width: 421px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #facb80;
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+
+  .navigation button {
+    background-color: #b52b40;
+    border: 2px solid #facb80;
+    border-radius: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    margin: -7px 17px -4px 96px;
+    padding: 9px 0px;
+    width: 109%;
+    color: #fff;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 90;
+    font-size: 1.2em;
+    height: 50px;
+  }
+
+  .div.content-div button {
     font-size: 1.3em;
     margin: 18px auto;
     padding: 9px 0px;
   }
- 
+
   .corner-image {
     display: inline-flex;
     height: 700px;
   }
 
-  .heart{
+  .heart {
     height: 145px;
     width: 289px;
     position: absolute;
@@ -278,82 +412,58 @@ h3 {
     top: 190px;
   }
 
- .logoGoogle,
- .logoGoogleRegister {
-  margin: -12px 3px -15px 95px;
-  width: 251px;
-  height: 55px;
-  left: 60px;
-  top: 328px;
-}
-
-h1 {
-  display: block;
-  color: #B52B40;
-  width: 180px;
-  margin: 6px 88px 9px 144px;
-  font-size: 1.7em;
-  font-weight: 700;
+  .logoGoogle,
+  .logoGoogleRegister {
+    margin: -12px 3px -15px 95px;
+    width: 251px;
+    height: 55px;
+    left: 60px;
+    top: 328px;
   }
- }
 
-
-/*Estilos para timeline*/
-
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background-color: #f2f2f2;
-  flex-wrap: nowrap;
-  margin: -760px 20px 20px 20px;
-}
-
-.timelinelogo {
-  width: 80px;
-  height: 20px;
-}
-
-.navigation button {
-  margin: 0 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #e60000;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.navigation button:hover {
-  background-color: #ff3333;
-}
-
-
-.button {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.button{
-  margin: 0 10px;
-}
-
-@media screen and (max-width: 600px) {
-  .logo {
-    width: 60px;
+  h1 {
+    display: block;
+    color: #B52B40;
+    width: 180px;
+    margin: 6px 88px 9px 144px;
+    font-size: 1.7em;
+    font-weight: 700;
   }
 
   .navigation {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    align-items: center;
+    padding: -4px;
+    background-color: #ffead2;
+    justify-content: flex-start;
+    width: 1793px;
+    margin: 0px 12px 5px 0px;
+    border: 2px solid #B52B40;    
+    z-index: 2;
+    position: relative;
   }
 
-  .navigation button {
-    margin: 5px 0;
+  .timelineContentDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(255, 234, 210);
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .timelineLogo {
+    height: 70px;
+    margin: 6px 14px 6px 6px;
+    padding: 6px 10px 10px 10px;
+  }
+
+  h4 {
+    display: block;
+    color: #B52B40;
+    width: 180px;
+    font-size: 1.0em;
+    font-weight: 600;
   }
 }
-
-

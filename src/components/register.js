@@ -85,14 +85,7 @@ export const Register = (onNavigate) => {
     } else if (validateEmail(email) === false) {
       alert('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
-      createUser(email, password1, name).then((result) => {
-        console.log(`¡Usuario ${result} registrado!`);
-        onNavigate('/timeline');
-      })
-        .catch((err) => {
-          console.error(err);
-          alert('error en el ingreso de datos');
-        });
+      createUser(email, password1, name);
     }
   });
 

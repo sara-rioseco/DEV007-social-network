@@ -39,16 +39,12 @@ export const createUser = (email, password, name) => {
       console.log('Error fetching user data:', error);
     });
 };
+
 const storage = getStorage();
 
 export const imgReference = (useruid) => {
   console.log(`${useruid}.`);
   return getDownloadURL(ref(storage, (`${useruid}.png`)));
-};
-
-export const createUser = (email, password) => {
-  console.log(`${email} , ${password}`);
-  return createUserWithEmailAndPassword(auth, email, password);
 };
 
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
