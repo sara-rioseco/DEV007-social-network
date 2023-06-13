@@ -10,10 +10,19 @@ import {
   addDoc,
   collection,
 } from 'firebase/firestore';
+import { getStorage, ref, getDownloadURL , uploadBytes } from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
+const storage = getStorage();
+
+export const imgReference = (useruid) => {
+  console.log(`${useruid}.`);
+  return getDownloadURL(ref(storage, (`${useruid}.png`)));
+};
+
 export const createUser = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
+  console.log(`${email} , ${password}`);
+  return createUserWithEmailAndPassword(auth, email, password);
 };
 
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);

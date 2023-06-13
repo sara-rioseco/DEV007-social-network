@@ -1,9 +1,16 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Roboto Flex', sans-serif;
+  overflow-y: scroll;
 }
 
 div#root {
@@ -25,31 +32,36 @@ div.header-div {
 }
 
 .heart{
-  height: 116px;
-  width: 216px;
-  margin: 97px 77px 51px 80px;
+  height: 117px;
+  width: 222px;
+  position: absolute;
+  left: 68px;
+  top: 94px;
   }
 
 div.header-div h2 {
-  font-size: 1.6em;
-  margin-bottom: 0.4em;
+  font-size: 1.5em;
+  margin: 1em;
   text-align: center;
   color: #B52B40;
-  font-weight: inherit;
+  font-weight: 300;
 }
 
 div.content-div {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
-  margin: -38px 1.2em;
-  padding: 13px;
-  box-shadow: 7px 0px 9px 0px #B52B40;
+  margin: 225px 9px -13px 19px;
+  padding: inherit;
+  box-shadow: 7px 2px 9px 0px #B52B40;
+  position: absolute;
+  width: 334px;
 }
-  
+
 .buttonLogin, 
 .loginBttn,
 .registerBttn,
-.loginHomeBttn 
+.loginHomeBttn,
+.homeButton
 {
   display: block;
   background-color: #B52B40;
@@ -57,15 +69,18 @@ div.content-div {
   border: 2px solid #facb80;
   border-radius: 10px;
   transition: background-color 0.3s ease;
-  width: 100%;
+  width: 95%;
   margin: 13px auto;
-  padding: 17px 0px;
-  font-family:'Roboto Flex', sans-serif;
-  font-weight: 100;
+  padding: 10px 0px;
+  font-family: 'Roboto Flex', sans-serif;
+  font-weight: 495;
   font-size: 1.0em;
+  cursor: pointer;
 }
 
-.loginBttnGoogle, .buttonRegisterGoogle{
+.loginBttnGoogle, 
+.buttonRegisterGoogle 
+{
   display: block;
   background-color: #FBD8B0;
   border: 2px solid #facb80;
@@ -100,50 +115,42 @@ div.content-div {
   height: 300px;
 }
 
-.inputBox{
-  margin: 18px auto;
-  padding: 18px 0px;
-}
-
-.logoGoogle, 
+.logoGoogle,
 .logoGoogleRegister
 {
-  margin: 97px 77px 51px 80px;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  left: -27px;
-  top: 399px;
+  width: 166px;
+  height: 41px;
+  margin: 8px 23px -9px 74px;
+  margin-top: -5px;
 }
-.logoGoogleRegister{
-  left: -25px;
-  top: 456px;
-  }
 
 /* Vista login */
-.inputBox{
-margin: 10px auto;
-padding: 10px 2%;
-background-color: white;
-border-radius: 10px;
-border: 2px solid orange;
-display: block;
-width: 95%;
-color: rgb(189, 176, 176);
-font-family: Arial, Helvetica, sans-serif;
-font-weight: 100;
-font-size: 1em;
+.inputBox,
+.myEmailInput,
+.registerInputBox,
+.registerPasswordInput,
+.registerPasswordInputDos{
+  margin: 6px auto;
+  padding: 10px 2%;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid orange;
+  display: block;
+  width: 95%;
+  color: rgb(189, 176, 176);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 0.9em;
+  height: 40px;
 }
 
 h1 {
 display: block;
-margin-bottom: 0.4em;
-text-align: center;
 color: #B52B40;
 width: 180px;
-font-size: 1.8em;
-font-weight: 500;
-margin: auto;
+font-size: 1.5em;
+font-weight: 700;
+margin: 6px 88px 9px 86px;
 }
 
 h3 {
@@ -153,6 +160,8 @@ text-align: center;
 color: #B52B40;
 font-family: 'Roboto Flex', sans-serif;
 }
+
+
 
 /* Estilos para tablet */
 
@@ -172,15 +181,28 @@ font-family: 'Roboto Flex', sans-serif;
     margin: 29px 54px 33px 195px;
  }
 
- .logoGoogle, 
+ .logoGoogle,
  .logoGoogleRegister {
-  margin: 97px 77px 51px 80px;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  left: -3px;
-  top: 259px;
+  margin: -12px 3px -15px 95px;
+  width: 251px;
+  height: 55px;
+  left: 60px;
+  top: 328px;
 }
+
+.inputBox{
+  padding: 17px 2%;
+}
+
+h1 {
+display: block;
+    color: #B52B40;
+    width: 180px;
+    font-size: 1.7em;
+    font-weight: 700;
+    margin: 7px 90px 11px 134px;
+}
+
 div.content-div{  
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
@@ -192,10 +214,17 @@ div.content-div{
   margin: -184px -0.8em;
   font-family: 'Roboto Flex', sans-serif;
 }
+
+
 div.content-div button{
   font-size: 1.3em;
   margin: 18px auto;
   padding: 18px 0px;
+}
+.homeButton {
+  margin: 7px auto;
+  padding: 13px 0px;
+  width: 100%;
 }
 }
 
@@ -213,33 +242,23 @@ div.content-div button{
     grid-column: 1 / span 3;
   }
   
-  div.content-div{  
+  div.content-div {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
+    margin: 337px 10px -15px 121px;
+    padding: 19px;
     position: absolute;
-    left: 59px;
-    top: 413px;
-    padding: 35px;
-    width: 550px;
-    margin:-102px 2.2em;
-    font-family: 'Roboto Flex', sans-serif;
-    
+    width: 492px;
   }
+  
   div.header-div img#logo{
     margin-top: 50px;
   }
-  div.header-div h1{
-    font-size: 3em;
-  }
-  div.header-div h2{
-    font-size: 2.0em;
-    margin-bottom: 0.8em;
-  }
-
+ 
   div.content-div button{
     font-size: 1.3em;
     margin: 18px auto;
-    padding: 18px 0px;
+    padding: 9px 0px;
   }
  
   .corner-image {
@@ -248,23 +267,89 @@ div.content-div button{
   }
 
   .heart{
-    height: 181px;
-    width: 357px;
-    margin: 117px 54px 33px 195px;
- }
+    height: 145px;
+    width: 289px;
+    position: absolute;
+    left: 230px;
+    top: 190px;
+  }
 
- .logoGoogle, 
+ .logoGoogle,
  .logoGoogleRegister {
-  margin: 43px 77px 49px 69px;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  left: 69px;
-  top: 274px;
-}
-
-.logoGoogleRegister{
+  margin: -12px 3px -15px 95px;
+  width: 251px;
+  height: 55px;
   left: 60px;
   top: 328px;
 }
+
+h1 {
+  display: block;
+  color: #B52B40;
+  width: 180px;
+  margin: 6px 88px 9px 144px;
+  font-size: 1.7em;
+  font-weight: 700;
+  }
+ }
+ 
+
+/*Estilos para timeline*/
+ 
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #f2f2f2;
+  flex-wrap: nowrap;
+  margin: -760px 20px 20px 20px;
 }
+
+.timelinelogo {
+  width: 80px;
+  height: 20px;
+}
+
+.navigation button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e60000;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.navigation button:hover {
+  background-color: #ff3333;
+}
+
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.button{
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .logo {
+    width: 60px;
+  }
+
+  .navigation {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navigation button {
+    margin: 5px 0;
+  }
+}
+
+

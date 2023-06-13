@@ -30,27 +30,26 @@ export const Register = (onNavigate) => {
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
-  const buttonRegisterGoogle = document.createElement('button');
-  const logoGoogleRegister = document.createElement('img');
+
   const divTitleRegister = document.createElement('li');
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
-  nameInput.classList.add('inputBox');
+  nameInput.classList.add('registerInputBox');
   nameInput.id = 'myNameInput';
   nameInput.placeholder = 'Nombre';
   nameInput.required = true;
-  emailInput.classList.add('inputBox');
+  emailInput.classList.add('registerInputBox');
   emailInput.id = 'myEmailInput';
   emailInput.placeholder = 'Email';
   emailInput.required = true;
-  passwordInput.classList.add('inputBox');
+  passwordInput.classList.add('registerPasswordInput');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
-  passwordInput.placeholder = 'Ingresa tu contraseña';
+  passwordInput.placeholder = 'Ingresa tu contraseña - mínimo 6 dígitos';
   passwordInput.minLength = 6;
   passwordInput.required = true;
-  passwordInput2.classList.add('inputBox');
+  passwordInput2.classList.add('registerPasswordInputDos');
   passwordInput2.type = 'password';
   passwordInput2.id = 'myPasswordInput2';
   passwordInput2.placeholder = 'Repetir contraseña';
@@ -58,7 +57,7 @@ export const Register = (onNavigate) => {
   passwordInput2.required = true;
   registerBttn.id = 'registerbutton';
   homeBttn.id = 'home-button';
-
+  homeBttn.classList.add('homeButton');
   backgroundImg.classList.add('pets');
   divTitleRegister.classList.add('divTitleLogin');
   registerDiv.className = 'home-div';
@@ -68,12 +67,7 @@ export const Register = (onNavigate) => {
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
-  buttonRegisterGoogle.classList.add('buttonRegisterGoogle');
-
-  logoGoogleRegister.src = 'https://i.ibb.co/D49QQs0/logo-Google.png';
-  logoGoogleRegister.classList.add('logoGoogleRegister');
   registerBttn.classList.add('loginBttn');
-  buttonRegisterGoogle.innerHTML = 'Registrarte con <i class="fa fa-google"></i>oogle';
   title.textContent = 'Regístrate';
   subtitle.textContent = 'O con tu cuenta de Google';
   registerBttn.textContent = 'Registrarme';
@@ -87,12 +81,18 @@ export const Register = (onNavigate) => {
     const password1 = document.getElementById('myPasswordInput').value;
     const password2 = document.getElementById('myPasswordInput2').value;
     if (validatePassword(password1, password2) === false) {
-      console.log('la contraseña ingresada no coincide');
+      alert('la contraseña ingresada no coincide');
     } else if (validateEmail(email) === false) {
-      console.log('la contraseña sí coincide pero el correo electrónico no es válido');
+      alert('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
-      createUser(email, password1);
-      console.log(`¡Usuario ${name} registrado!`);
+      createUser(email, password1).then((result) => {
+        console.log(`¡Usuario ${result} registrado!`);
+        onNavigate('/timeline');
+      })
+        .catch((err) => {
+          console.error(err);
+          alert('error en el ingreso de datos');
+        });
     }
   });
 

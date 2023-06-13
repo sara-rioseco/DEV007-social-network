@@ -8,6 +8,11 @@ import { createPost } from '../lib/index.js';
 export const Timeline = (onNavigate) => {
   const timelineDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
+  const nav = document.createElement('nav');
+  const logoImg = document.createElement('img');
+  const profileButton = document.createElement('button');
+  const homeButton = document.createElement('button');
+  const logoutButton = document.createElement('button');
   const title = document.createElement('h1');
   const contentDiv = document.createElement('div');
   const postInput = document.createElement('input');
@@ -15,30 +20,30 @@ export const Timeline = (onNavigate) => {
   const homeBttn = document.createElement('button');
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
-  const heartImg = document.createElement('img');
 
-  heartImg.src = 'img/logo-title-red.png';
-  heartImg.classList.add('heart');
+  nav.className = 'navigation';
+  logoImg.src = 'img/logo.png';
+  logoImg.alt = 'Logo';
+  logoImg.classList.add('logo');
+  profileButton.textContent = 'Perfil';
+  homeButton.textContent = 'Inicio';
+  logoutButton.textContent = 'Cerrar sesión';
   postInput.classList.add('inputBox');
   postInput.id = 'myPostInput';
   postInput.placeholder = 'Escribe lo que quieras publicar';
   postInput.required = true;
-
   publishBttn.id = 'publishbutton';
   homeBttn.id = 'home-button';
-
   backgroundImg.classList.add('pets');
   const divTitleRegister = document.createElement('li');
-
   divTitleRegister.classList.add('divTitleRegister');
   timelineDiv.className = 'home-div';
   headerDiv.className = 'header-div';
-  contentDiv.className = 'content-div';
+  contentDiv.className = 'TimelineContentDiv';
   contentImgDiv.className = 'content-img';
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
-
   title.textContent = 'Comparte tu historia';
   publishBttn.textContent = 'Publicar';
   homeBttn.textContent = 'Volver al inicio';
@@ -51,15 +56,23 @@ export const Timeline = (onNavigate) => {
     console.log('Se ha creado tu post');
   });
 
-  timelineDiv.appendChild(heartImg);
+  homeButton.addEventListener('click', () => onNavigate('/'));
+  logoutButton.addEventListener('click', () => {
+    // Add your logout logic here
+    console.log('Logout clicked');
+  });
 
+  nav.appendChild(logoImg);
+  nav.appendChild(profileButton);
+  nav.appendChild(homeButton);
+  nav.appendChild(logoutButton);
   contentImgDiv.appendChild(backgroundImg);
   timelineDiv.appendChild(contentImgDiv);
-
   contentDiv.appendChild(title);
   contentDiv.appendChild(postInput);
   contentDiv.appendChild(publishBttn);
   contentDiv.appendChild(homeBttn);
+  timelineDiv.appendChild(nav);
   timelineDiv.appendChild(contentDiv);
 
   return timelineDiv;
