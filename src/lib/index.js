@@ -32,7 +32,8 @@ export const createUser = (email, password, name) => {
           updateProfile(loggedUser, {
             displayName: name, photoURL: '',
           });
-        }).catch((error) => {
+        })
+        .catch((error) => {
           console.log('Error fetching user data:', error);
         });
     });
