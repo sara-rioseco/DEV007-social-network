@@ -7,7 +7,7 @@ import {
   doc,
 } from 'firebase/firestore';
 import {
-  getAuth,
+  getAuth,onAuthStateChanged,
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,

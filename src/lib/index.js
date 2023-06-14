@@ -17,6 +17,7 @@ import {
   serverTimestamp,
 } from 'firebase/firestore';
 import { Database } from 'firebase/database';
+import { getStorage, ref, getDownloadURL , uploadBytes } from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
 export const createUserDoc = (name) => addDoc(collection(db, 'users'), {
@@ -37,6 +38,13 @@ export const createUser = (email, password, name) => {
     .catch((error) => {
       console.log('Error fetching user data:', error);
     });
+};
+
+const storage = getStorage();
+
+export const imgReference = (useruid) => {
+  console.log(`${useruid}.`);
+  return getDownloadURL(ref(storage, (`${useruid}.png`)));
 };
 
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
@@ -80,7 +88,7 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
 /*export const getUserDisplayName = (email) => {
   getDoc(collection(db, 'users').then(
     () => console.log
-  ) 
+  )
   .catch((error) => {
     console.log('Error fetching user data:', error);
   }))
