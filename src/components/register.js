@@ -1,4 +1,4 @@
-import { createUser, createUserDoc } from '../lib/index.js';
+import { createUser } from '../lib/index.js';
 
 export const validatePassword = (password1, password2) => {
   if (password1 === password2) {

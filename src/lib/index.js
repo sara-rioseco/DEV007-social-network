@@ -23,21 +23,18 @@ import {
 } from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
-export const createUserDoc = (name) => addDoc(collection(db, 'users'), {
-  email: auth.currentUser.email,
-  displayName: `${name}`,
-  photoUrl: '',
-  uid: auth.currentUser.uid,
-});
-
 export const createUser = (email, password, name) => {
-  createUserWithEmailAndPassword(auth, email, password);
-  const loggedUser = auth.currentUser;
-  loggedUser.getIdToken(true)
-    .then(() => updateProfile(loggedUser, {
-      displayName: name,
-    })).catch((error) => {
-      console.log('Error fetching user data:', error);
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      const loggedUser = auth.currentUser;
+      loggedUser.getIdToken(true)
+        .then(() => {
+          updateProfile(loggedUser, {
+            displayName: name, photoURL: '',
+          });
+        }).catch((error) => {
+          console.log('Error fetching user data:', error);
+        });
     });
 };
 
