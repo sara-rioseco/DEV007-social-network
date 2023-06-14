@@ -86,6 +86,7 @@ export const Register = (onNavigate) => {
       alert('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
       createUser(email, password1, name);
+      onNavigate('/timeline');
     }
   });
 

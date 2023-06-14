@@ -15,6 +15,7 @@ import {
   createPostDiv,
   getUserEmail,
   getUsername,
+  userLogout,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
@@ -37,6 +38,7 @@ export const Timeline = (onNavigate) => {
   const contentImgDiv = document.createElement('div');
 
   const postsRef = query(collection(db, 'posts'), orderBy('time', 'desc'));
+
 
   logoImg.src = 'img/logo-title-red.png';
   logoImg.alt = 'Logo';
@@ -69,8 +71,7 @@ export const Timeline = (onNavigate) => {
   profileButton.addEventListener('click', () => onNavigate('/perfil'));
 
   logoutButton.addEventListener('click', () => {
-    // Agrega aquí tu lógica para cerrar sesión
-    console.log('Logout clicked');
+    userLogout().then(() => onNavigate('/'));
   });
 
   publishButton.addEventListener('click', async (e) => {

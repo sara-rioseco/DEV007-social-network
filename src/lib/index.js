@@ -6,6 +6,7 @@ import {
   getRedirectResult,
   signInWithPopup,
   getAuth,
+  signOut,
 } from 'firebase/auth';
 import {
   doc,
@@ -17,25 +18,25 @@ import {
   serverTimestamp,
 } from 'firebase/firestore';
 import { Database } from 'firebase/database';
-import { getStorage, ref, getDownloadURL , uploadBytes } from 'firebase/storage';
+import {
+  getStorage, ref, getDownloadURL, uploadBytes,
+} from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
 export const createUserDoc = (name) => addDoc(collection(db, 'users'), {
   email: auth.currentUser.email,
   displayName: `${name}`,
-  protoUrl: '',
+  photoUrl: '',
   uid: auth.currentUser.uid,
 });
 
 export const createUser = (email, password, name) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(
-      createUserDoc(name)
-        .then(
-          console.log('usuario registrado'),
-        ),
-    )
-    .catch((error) => {
+  createUserWithEmailAndPassword(auth, email, password);
+  const loggedUser = auth.currentUser;
+  loggedUser.getIdToken(true)
+    .then(() => updateProfile(loggedUser, {
+      displayName: name,
+    })).catch((error) => {
       console.log('Error fetching user data:', error);
     });
 };
@@ -68,7 +69,7 @@ export const getUserEmail = () => {
 
 export const getUsername = () => {
   const loggedInUser = auth.currentUser;
-  loggedInUser.getIdToken(true)
+  const userDocs = () => getDocs(collection(db, 'users'))
     .then(
       () => console.log(loggedInUser.displayName),
       () => console.log('error'),
@@ -85,7 +86,9 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
   displayName: auth.currentUser.displayName,
 });
 
-/*export const getUserDisplayName = (email) => {
+export const userLogout = () => signOut(auth);
+
+/* export const getUserDisplayName = (email) => {
   getDoc(collection(db, 'users').then(
     () => console.log
   )
@@ -93,9 +96,9 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
     console.log('Error fetching user data:', error);
   }))
   return displayName;
-};*/
+}; */
 
-/*export const showLikes = (boolean) => {
+/* export const showLikes = (boolean) => {
   const likeImg = document.createElement('img');
   likeImg.alt = 'like';
   likeImg.id = 'likeImg';
@@ -105,15 +108,15 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
     likeImg.src = 'img/grey-paw-like.png';
   }
   return likeImg;
-};*/
+}; */
 
 export const createPostDiv = (post, username) => {
   const postDiv = document.createElement('div');
   const headerPostDiv = document.createElement('div');
   const msgPostDiv = document.createElement('div');
   const footerPostDiv = document.createElement('div');
-  /*const boolean = false;
-  let showingLikes = showLikes(boolean);*/
+  /* const boolean = false;
+  let showingLikes = showLikes(boolean); */
   postDiv.className = 'content-div';
   headerPostDiv.className = 'sub-div';
   msgPostDiv.className = 'sub-div';
@@ -124,12 +127,12 @@ export const createPostDiv = (post, username) => {
   footerPostDiv.id = 'footer-post-div';
   headerPostDiv.innerHTML = `${username}`;
   msgPostDiv.innerHTML = `${post.content}`;
-  /*footerPostDiv.appendChild(showingLikes);*/
+  /* footerPostDiv.appendChild(showingLikes); */
   postDiv.appendChild(headerPostDiv);
   postDiv.appendChild(msgPostDiv);
   postDiv.appendChild(footerPostDiv);
-  /*showingLikes.addEventListener('click', (e) => {
+  /* showingLikes.addEventListener('click', (e) => {
     e.preventDefault();
     showingLikes = showLikes(!boolean);
-  });*/
+  }); */
 };
