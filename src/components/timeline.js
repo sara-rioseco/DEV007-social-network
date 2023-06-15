@@ -39,7 +39,6 @@ export const Timeline = (onNavigate) => {
 
   const postsRef = query(collection(db, 'posts'), orderBy('time', 'desc'));
 
-
   logoImg.src = 'img/logo-title-red.png';
   logoImg.alt = 'Logo';
   logoImg.classList.add('timelineLogo');
@@ -72,7 +71,7 @@ export const Timeline = (onNavigate) => {
 
   homeButton.addEventListener('click', () => onNavigate('/'));
 
-  profileButton.addEventListener('click', () => onNavigate('/perfil'));
+  profileButton.addEventListener('click', () => onNavigate('/profile'));
 
   logoutButton.addEventListener('click', () => {
     userLogout().then(() => onNavigate('/'));
@@ -108,7 +107,7 @@ export const Timeline = (onNavigate) => {
 
       const postDiv = `
       <div class="publicacionPost">
-      <p class="usuario">${post.data().displayName} publicó:</p>
+      <p class="usuario">${post.data().displayName} publicó el ${post.data().time.toDate().toLocaleDateString()} a las ${post.data().time.toDate().toLocaleTimeString().slice(0, 5)}:</p>
       <p class="descripcionPost">${post.data().content}</p>
       <div class="editarPublicacion">
         <button class="editar">Editar</button>
