@@ -693,3 +693,40 @@ div.content-register {
     transition: 0.5s;
   }
 }
+/* ESTILOS MODAL */
+dialog {
+
+}
+
+dialog#delete-modal {
+  background: #FFEAD2;
+  margin: 0;
+  border: none;
+  padding: 10px;
+  align-content: space-around;
+  color:#B52B40;
+}
+
+dialog::after {
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+dialog::backdrop {
+  background-color: rgba(54, 54, 54, 0.7);
+}
+
+dialog div.modal-div {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-around;
+  margin: 15px;
+
+
+}
+
+
+
