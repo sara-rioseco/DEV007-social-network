@@ -17,33 +17,35 @@ export const Login = (onNavigate) => {
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
-  emailInput.classList.add('myEmailInput');
+  
+  emailInput.classList.add('loginInputBox');
   emailInput.id = 'myEmailInput';
-  emailInput.classList.add('inputBox');
   emailInput.placeholder = 'Ingresa tu Correo';
-  passwordInput.classList.add('inputBox');
+  passwordInput.classList.add('loginInputBox');
   passwordInput.type = 'password';
-  passwordInput.classList.add('myPasswordInput');
   passwordInput.id = 'myPasswordInput';
   passwordInput.placeholder = 'Contraseña';
   passwordInput.minLength = 6;
   passwordInput.required = true;
-  homeBttn.classList.add('homeButton');
+
+  loginBttn.classList.add('loginBttn');
+  logoGoogle.className = 'logoGoogle';
+  homeBttn.classList.add('loginBttn');
+
   backgroundImg.classList.add('pets');
   divTitleLogin.classList.add('divTitleLogin');
+
   loginDiv.className = 'home-div';
   headerDiv.className = 'header-div';
-  contentDiv.className = 'content-div';
+  contentDiv.className = 'content-login';
   contentImgDiv.className = 'content-img';
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
   logoGoogle.src = 'img/logo_google.png';
-  logoGoogle.classList.add('logoGoogle');
-  loginBttn.classList.add('loginBttn');
+  
   title.textContent = 'Iniciar Sesión';
-  loginBttn.textContent = 'iniciar sesión';
-  loginBttn.textContent = 'Iniciar sesión';
+  loginBttn.textContent = 'Iniciar Sesión';
   homeBttn.textContent = 'Volver al inicio';
 
   homeBttn.addEventListener('click', () => onNavigate('/'));
