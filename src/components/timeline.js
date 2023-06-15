@@ -44,8 +44,11 @@ export const Timeline = (onNavigate) => {
   logoImg.alt = 'Logo';
   logoImg.classList.add('timelineLogo');
   profileButton.textContent = 'Perfil';
+  profileButton.classList.add('navBttn');
   homeButton.textContent = 'Inicio';
+  homeButton.classList.add('navBttn');
   logoutButton.textContent = 'Cerrar sesión';
+  logoutButton.classList.add('navBttn');
   postInput.classList.add('timelineInputBox');
   postInput.id = 'myPostInput';
   postInput.placeholder = 'Escribe lo que quieras publicar';
@@ -55,6 +58,7 @@ export const Timeline = (onNavigate) => {
 
   publishButton.id = 'publishbutton';
   publishButton.textContent = 'Publicar';
+  publishButton.className = 'buttonToPost';
   title.textContent = 'Comparte tu historia';
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'timelineCornerImage';
@@ -64,7 +68,7 @@ export const Timeline = (onNavigate) => {
   contentDiv.className = 'timelineContentDiv';
   contentPostDiv.className = 'timelinePosts';
   postsDiv.className = '';
-  contentImgDiv.className = 'timelineContentImg';
+  contentImgDiv.className = 'corner-image';
 
   homeButton.addEventListener('click', () => onNavigate('/'));
 

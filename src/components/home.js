@@ -21,8 +21,8 @@ export const Home = (onNavigate) => {
   subtitle.textContent = '¡Bienvenid@ a la red social para los amantes de los animales!';
   loginBttn.textContent = 'Ingresar';
   registerBttn.textContent = 'Registrarme';
-  loginBttn.classList.add('loginBttn');
-  registerBttn.classList.add('registerBttn');
+  loginBttn.classList.add('homeBttn');
+  registerBttn.classList.add('homeBttn');
 
   loginBttn.addEventListener('click', () => onNavigate('/login'));
   registerBttn.addEventListener('click', () => onNavigate('/register'));
