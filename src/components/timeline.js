@@ -9,12 +9,12 @@ import {
   deleteDoc,
   orderBy,
   QuerySnapshot,
+  documentId,
 } from 'firebase/firestore';
 import {
   createPost,
   createPostDiv,
-  getUserEmail,
-  getUsername,
+  deletePost,
   userLogout,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
@@ -103,21 +103,13 @@ export const Timeline = (onNavigate) => {
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';
     querySnapshot.forEach((post) => {
-      const username = getUsername();
+      const name = post.data().displayName;
+      const localDate = post.data().time.toDate().toLocaleDateString();
+      const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
+      const content = post.data().content;
+      const docId = post.id;
 
-      const postDiv = `
-      <div class="publicacionPost">
-      <p class="usuario">${post.data().displayName} publicó el ${post.data().time.toDate().toLocaleDateString()} a las ${post.data().time.toDate().toLocaleTimeString().slice(0, 5)}:</p>
-      <p class="descripcionPost">${post.data().content}</p>
-      <div class="editarPublicacion">
-        <button class="editar">Editar</button>
-      </div>
-      <div class="eliminarPublicacion">
-        <button class="eliminar">Eliminar</button>
-      </div>
-      </div>
-      `;
-      postsDiv.innerHTML += postDiv;
+      postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId));
     });
   });
 
