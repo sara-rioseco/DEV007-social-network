@@ -9,7 +9,7 @@ import {
   deleteDoc,
   orderBy,
   QuerySnapshot,
-
+  documentId,
 } from 'firebase/firestore';
 import {
   createPost,
@@ -18,6 +18,8 @@ import {
   getUsername,
   addLike,
   removeLike,
+  deletePost,
+  userLogout,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
@@ -73,11 +75,10 @@ export const Timeline = (onNavigate) => {
 
   homeButton.addEventListener('click', () => onNavigate('/'));
 
-  profileButton.addEventListener('click', () => onNavigate('/perfil'));
+  profileButton.addEventListener('click', () => onNavigate('/profile'));
 
   logoutButton.addEventListener('click', () => {
-    // Agrega aquí tu lógica para cerrar sesión
-    console.log('Logout clicked');
+    userLogout().then(() => onNavigate('/'));
   });
 
   publishButton.addEventListener('click', async (e) => {
@@ -110,18 +111,6 @@ export const Timeline = (onNavigate) => {
       const publicacionPost = document.createElement('div');
       publicacionPost.className = 'publicacionPost';
 
-      const postDiv = `
-      <p class="usuario">${post.data().displayName} publicó:</p>
-      <p class="descripcionPost">${post.data().content}</p>
-      <div class="editarPublicacion">
-        <button class="editar">Editar</button>
-      </div>
-      <div class="eliminarPublicacion">
-        <button class="eliminar">Eliminar</button>
-      </div>
-      `;
-      publicacionPost.innerHTML += postDiv;
-
       const likeImg = document.createElement('img');
       const removeLikeImg = document.createElement('img');
 
@@ -151,13 +140,19 @@ export const Timeline = (onNavigate) => {
         removeLike(post.id);
       });
 
+      const name = post.data().displayName;
+      const localDate = post.data().time.toDate().toLocaleDateString();
+      const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
+      const content = post.data().content;
+      const docId = post.id;
+      
+      postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId));
+      publicacionPost.appendChild(postsDiv);
       publicacionPost.appendChild(likeImg);
       publicacionPost.appendChild(spanLike);
       publicacionPost.appendChild(removeLikeImg);
-      postsDiv.appendChild(publicacionPost);
     });
   });
-
   return timelineDiv;
 };
 

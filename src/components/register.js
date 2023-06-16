@@ -1,19 +1,4 @@
-import { createUser, createUserDoc } from '../lib/index.js';
-
-export const validatePassword = (password1, password2) => {
-  if (password1 === password2) {
-    return true;
-  }
-  return false;
-};
-
-export const validateEmail = (email) => {
-  /* const validFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; */
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-    return true;
-  }
-  return false;
-};
+import { createUser, validatePassword, validateEmail } from '../lib/index.js';
 
 export const Register = (onNavigate) => {
   const registerDiv = document.createElement('div');
@@ -86,6 +71,7 @@ export const Register = (onNavigate) => {
       alert('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
       createUser(email, password1, name);
+      onNavigate('/timeline');
     }
   });
 
