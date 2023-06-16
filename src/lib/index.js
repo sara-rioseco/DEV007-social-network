@@ -20,6 +20,7 @@ import {
   serverTimestamp,
   deleteDoc,
   updateDoc,
+  documentId,
 } from 'firebase/firestore';
 import { Database } from 'firebase/database';
 import {
@@ -81,7 +82,7 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
   displayName: auth.currentUser.displayName,
 });
 
-export const createDeleteModal = () => {
+export const createDeleteModal = (docId) => {
   const deleteModal = document.createElement('dialog');
   const modalContentDiv = document.createElement('div');
   const modalActionDiv = document.createElement('div');
@@ -89,7 +90,7 @@ export const createDeleteModal = () => {
   const deleteButton = document.createElement('button');
   const cancelButton = document.createElement('button');
 
-  deleteModal.classList.add('delete-modal-div');
+  deleteModal.classList.add('big-modal-div');
   modalContentDiv.classList.add('modal-div');
   modalActionDiv.classList.add('modal-div');
   deleteButton.classList.add('navBttn');
@@ -102,7 +103,10 @@ export const createDeleteModal = () => {
   deleteButton.textContent = 'Eliminar';
   cancelButton.textContent = 'Cancelar';
 
-  deleteButton.addEventListener('click', () => console.log('presionaste eliminar'));
+  deleteButton.addEventListener('click', async () => {
+    const docRef = doc(db, 'posts', docId);
+    await deleteDoc(docRef);
+  });
   cancelButton.addEventListener('click', () => deleteModal.close());
 
   modalContentDiv.appendChild(modalMsg);
@@ -114,7 +118,59 @@ export const createDeleteModal = () => {
   return deleteModal;
 };
 
-export const createPostDiv = (name, localDate, localTime, content) => {
+export const createEditModal = (content, docId) => {
+  const editModal = document.createElement('dialog');
+  const modalContentDiv = document.createElement('div');
+  const modalActionDiv = document.createElement('div');
+  const modalMsg = document.createElement('h2');
+  const modalInput = document.createElement('textarea');
+  const editButton = document.createElement('button');
+  const cancelButton = document.createElement('button');
+
+  editModal.classList.add('big-modal-div');
+  modalContentDiv.classList.add('modal-div');
+  modalActionDiv.classList.add('modal-div');
+  editButton.classList.add('navBttn');
+  cancelButton.classList.add('navBttn');
+  modalContentDiv.id = 'edit-content-div';
+  editModal.id = 'edit-modal';
+  editModal.style.height = '200px';
+  editButton.id = 'edit-button';
+  cancelButton.id = 'cancel-button';
+  modalMsg.innerHTML = '';
+  modalMsg.innerHTML = 'Editar publicación: <br>';
+  modalInput.id = 'new-input';
+  modalInput.attribute = 'rows=3';
+  modalInput.style.height = '70px';
+  modalInput.placeholder = content;
+  modalInput.style.width = '400px';
+  editButton.textContent = 'Editar';
+  cancelButton.textContent = 'Cancelar';
+  modalContentDiv.style.display = 'flex';
+  modalContentDiv.style.flexDirection = 'column';
+  modalContentDiv.style.alignItems = 'space-between';
+
+  editButton.addEventListener('click', async () => {
+    const docRef = doc(db, 'posts', docId);
+    let newInput = document.getElementById('new-input').value;
+    newInput = modalInput.value;
+    await updateDoc(docRef, {
+      content: `${newInput}`,
+    });
+  });
+  cancelButton.addEventListener('click', () => editModal.close());
+
+  modalContentDiv.appendChild(modalMsg);
+  modalContentDiv.appendChild(modalInput);
+  modalActionDiv.appendChild(editButton);
+  modalActionDiv.appendChild(cancelButton);
+  editModal.appendChild(modalContentDiv);
+  editModal.appendChild(modalActionDiv);
+
+  return editModal;
+};
+
+export const createPostDiv = (name, localDate, localTime, content, docId) => {
   const postDiv = document.createElement('div');
   const editDiv = document.createElement('div');
   const deleteDiv = document.createElement('div');
@@ -122,7 +178,9 @@ export const createPostDiv = (name, localDate, localTime, content) => {
   const msgP = document.createElement('p');
   const editBttn = document.createElement('button');
   const deleteBttn = document.createElement('button');
-  const deleteModal = createDeleteModal();
+  const deleteModal = createDeleteModal(`${docId}`);
+  const editModal = createEditModal(`${content}`, `${docId}`);
+  const loggedUser = auth.currentUser.displayName;
   postDiv.classList.add('publicacionPost');
   editDiv.classList.add('editarPublicacion');
   deleteDiv.classList.add('eliminarPublicacion');
@@ -137,20 +195,23 @@ export const createPostDiv = (name, localDate, localTime, content) => {
   editBttn.textContent = 'Editar';
   deleteBttn.textContent = 'Eliminar';
 
-  editBttn.addEventListener('click', () => console.log('presionaste editar'));
+  editBttn.addEventListener('click', () => {
+    editModal.showModal();
+  });
   deleteBttn.addEventListener('click', () => {
     deleteModal.showModal();
-    console.log('presionaste eliminar');
   });
 
-  editDiv.appendChild(editBttn);
-  deleteDiv.appendChild(deleteBttn);
   postDiv.appendChild(userP);
   postDiv.appendChild(msgP);
-  postDiv.appendChild(editDiv);
-  postDiv.appendChild(deleteDiv);
-  postDiv.appendChild(deleteModal);
-
+  if (`${name}` === loggedUser) {
+    editDiv.appendChild(editBttn);
+    deleteDiv.appendChild(deleteBttn);
+    postDiv.appendChild(editDiv);
+    postDiv.appendChild(deleteDiv);
+    postDiv.appendChild(deleteModal);
+    postDiv.appendChild(editModal);
+  }
   return postDiv;
 };
 

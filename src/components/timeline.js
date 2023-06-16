@@ -9,6 +9,7 @@ import {
   deleteDoc,
   orderBy,
   QuerySnapshot,
+  documentId,
 } from 'firebase/firestore';
 import {
   createPost,
@@ -106,8 +107,9 @@ export const Timeline = (onNavigate) => {
       const localDate = post.data().time.toDate().toLocaleDateString();
       const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
       const content = post.data().content;
+      const docId = post.id;
 
-      postsDiv.appendChild(createPostDiv(name, localDate, localTime, content));
+      postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId));
     });
   });
 
