@@ -546,13 +546,17 @@ div.content-register {
   font-weight: 700;
   }
 
-  .timelineContentDiv {
-    position: inherit;
-    display: block;
-    padding: 20px;
+  .timelineContentDiv{
+    width: 46%;
+    min-height: 49px;
     background-color: rgb(255, 234, 210);
-    margin-top: 20px;
-    margin-left: 20px;
+    border: 3px solid rgb(250, 203, 128);
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px 20px 20px 120px;
+    position: relative;
+    font-size: 0.8em;
+    box-shadow: 7px 2px 9px 0px #B52B40;
   }
 
   .timelineLogo {
@@ -608,19 +612,7 @@ div.content-register {
     padding: 6px 10px 10px 10px;
 }
   
-  .timelineContentDiv{
-    width: 46%;
-    min-height: 49px;
-    background-color: rgb(255, 234, 210);
-    border: 3px solid rgb(250, 203, 128);
-    border-radius: 15px;
-    padding: 10px;
-    margin: 20px 20px 20px 120px;
-    position: relative;
-    font-size: 0.8em;
-    box-shadow: 7px 2px 9px 0px #B52B40;
-  }
-  
+
   .buttonToPost {
     margin-top: 10px;
     background:#b52b40;
@@ -665,7 +657,7 @@ div.content-register {
     padding: 10px;
     position:absolute;
     font-size: .8em;
-    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    box-shadow: 7px 2px 9px 0px #B52B40;
   }
   
   .descripcionPost{
@@ -692,4 +684,32 @@ div.content-register {
     box-shadow: 0px 2px 10px 1px #CC553E;
     transition: 0.5s;
   }
+
+  .removeLikeImg{
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 14px;
+    cursor: pointer;
+  }
+
+  .likeImg{
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 14px;
+      cursor: pointer;
+  }
+  
+  .spanLike {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    color: #0c0c0c;
+  }
 }
+

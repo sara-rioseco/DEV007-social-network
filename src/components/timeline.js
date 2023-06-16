@@ -9,12 +9,15 @@ import {
   deleteDoc,
   orderBy,
   QuerySnapshot,
+
 } from 'firebase/firestore';
 import {
   createPost,
   createPostDiv,
   getUserEmail,
   getUsername,
+  addLike,
+  removeLike,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
@@ -102,11 +105,12 @@ export const Timeline = (onNavigate) => {
 
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';
+
     querySnapshot.forEach((post) => {
-      const username = getUsername();
+      const publicacionPost = document.createElement('div');
+      publicacionPost.className = 'publicacionPost';
 
       const postDiv = `
-      <div class="publicacionPost">
       <p class="usuario">${post.data().displayName} publicó:</p>
       <p class="descripcionPost">${post.data().content}</p>
       <div class="editarPublicacion">
@@ -115,11 +119,45 @@ export const Timeline = (onNavigate) => {
       <div class="eliminarPublicacion">
         <button class="eliminar">Eliminar</button>
       </div>
-      </div>
       `;
-      postsDiv.innerHTML += postDiv;
+      publicacionPost.innerHTML += postDiv;
+
+      const likeImg = document.createElement('img');
+      const removeLikeImg = document.createElement('img');
+
+      likeImg.src = 'img/red-paw-like.png';
+      likeImg.alt = 'icono de motita like';
+      likeImg.className = 'likeImg';
+      removeLikeImg.src = 'img/grey-paw-like.png';
+      removeLikeImg.alt = 'icono de motita like';
+      removeLikeImg.className = 'removeLikeImg';
+
+      const spanLike = document.createElement('span');
+      spanLike.innerHTML = '(0)';
+      spanLike.classList.add('spanLike');
+      if (post.data().likes !== undefined) {
+        spanLike.innerHTML = `(${post.data().likes.length})`;
+      }
+
+      likeImg.addEventListener('click', () => {
+        if (post.likes === undefined) {
+          addLike(post.id, []);
+        } else {
+          addLike(post.id, post.data().likes);
+        }
+      });
+
+      removeLikeImg.addEventListener('click', () => {
+        removeLike(post.id);
+      });
+
+      publicacionPost.appendChild(likeImg);
+      publicacionPost.appendChild(spanLike);
+      publicacionPost.appendChild(removeLikeImg);
+      postsDiv.appendChild(publicacionPost);
     });
   });
 
   return timelineDiv;
 };
+

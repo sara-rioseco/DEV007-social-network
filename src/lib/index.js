@@ -15,9 +15,14 @@ import {
   collection,
   Timestamp,
   serverTimestamp,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,
 } from 'firebase/firestore';
 import { Database } from 'firebase/database';
-import { getStorage, ref, getDownloadURL , uploadBytes } from 'firebase/storage';
+import {
+  getStorage, ref, getDownloadURL, uploadBytes,
+} from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
 export const createUserDoc = (name) => addDoc(collection(db, 'users'), {
@@ -85,7 +90,7 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
   displayName: auth.currentUser.displayName,
 });
 
-/*export const getUserDisplayName = (email) => {
+/* export const getUserDisplayName = (email) => {
   getDoc(collection(db, 'users').then(
     () => console.log
   )
@@ -93,9 +98,9 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
     console.log('Error fetching user data:', error);
   }))
   return displayName;
-};*/
+}; */
 
-/*export const showLikes = (boolean) => {
+/* export const showLikes = (boolean) => {
   const likeImg = document.createElement('img');
   likeImg.alt = 'like';
   likeImg.id = 'likeImg';
@@ -105,15 +110,15 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
     likeImg.src = 'img/grey-paw-like.png';
   }
   return likeImg;
-};*/
+}; */
 
 export const createPostDiv = (post, username) => {
   const postDiv = document.createElement('div');
   const headerPostDiv = document.createElement('div');
   const msgPostDiv = document.createElement('div');
   const footerPostDiv = document.createElement('div');
-  /*const boolean = false;
-  let showingLikes = showLikes(boolean);*/
+  /* const boolean = false;
+  let showingLikes = showLikes(boolean); */
   postDiv.className = 'content-div';
   headerPostDiv.className = 'sub-div';
   msgPostDiv.className = 'sub-div';
@@ -124,12 +129,27 @@ export const createPostDiv = (post, username) => {
   footerPostDiv.id = 'footer-post-div';
   headerPostDiv.innerHTML = `${username}`;
   msgPostDiv.innerHTML = `${post.content}`;
-  /*footerPostDiv.appendChild(showingLikes);*/
+  /* footerPostDiv.appendChild(showingLikes); */
   postDiv.appendChild(headerPostDiv);
   postDiv.appendChild(msgPostDiv);
   postDiv.appendChild(footerPostDiv);
-  /*showingLikes.addEventListener('click', (e) => {
+  /* showingLikes.addEventListener('click', (e) => {
     e.preventDefault();
     showingLikes = showLikes(!boolean);
-  });*/
+  }); */
 };
+
+// para dar like
+export const addLike = (id, likes) => {
+  console.log(id);
+  if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
+    updateDoc(doc(db, 'posts', id), {
+      likes: arrayUnion(auth.currentUser.email),
+    });
+  }
+};
+
+// para quitar like
+export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
+  likes: arrayRemove(auth.currentUser.email),
+});
