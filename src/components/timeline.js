@@ -14,6 +14,10 @@ import {
 import {
   createPost,
   createPostDiv,
+  getUserEmail,
+  getUsername,
+  addLike,
+  removeLike,
   deletePost,
   userLogout,
 } from '../lib/index.js';
@@ -102,16 +106,53 @@ export const Timeline = (onNavigate) => {
 
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';
+
     querySnapshot.forEach((post) => {
+      const publicacionPost = document.createElement('div');
+      publicacionPost.className = 'publicacionPost';
+
+      const likeImg = document.createElement('img');
+      const removeLikeImg = document.createElement('img');
+
+      likeImg.src = 'img/red-paw-like.png';
+      likeImg.alt = 'icono de motita like';
+      likeImg.className = 'likeImg';
+      removeLikeImg.src = 'img/grey-paw-like.png';
+      removeLikeImg.alt = 'icono de motita like';
+      removeLikeImg.className = 'removeLikeImg';
+
+      const spanLike = document.createElement('span');
+      spanLike.innerHTML = '(0)';
+      spanLike.classList.add('spanLike');
+      if (post.data().likes !== undefined) {
+        spanLike.innerHTML = `(${post.data().likes.length})`;
+      }
+
+      likeImg.addEventListener('click', () => {
+        if (post.likes === undefined) {
+          addLike(post.id, []);
+        } else {
+          addLike(post.id, post.data().likes);
+        }
+      });
+
+      removeLikeImg.addEventListener('click', () => {
+        removeLike(post.id);
+      });
+
       const name = post.data().displayName;
       const localDate = post.data().time.toDate().toLocaleDateString();
       const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
       const content = post.data().content;
       const docId = post.id;
-
+      
       postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId));
+      publicacionPost.appendChild(postsDiv);
+      publicacionPost.appendChild(likeImg);
+      publicacionPost.appendChild(spanLike);
+      publicacionPost.appendChild(removeLikeImg);
     });
   });
-
   return timelineDiv;
 };
+

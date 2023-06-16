@@ -18,6 +18,9 @@ import {
   orderBy,
   Timestamp,
   serverTimestamp,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,
   deleteDoc,
   updateDoc,
   documentId,
@@ -89,6 +92,7 @@ export const createDeleteModal = (docId) => {
   const modalMsg = document.createElement('h2');
   const deleteButton = document.createElement('button');
   const cancelButton = document.createElement('button');
+
 
   deleteModal.classList.add('big-modal-div');
   modalContentDiv.classList.add('modal-div');
@@ -226,3 +230,18 @@ export const deletePost = () => {
       console.log('Error fetching user data:', error);
     });
 };
+
+// para dar like
+export const addLike = (id, likes) => {
+  console.log(id);
+  if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
+    updateDoc(doc(db, 'posts', id), {
+      likes: arrayUnion(auth.currentUser.email),
+    });
+  }
+};
+
+// para quitar like
+export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
+  likes: arrayRemove(auth.currentUser.email),
+});
