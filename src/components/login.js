@@ -43,7 +43,7 @@ export const Login = (onNavigate) => {
   backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
   logoGoogle.src = 'img/logo_google.png';
-  
+
   title.textContent = 'Iniciar Sesión';
   loginBttn.textContent = 'Iniciar Sesión';
   homeBttn.textContent = 'Volver al inicio';

@@ -3,6 +3,7 @@ export const Profile = (onNavigate) => {
   const headerDiv = document.createElement('div');
   const subtitle = document.createElement('h2');
   const contentDiv = document.createElement('div');
+  const homeBttn = document.createElement('button');
   const contentImgDiv = document.createElement('div');
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
@@ -15,14 +16,17 @@ export const Profile = (onNavigate) => {
   contentImgDiv.className = 'content-img';
   backgroundImg.src = 'img/background_pets.png';
   backgroundImg.className = 'corner-image';
+  homeBttn.classList.add('loginBttn');
 
   subtitle.textContent = 'Bienvenid@, este es tu perfil';
+  homeBttn.textContent = 'Volver al inicio';
+  homeBttn.addEventListener('click', () => onNavigate('/'));
   contentDiv.appendChild(headerDiv);
   profileDiv.appendChild(heartImg);
   contentImgDiv.appendChild(backgroundImg);
   profileDiv.appendChild(contentImgDiv);
   headerDiv.appendChild(subtitle);
-  profileDiv.appendChild(contentDiv);
+  contentDiv.appendChild(homeBttn);
   profileDiv.appendChild(contentDiv);
 
   return profileDiv;
