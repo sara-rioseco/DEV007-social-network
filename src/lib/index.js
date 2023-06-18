@@ -16,15 +16,18 @@ import {
   collection,
   query,
   orderBy,
-  Timestamp,
   serverTimestamp,
   deleteDoc,
   updateDoc,
-  documentId,
+  arrayRemove,
+  arrayUnion,
 } from 'firebase/firestore';
 import { Database } from 'firebase/database';
 import {
-  getStorage, ref, getDownloadURL, uploadBytes,
+  getStorage,
+  ref,
+  getDownloadURL,
+  uploadBytes,
 } from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
@@ -170,8 +173,9 @@ export const createEditModal = (content, docId) => {
   return editModal;
 };
 
-export const createPostDiv = (name, localDate, localTime, content, docId) => {
+export const createPostDiv = (name, localDate, localTime, content, docId, spanLike) => {
   const postDiv = document.createElement('div');
+  const actionDiv = document.createElement('div');
   const editDiv = document.createElement('div');
   const deleteDiv = document.createElement('div');
   const userP = document.createElement('p');
@@ -181,7 +185,9 @@ export const createPostDiv = (name, localDate, localTime, content, docId) => {
   const deleteModal = createDeleteModal(`${docId}`);
   const editModal = createEditModal(`${content}`, `${docId}`);
   const loggedUser = auth.currentUser.displayName;
+  const spanLikeElement = spanLike;
   postDiv.classList.add('publicacionPost');
+  actionDiv.classList.add('actionDiv');
   editDiv.classList.add('editarPublicacion');
   deleteDiv.classList.add('eliminarPublicacion');
   userP.classList.add('usuario');
@@ -207,11 +213,13 @@ export const createPostDiv = (name, localDate, localTime, content, docId) => {
   if (`${name}` === loggedUser) {
     editDiv.appendChild(editBttn);
     deleteDiv.appendChild(deleteBttn);
-    postDiv.appendChild(editDiv);
-    postDiv.appendChild(deleteDiv);
-    postDiv.appendChild(deleteModal);
-    postDiv.appendChild(editModal);
+    actionDiv.appendChild(editDiv);
+    actionDiv.appendChild(deleteDiv);
+    actionDiv.appendChild(deleteModal);
+    actionDiv.appendChild(editModal);
   }
+  actionDiv.appendChild(spanLikeElement);
+  postDiv.appendChild(actionDiv);
   return postDiv;
 };
 
@@ -225,4 +233,51 @@ export const deletePost = () => {
     .catch((error) => {
       console.log('Error fetching user data:', error);
     });
+};
+
+// para dar like
+export const addLike = (id, likes) => {
+  if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
+    updateDoc(doc(db, 'posts', id), {
+      likes: arrayUnion(auth.currentUser.email),
+    });
+  }
+};
+
+// para quitar like
+export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
+  likes: arrayRemove(auth.currentUser.email),
+});
+
+export const spanLikeFunc = (docRef) => {
+  const spanLikeDiv = document.createElement('div');
+  const spanLike = document.createElement('span');
+  const likeImg = document.createElement('img');
+  const removeLikeImg = document.createElement('img');
+  likeImg.src = 'img/red-paw-like.png';
+  likeImg.alt = 'icono de motita like';
+  likeImg.className = 'likeImg';
+  removeLikeImg.src = 'img/grey-paw-like.png';
+  removeLikeImg.alt = 'icono de motita like';
+  removeLikeImg.className = 'removeLikeImg';
+  spanLike.innerHTML = '(0)';
+  spanLike.classList.add('spanLike');
+  spanLikeDiv.className = 'spanLikeDiv';
+  if (docRef.data().likes !== undefined) {
+    spanLike.innerHTML = `(${docRef.data().likes.length})`;
+  }
+  likeImg.addEventListener('click', () => {
+    if (docRef.likes === undefined) {
+      addLike(docRef.id, []);
+    } else {
+      addLike(docRef.id, docRef.data().likes);
+    }
+  });
+  removeLikeImg.addEventListener('click', () => {
+    removeLike(docRef.id);
+  });
+  spanLikeDiv.appendChild(likeImg);
+  spanLikeDiv.appendChild(spanLike);
+  spanLikeDiv.appendChild(removeLikeImg);
+  return spanLikeDiv;
 };

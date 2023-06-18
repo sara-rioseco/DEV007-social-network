@@ -16,6 +16,9 @@ import {
   createPostDiv,
   deletePost,
   userLogout,
+  addLike,
+  removeLike,
+  spanLikeFunc,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
@@ -54,6 +57,7 @@ export const Timeline = (onNavigate) => {
   postInput.required = true;
 
   postsDiv.id = 'posts-div';
+  postsDiv.className = 'publicacionPost';
 
   publishButton.id = 'publishbutton';
   publishButton.textContent = 'Publicar';
@@ -108,8 +112,8 @@ export const Timeline = (onNavigate) => {
       const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
       const content = post.data().content;
       const docId = post.id;
-
-      postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId));
+      const spanLike = spanLikeFunc(post);
+      postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId, spanLike));
     });
   });
 
