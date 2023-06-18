@@ -55,14 +55,14 @@ export const Login = (onNavigate) => {
     userLogin(email, password).then(
       () => {
         onNavigate('/timeline');
-        console.log('Estás loguead@');
         // This gives you a Google Access Token. You can use it to access the Google API.
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential.accessToken;
         // The signed-in user info.
         // const user = result.user;
       },
-      () => console.log('Credenciales incorrectas'),
+      // eslint-disable-next-line no-alert
+      () => alert('Credenciales incorrectas'),
     );
   });
 
@@ -70,9 +70,9 @@ export const Login = (onNavigate) => {
     userGoogleLogin().then(
       () => {
         onNavigate('/timeline');
-        console.log('Estás loguead@');
       },
-      () => console.log('Credenciales incorrectas'),
+      // eslint-disable-next-line no-alert
+      () => alert('Credenciales incorrectas'),
     );
   });
 

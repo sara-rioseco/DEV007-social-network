@@ -50,6 +50,7 @@ export const createUser = (email, password, name) => {
           });
         })
         .catch((error) => {
+          // eslint-disable-next-line no-console
           console.log('Error fetching user data:', error);
         });
     });
@@ -58,6 +59,7 @@ export const createUser = (email, password, name) => {
 const storage = getStorage();
 
 export const imgReference = (useruid) => {
+  // eslint-disable-next-line no-console
   console.log(`${useruid}.`);
   return getDownloadURL(ref(storage, (`${useruid}.png`)));
 };
@@ -223,6 +225,7 @@ export const deletePost = () => {
       deleteDoc(loggedUser);
     })
     .catch((error) => {
+      // eslint-disable-next-line no-console
       console.log('Error fetching user data:', error);
     });
 };
