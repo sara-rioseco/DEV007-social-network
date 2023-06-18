@@ -45,6 +45,7 @@ export const Timeline = (onNavigate) => {
   postInput.id = 'myPostInput';
   postInput.placeholder = 'Escribe lo que quieras publicar';
   postInput.required = true;
+  postInput.autocomplete = 'off';
 
   postsDiv.id = 'posts-div';
   postsDiv.className = 'publicacionPost';
@@ -75,6 +76,7 @@ export const Timeline = (onNavigate) => {
     e.preventDefault();
     const post = document.getElementById('myPostInput').value;
     createPost(post);
+    postInput.value = '';
   });
 
   navigationDiv.appendChild(logoImg);

@@ -389,7 +389,6 @@ h4 {
   width: 100%;
   }
 }
- 
 
 /* Estilos para laptops */
 
@@ -762,12 +761,18 @@ div.content-register {
 
 /* ESTILOS MODAL */
 dialog {
+  position:absolute;
   border:none;
   background: #facb80;
   padding: 10px;
-  margin: 0;
+  margin: auto;
   align-content: space-around;
   color:#B52B40;
+  min-height: 50px;
+  background-color: rgb(255, 234, 210);
+  border: 3px solid #facb80;
+  border-radius: 15px;
+  font-size: .8em;
 }
 
 dialog[open] {
