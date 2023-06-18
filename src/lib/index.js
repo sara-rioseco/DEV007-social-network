@@ -78,6 +78,7 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
   time: serverTimestamp(),
   email: auth.currentUser.email,
   displayName: auth.currentUser.displayName,
+  likes: [],
 });
 
 export const createDeleteModal = (docId) => {
@@ -246,35 +247,36 @@ export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
 
 // para mostrar íconos contador de likes
 
-export const spanLikeFunc = (docRef) => {
+export const spanLikeFunc = (docRef, likesArr) => {
   const spanLikeDiv = document.createElement('div');
   const spanLike = document.createElement('span');
   const likeImg = document.createElement('img');
-  const removeLikeImg = document.createElement('img');
-  likeImg.src = 'img/red-paw-like.png';
   likeImg.alt = 'icono de motita like';
   likeImg.className = 'likeImg';
-  removeLikeImg.src = 'img/grey-paw-like.png';
-  removeLikeImg.alt = 'icono de motita like';
-  removeLikeImg.className = 'removeLikeImg';
   spanLike.innerHTML = '(0)';
   spanLike.classList.add('spanLike');
   spanLikeDiv.className = 'spanLikeDiv';
-  if (docRef.data().likes !== undefined) {
-    spanLike.innerHTML = `(${docRef.data().likes.length})`;
+  if (likesArr.includes(auth.currentUser.email)) {
+    spanLike.innerHTML = `(${likesArr.length})`;
+    likeImg.src = 'img/red-paw-like.png';
+    likeImg.addEventListener('click', () => {
+      removeLike(docRef.id)
+        .then(() => {
+          likeImg.src = 'img/grey-paw-like.png';
+        })
+        .catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log('Error removing like:', error);
+        });
+    });
+  } else {
+    spanLike.innerHTML = `(${likesArr.length})`;
+    likeImg.src = 'img/grey-paw-like.png';
+    likeImg.addEventListener('click', () => {
+      addLike(docRef.id, likesArr);
+    });
   }
-  likeImg.addEventListener('click', () => {
-    if (docRef.likes === undefined) {
-      addLike(docRef.id, []);
-    } else {
-      addLike(docRef.id, docRef.data().likes);
-    }
-  });
-  removeLikeImg.addEventListener('click', () => {
-    removeLike(docRef.id);
-  });
   spanLikeDiv.appendChild(likeImg);
   spanLikeDiv.appendChild(spanLike);
-  spanLikeDiv.appendChild(removeLikeImg);
   return spanLikeDiv;
 };
