@@ -66,8 +66,10 @@ export const Register = (onNavigate) => {
     const password1 = document.getElementById('myPasswordInput').value;
     const password2 = document.getElementById('myPasswordInput2').value;
     if (validatePassword(password1, password2) === false) {
+      // eslint-disable-next-line no-alert
       alert('la contraseña ingresada no coincide');
     } else if (validateEmail(email) === false) {
+      // eslint-disable-next-line no-alert
       alert('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
       createUser(email, password1, name);

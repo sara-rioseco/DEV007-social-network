@@ -17,7 +17,7 @@ export const Login = (onNavigate) => {
 
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heart');
-  
+
   emailInput.classList.add('loginInputBox');
   emailInput.id = 'myEmailInput';
   emailInput.placeholder = 'Ingresa tu Correo';
@@ -53,7 +53,7 @@ export const Login = (onNavigate) => {
     const email = document.getElementById('myEmailInput').value;
     const password = document.getElementById('myPasswordInput').value;
     userLogin(email, password).then(
-      (result) => {
+      () => {
         onNavigate('/timeline');
         console.log('Estás loguead@');
         // This gives you a Google Access Token. You can use it to access the Google API.

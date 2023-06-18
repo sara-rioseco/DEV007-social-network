@@ -3,31 +3,23 @@ import {
   updateProfile,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  getRedirectResult,
   signInWithPopup,
-  getAuth,
   signOut,
 } from 'firebase/auth';
 import {
   doc,
-  setDoc,
   addDoc,
-  getDoc,
   collection,
-  query,
-  orderBy,
   serverTimestamp,
   deleteDoc,
   updateDoc,
   arrayRemove,
   arrayUnion,
 } from 'firebase/firestore';
-import { Database } from 'firebase/database';
 import {
   getStorage,
   ref,
   getDownloadURL,
-  uploadBytes,
 } from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
@@ -40,6 +32,7 @@ export const validatePassword = (password1, password2) => {
 
 export const validateEmail = (email) => {
   /* const validFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; */
+  // eslint-disable-next-line no-useless-escape
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
     return true;
   }
@@ -225,7 +218,6 @@ export const createPostDiv = (name, localDate, localTime, content, docId, spanLi
 
 export const deletePost = () => {
   const loggedUser = auth.currentUser;
-  const postsRef = query(collection(db, 'posts'), orderBy('time', 'desc'));
   loggedUser.getIdToken(true)
     .then(() => {
       deleteDoc(loggedUser);
@@ -248,6 +240,8 @@ export const addLike = (id, likes) => {
 export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
   likes: arrayRemove(auth.currentUser.email),
 });
+
+// para mostrar íconos contador de likes
 
 export const spanLikeFunc = (docRef) => {
   const spanLikeDiv = document.createElement('div');

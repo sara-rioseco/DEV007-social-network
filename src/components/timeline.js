@@ -1,23 +1,13 @@
 import {
   collection,
   query,
-  where,
-  doc,
   onSnapshot,
-  getDocs,
-  getDoc,
-  deleteDoc,
   orderBy,
-  QuerySnapshot,
-  documentId,
 } from 'firebase/firestore';
 import {
   createPost,
   createPostDiv,
-  deletePost,
   userLogout,
-  addLike,
-  removeLike,
   spanLikeFunc,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
@@ -85,7 +75,6 @@ export const Timeline = (onNavigate) => {
     e.preventDefault();
     const post = document.getElementById('myPostInput').value;
     createPost(post);
-    console.log('Se ha creado tu post');
   });
 
   navigationDiv.appendChild(logoImg);
