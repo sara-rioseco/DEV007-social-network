@@ -16,13 +16,9 @@ import {
   arrayRemove,
   arrayUnion,
 } from 'firebase/firestore';
-import {
-  getStorage,
-  ref,
-  getDownloadURL,
-} from 'firebase/storage';
 import { auth, db } from '../firebase.js';
 
+// función para validar contraseña
 export const validatePassword = (password1, password2) => {
   if (password1 === password2) {
     return true;
@@ -30,6 +26,7 @@ export const validatePassword = (password1, password2) => {
   return false;
 };
 
+// función para validar formato de correo
 export const validateEmail = (email) => {
   /* const validFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; */
   // eslint-disable-next-line no-useless-escape
@@ -39,6 +36,7 @@ export const validateEmail = (email) => {
   return false;
 };
 
+// función para crear usuario en firebase
 export const createUser = (email, password, name) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then(() => {
@@ -56,23 +54,19 @@ export const createUser = (email, password, name) => {
     });
 };
 
-const storage = getStorage();
-
-export const imgReference = (useruid) => {
-  // eslint-disable-next-line no-console
-  console.log(`${useruid}.`);
-  return getDownloadURL(ref(storage, (`${useruid}.png`)));
-};
-
+// función para login
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
+// función para login con Google
 export const userGoogleLogin = () => {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 };
 
+// función para log out
 export const userLogout = () => signOut(auth);
 
+// función para crear post en firestore
 export const createPost = (text) => addDoc(collection(db, 'posts'), {
   content: text,
   time: serverTimestamp(),
@@ -81,6 +75,7 @@ export const createPost = (text) => addDoc(collection(db, 'posts'), {
   likes: [],
 });
 
+// función para crear modal de confirmación para eliminar post
 export const createDeleteModal = (docId) => {
   const deleteModal = document.createElement('dialog');
   const modalContentDiv = document.createElement('div');
@@ -117,6 +112,7 @@ export const createDeleteModal = (docId) => {
   return deleteModal;
 };
 
+// función para crear modal de edición de un post
 export const createEditModal = (content, docId) => {
   const editModal = document.createElement('dialog');
   const modalContentDiv = document.createElement('div');
@@ -169,6 +165,7 @@ export const createEditModal = (content, docId) => {
   return editModal;
 };
 
+// función para crear cada post en un div
 export const createPostDiv = (name, localDate, localTime, content, docId, spanLike) => {
   const postDiv = document.createElement('div');
   const actionDiv = document.createElement('div');
@@ -219,6 +216,7 @@ export const createPostDiv = (name, localDate, localTime, content, docId, spanLi
   return postDiv;
 };
 
+// función para eliminar un post en firestore
 export const deletePost = () => {
   const loggedUser = auth.currentUser;
   loggedUser.getIdToken(true)
@@ -246,7 +244,6 @@ export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
 });
 
 // para mostrar íconos contador de likes
-
 export const spanLikeFunc = (docRef, likesArr) => {
   const spanLikeDiv = document.createElement('div');
   const spanLike = document.createElement('span');
