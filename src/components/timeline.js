@@ -9,6 +9,7 @@ import {
   createPostDiv,
   userLogout,
   spanLikeFunc,
+  confirmTimestamp,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
@@ -99,12 +100,12 @@ export const Timeline = (onNavigate) => {
     postsDiv.innerHTML = '';
     querySnapshot.forEach((post) => {
       const name = post.data().displayName;
-      const localDate = post.data().time.toDate().toLocaleDateString();
-      const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
       const content = post.data().content;
       const likesArr = post.data().likes;
       const docId = post.id;
       const spanLike = spanLikeFunc(post, likesArr);
+      const localDate = post.data().time.toDate().toLocaleDateString();
+      const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
       postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId, spanLike));
     });
   });

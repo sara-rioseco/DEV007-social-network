@@ -67,13 +67,15 @@ export const userGoogleLogin = () => {
 export const userLogout = () => signOut(auth);
 
 // función para crear post en firestore
-export const createPost = (text) => addDoc(collection(db, 'posts'), {
-  content: text,
-  time: serverTimestamp(),
-  email: auth.currentUser.email,
-  displayName: auth.currentUser.displayName,
-  likes: [],
-});
+export const createPost = async (text) => {
+  await addDoc(collection(db, 'posts'), {
+    content: text,
+    email: auth.currentUser.email,
+    displayName: auth.currentUser.displayName,
+    likes: [],
+    time: serverTimestamp(),
+  });
+};
 
 // función para crear modal de confirmación para eliminar post
 export const createDeleteModal = (docId) => {
@@ -163,6 +165,12 @@ export const createEditModal = (content, docId) => {
   editModal.appendChild(modalActionDiv);
 
   return editModal;
+};
+
+// función para esperar creación de timestamp
+
+export const confirmTimestamp = async (docRef) => {
+  await docRef.data().time;
 };
 
 // función para crear cada post en un div
