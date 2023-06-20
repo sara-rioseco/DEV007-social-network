@@ -9,7 +9,6 @@ import {
   createPostDiv,
   userLogout,
   spanLikeFunc,
-  confirmTimestamp,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
