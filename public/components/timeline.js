@@ -98,14 +98,18 @@ export const Timeline = (onNavigate) => {
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';
     querySnapshot.forEach((post) => {
+      const postContent = post.data({
+        serverTimestamps: 'estimate',
+      });
       const name = post.data().displayName;
+      const localDate = postContent.time.toDate().toLocaleDateString();
+      const localTime = postContent.time.toDate().toLocaleTimeString().slice(0, 5);
       const content = post.data().content;
       const likesArr = post.data().likes;
       const docId = post.id;
       const spanLike = spanLikeFunc(post, likesArr);
-      const localDate = post.data().time.toDate().toLocaleDateString();
-      const localTime = post.data().time.toDate().toLocaleTimeString().slice(0, 5);
-      postsDiv.appendChild(createPostDiv(name, localDate, localTime, content, docId, spanLike));
+      const postDiv = createPostDiv(name, localDate, localTime, content, docId, spanLike);
+      postsDiv.appendChild(postDiv);
     });
   });
 

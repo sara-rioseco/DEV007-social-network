@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // importamos la funcion que vamos a testear
 import {
   validatePassword,
@@ -9,12 +10,13 @@ import {
   createPost,
   createDeleteModal,
   createEditModal,
-  confirmTimestamp,
   createPostDiv,
   deletePost,
   addLike,
   removeLike,
   spanLikeFunc,
+  getLoggedUser,
+  updateDisplayNameAndPhotoURL,
 } from '../src/lib/index.js';
 
 describe('myFunction', () => {

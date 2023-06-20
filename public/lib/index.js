@@ -67,15 +67,13 @@ export const userGoogleLogin = () => {
 export const userLogout = () => signOut(auth);
 
 // función para crear post en firestore
-export const createPost = async (text) => {
-  await addDoc(collection(db, 'posts'), {
-    content: text,
-    email: auth.currentUser.email,
-    displayName: auth.currentUser.displayName,
-    likes: [],
-    time: serverTimestamp(),
-  });
-};
+export const createPost = (text) => addDoc(collection(db, 'posts'), {
+  content: text,
+  time: serverTimestamp(),
+  email: auth.currentUser.email,
+  displayName: auth.currentUser.displayName,
+  likes: [],
+});
 
 // función para crear modal de confirmación para eliminar post
 export const createDeleteModal = (docId) => {
@@ -165,12 +163,6 @@ export const createEditModal = (content, docId) => {
   editModal.appendChild(modalActionDiv);
 
   return editModal;
-};
-
-// función para esperar creación de timestamp
-
-export const confirmTimestamp = async (docRef) => {
-  await docRef.data().time;
 };
 
 // función para crear cada post en un div
@@ -284,4 +276,22 @@ export const spanLikeFunc = (docRef, likesArr) => {
   spanLikeDiv.appendChild(likeImg);
   spanLikeDiv.appendChild(spanLike);
   return spanLikeDiv;
+};
+
+// función para obtener nombre de usuario logueado
+export const getLoggedUser = () => auth.currentUser.displayName;
+
+// función para actualizar nombre de usuario logueado
+export const updateDisplayNameAndPhotoURL = (name, picURL) => {
+  const loggedUser = auth.currentUser;
+  loggedUser.getIdToken(true)
+    .then(() => {
+      updateProfile(loggedUser, {
+        displayName: name, photoURL: picURL,
+      });
+    })
+    .catch((error) => {
+    // eslint-disable-next-line no-console
+      console.log('Error fetching user data:', error);
+    });
 };

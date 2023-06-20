@@ -1,7 +1,6 @@
 import {
   getLoggedUser,
 } from '../lib/index.js';
-import { auth } from '../firebase.js';
 
 export const Profile = (onNavigate) => {
   const profileDiv = document.createElement('div');
@@ -24,7 +23,6 @@ export const Profile = (onNavigate) => {
   homeBttn.classList.add('loginBttn');
 
   subtitle.textContent = `¡Bienvenid@, ${getLoggedUser()}! Este es tu perfil.`;
-  console.log(auth.currentUser.displayName);
   homeBttn.textContent = 'Volver al inicio';
   homeBttn.addEventListener('click', () => onNavigate('/'));
   contentDiv.appendChild(headerDiv);
