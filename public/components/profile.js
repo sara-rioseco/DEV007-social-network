@@ -1,7 +1,6 @@
 import {
   getLoggedUser,
 } from '../lib/index.js';
-import { auth } from '../firebase.js';
 
 export const Profile = (onNavigate) => {
   const profileDiv = document.createElement('div');
