@@ -212,7 +212,6 @@ h4 {
   background-color: #b52b40;
   border: 3px solid #facb80;
   border-radius: 10px;
-  border-radius: 10px;
   transition: background-color 0.3s ease;
   margin: -8px 21px -6px -13px;
   padding: 9px 0px;
@@ -312,8 +311,10 @@ h4 {
 @media (min-width: 728px) and (max-width: 1023px) {
 
   div.content-div button {
-    font-size: 1.13em;
+    font-size: 1.3em;
     height: 56px;
+    margin: 18px auto;
+    padding: 18px 0px;
     margin-bottom: 18px;
   }
 
@@ -377,12 +378,6 @@ h4 {
   margin: -5px 18px 9px 3px;
 }
 
-  div.content-div button {
-  font-size: 1.3em;
-  margin: 18px auto;
-  padding: 18px 0px;
-  }
-
 .homeButton {
   margin: 7px auto;
   padding: 13px 0px;
@@ -432,7 +427,6 @@ h4 {
     top: 20px;
     padding: 3px 20px 2px 24px;
     margin: -8px 35px 20px 43px;
-    top: 50px;
     cursor: pointer;
   }
 
@@ -483,7 +477,6 @@ h4 {
   font-size: 16px;
   border: 3px solid #facb80;
   border-radius: 10px;
-  margin-bottom: 6px;
   height: 46px;
   margin: 6px 11px 6px 13px;
 }
@@ -512,6 +505,13 @@ div.content-register {
   height: 46px;
   font-weight: 100;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #E58677;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
 }
 
 .div.content-div button {
@@ -604,13 +604,6 @@ div.content-register {
     cursor: pointer;
     box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
   }
-  
-  .timelineLogo {
-    height: 78px;
-    margin: -7px 17px 6px 11px;
-    padding: 6px 10px 10px 10px;
-}
-  
 
   .buttonToPost {
     margin-top: 10px;
@@ -677,12 +670,7 @@ div.content-register {
     position: relative;
     font-size: 1.1em;
   }
-  button:hover {
-    background-color: #E58677;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
-  }
+
   .removeLikeImg{
     height: 20px;
     width: 20px;
@@ -762,7 +750,6 @@ div.content-register {
 /* ESTILOS MODAL */
 dialog {
   position:absolute;
-  border:none;
   background: #facb80;
   padding: 10px;
   margin: auto;

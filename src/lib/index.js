@@ -137,7 +137,7 @@ export const createEditModal = (content, docId) => {
   modalInput.id = 'new-input';
   modalInput.attribute = 'rows=3';
   modalInput.style.height = '70px';
-  modalInput.placeholder = content;
+  modalInput.innerHTML = content;
   modalInput.style.width = '400px';
   editButton.textContent = 'Editar';
   cancelButton.textContent = 'Cancelar';
