@@ -1,3 +1,5 @@
+import logoTitleRed from '../img/logo-title-red.png';
+import backgroundPets from '../img/background_pets.png';
 import { createUser, validatePassword, validateEmail } from '../lib/index.js';
 
 export const Register = (onNavigate) => {
@@ -18,7 +20,7 @@ export const Register = (onNavigate) => {
 
   const divTitleRegister = document.createElement('li');
 
-  heartImg.src = 'img/logo-title-red.png';
+  heartImg.src = `${logoTitleRed}`;
   heartImg.classList.add('heart');
   nameInput.classList.add('registerInputBox');
   nameInput.id = 'myNameInput';
@@ -49,9 +51,9 @@ export const Register = (onNavigate) => {
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-register';
   contentImgDiv.className = 'content-img';
-  backgroundImg.src = 'img/background_pets.png';
+  backgroundImg.src = `${backgroundPets}`;
   backgroundImg.className = 'corner-image';
-  headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
+  headerDiv.innerHTML = `<img src="${logoTitleRed}" alt="logo" id="logo">`;
   registerBttn.classList.add('registerBttn');
   title.textContent = 'Regístrate';
   subtitle.textContent = 'O con tu cuenta de Google';

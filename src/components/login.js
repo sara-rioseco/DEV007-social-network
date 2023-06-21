@@ -1,3 +1,6 @@
+import logoTitleRed from '../img/logo-title-red.png';
+import backgroundPets from '../img/background_pets.png';
+import logoGoogleImg from '../img/logo_google.png';
 import { userGoogleLogin, userLogin } from '../lib/index.js';
 
 export const Login = (onNavigate) => {
@@ -15,7 +18,7 @@ export const Login = (onNavigate) => {
   const logoGoogle = document.createElement('img');
   const divTitleLogin = document.createElement('li');
 
-  heartImg.src = 'img/logo-title-red.png';
+  heartImg.src = `${logoTitleRed}`;
   heartImg.classList.add('heart');
 
   emailInput.classList.add('loginInputBox');
@@ -39,10 +42,10 @@ export const Login = (onNavigate) => {
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-login';
   contentImgDiv.className = 'content-img';
-  backgroundImg.src = 'img/background_pets.png';
+  backgroundImg.src = `${backgroundPets}`;
   backgroundImg.className = 'corner-image';
-  headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
-  logoGoogle.src = 'img/logo_google.png';
+  headerDiv.innerHTML = `<img src="${logoTitleRed}" alt="logo" id="logo">`;
+  logoGoogle.src = `${logoGoogleImg}`;
 
   title.textContent = 'Iniciar Sesión';
   loginBttn.textContent = 'Iniciar Sesión';

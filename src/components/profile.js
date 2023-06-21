@@ -1,3 +1,5 @@
+import logoTitleRed from '../img/logo-title-red.png';
+import backgroundPets from '../img/background_pets.png';
 import {
   getLoggedUser,
 } from '../lib/index.js';
@@ -12,13 +14,13 @@ export const Profile = (onNavigate) => {
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
 
-  heartImg.src = 'img/logo-title-red.png';
+  heartImg.src = `${logoTitleRed}`;
   heartImg.classList.add('heart');
   profileDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
   contentImgDiv.className = 'content-img';
-  backgroundImg.src = 'img/background_pets.png';
+  backgroundImg.src = `${backgroundPets}`;
   backgroundImg.className = 'corner-image';
   homeBttn.classList.add('loginBttn');
 

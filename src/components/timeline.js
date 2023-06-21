@@ -4,6 +4,10 @@ import {
   onSnapshot,
   orderBy,
 } from 'firebase/firestore';
+
+import logoTitleRed from '../img/logo-title-red.png';
+import backgroundPets from '../img/background_pets.png';
+
 import {
   createPost,
   createPostDiv,
@@ -32,7 +36,7 @@ export const Timeline = (onNavigate) => {
 
   const postsRef = query(collection(db, 'posts'), orderBy('time', 'desc'));
 
-  logoImg.src = 'img/logo-title-red.png';
+  logoImg.src = `${logoTitleRed}`;
   logoImg.alt = 'Logo';
   logoImg.classList.add('timelineLogo');
   profileButton.textContent = 'Perfil';
@@ -54,7 +58,7 @@ export const Timeline = (onNavigate) => {
   publishButton.textContent = 'Publicar';
   publishButton.className = 'buttonToPost';
   title.textContent = 'Comparte tu historia';
-  backgroundImg.src = 'img/background_pets.png';
+  backgroundImg.src = `${backgroundPets}`;
   backgroundImg.className = 'timelineCornerImage';
   navigationDiv.className = 'navigation';
 

@@ -18,6 +18,9 @@ import {
 } from 'firebase/firestore';
 import { auth, db } from '../firebase.js';
 
+import redPaw from '../img/red-paw-like.png';
+import greyPaw from '../img/grey-paw-like.png';
+
 // función para validar contraseña
 export const validatePassword = (password1, password2) => {
   if (password1 === password2) {
@@ -255,11 +258,11 @@ export const spanLikeFunc = (docRef, likesArr) => {
   spanLikeDiv.className = 'spanLikeDiv';
   if (likesArr.includes(auth.currentUser.email)) {
     spanLike.innerHTML = `(${likesArr.length})`;
-    likeImg.src = 'img/red-paw-like.png';
+    likeImg.src = `${redPaw}`;
     likeImg.addEventListener('click', () => {
       removeLike(docRef.id)
         .then(() => {
-          likeImg.src = 'img/grey-paw-like.png';
+          likeImg.src = `${greyPaw}`;
         })
         .catch((error) => {
         // eslint-disable-next-line no-console
@@ -268,7 +271,7 @@ export const spanLikeFunc = (docRef, likesArr) => {
     });
   } else {
     spanLike.innerHTML = `(${likesArr.length})`;
-    likeImg.src = 'img/grey-paw-like.png';
+    likeImg.src = `${greyPaw}`;
     likeImg.addEventListener('click', () => {
       addLike(docRef.id, likesArr);
     });

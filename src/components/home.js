@@ -1,3 +1,6 @@
+import logoTitleRed from '../img/logo-title-red.png';
+import backgroundPets from '../img/background_pets.png';
+
 export const Home = (onNavigate) => {
   const homeDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
@@ -9,13 +12,13 @@ export const Home = (onNavigate) => {
   const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
 
-  heartImg.src = 'img/logo-title-red.png';
+  heartImg.src = `${logoTitleRed}`;
   heartImg.classList.add('heart');
   homeDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
   contentImgDiv.className = 'content-img';
-  backgroundImg.src = 'img/background_pets.png';
+  backgroundImg.src = `${backgroundPets}`;
   backgroundImg.className = 'corner-image';
 
   subtitle.textContent = '¡Bienvenid@ a la red social para los amantes de los animales!';
