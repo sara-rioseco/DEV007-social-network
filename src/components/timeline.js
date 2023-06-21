@@ -14,11 +14,17 @@ import { db } from '../firebase.js';
 
 export const Timeline = (onNavigate) => {
   const timelineDiv = document.createElement('div');
-  const navigationDiv = document.createElement('div');
+  const navHomeDiv = document.createElement('div');
   const logoImg = document.createElement('img');
   const profileButton = document.createElement('button');
   const homeButton = document.createElement('button');
   const logoutButton = document.createElement('button');
+  const divUserName = document.createElement('div');
+  const userName = document.createElement('span');
+  const divSignOut = document.createElement('div');
+
+  divUserName.classList.add('divUserName');
+  divSignOut.classList.add('divSignOut');
 
   const contentDiv = document.createElement('div');
   const contentPostDiv = document.createElement('div');
@@ -34,13 +40,13 @@ export const Timeline = (onNavigate) => {
 
   logoImg.src = 'img/logo-title-red.png';
   logoImg.alt = 'Logo';
-  logoImg.classList.add('timelineLogo');
+  logoImg.classList.add('heartTimeline');
   profileButton.textContent = 'Perfil';
   profileButton.classList.add('navBttn');
   homeButton.textContent = 'Inicio';
   homeButton.classList.add('navBttn');
   logoutButton.textContent = 'Cerrar sesión';
-  logoutButton.classList.add('navBttn');
+  logoutButton.classList.add('logoutButton');
   postInput.classList.add('timelineInputBox');
   postInput.id = 'myPostInput';
   postInput.placeholder = 'Escribe lo que quieras publicar';
@@ -54,15 +60,15 @@ export const Timeline = (onNavigate) => {
   publishButton.textContent = 'Publicar';
   publishButton.className = 'buttonToPost';
   title.textContent = 'Comparte tu historia';
-  backgroundImg.src = 'img/background_pets.png';
-  backgroundImg.className = 'timelineCornerImage';
-  navigationDiv.className = 'navigation';
+  // backgroundImg.src = 'img/background_pets.png';
+  // backgroundImg.className = 'corner-image';
+  navHomeDiv.className = 'navHome';
 
   timelineDiv.className = 'timelineSection';
   contentDiv.className = 'timelineContentDiv';
   contentPostDiv.className = 'timelinePosts';
   postsDiv.className = '';
-  contentImgDiv.className = 'corner-image';
+  // contentImgDiv.className = 'corner-image';
 
   homeButton.addEventListener('click', () => onNavigate('/'));
 
@@ -79,21 +85,23 @@ export const Timeline = (onNavigate) => {
     postInput.value = '';
   });
 
-  navigationDiv.appendChild(logoImg);
-  navigationDiv.appendChild(profileButton);
-  navigationDiv.appendChild(homeButton);
-  navigationDiv.appendChild(logoutButton);
-
+  navHomeDiv.appendChild(divUserName);
+  navHomeDiv.appendChild(userName);
+  navHomeDiv.appendChild(logoImg);
+  navHomeDiv.appendChild(profileButton);
+  navHomeDiv.appendChild(homeButton);
+  navHomeDiv.appendChild(logoutButton);
   contentDiv.appendChild(title);
   contentDiv.appendChild(postInput);
   contentDiv.appendChild(publishButton);
   contentImgDiv.appendChild(backgroundImg);
-  timelineDiv.appendChild(navigationDiv);
+  timelineDiv.appendChild(navHomeDiv);
   contentPostDiv.appendChild(postsDiv);
-
+  divSignOut.appendChild(logoutButton);
   timelineDiv.appendChild(contentDiv);
   timelineDiv.appendChild(contentPostDiv);
   timelineDiv.appendChild(contentImgDiv);
+  timelineDiv.appendChild(divSignOut);
 
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';

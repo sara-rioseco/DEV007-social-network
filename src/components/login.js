@@ -16,18 +16,21 @@ export const Login = (onNavigate) => {
   const divTitleLogin = document.createElement('li');
 
   heartImg.src = 'img/logo-title-red.png';
-  heartImg.classList.add('heart');
+  heartImg.classList.add('heartLogin');
 
   emailInput.classList.add('loginInputBox');
   emailInput.id = 'myEmailInput';
   emailInput.placeholder = 'Ingresa tu Correo';
   passwordInput.classList.add('loginInputBox');
   passwordInput.type = 'password';
+  passwordInput.name = 'password';
   passwordInput.id = 'myPasswordInput';
   passwordInput.placeholder = 'Contraseña';
   passwordInput.minLength = 6;
   passwordInput.required = true;
-
+  const errorMessagePassword = document.createElement('span');
+  
+  errorMessagePassword.textContent = '';
   loginBttn.classList.add('loginBttn');
   logoGoogle.className = 'logoGoogle';
   homeBttn.classList.add('loginBttn');
@@ -82,6 +85,7 @@ export const Login = (onNavigate) => {
   contentDiv.appendChild(title);
   contentDiv.appendChild(emailInput);
   contentDiv.appendChild(passwordInput);
+  contentDiv.appendChild(errorMessagePassword);
   contentDiv.appendChild(loginBttn);
   contentDiv.appendChild(logoGoogle);
   contentDiv.appendChild(homeBttn);

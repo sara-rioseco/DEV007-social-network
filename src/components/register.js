@@ -19,7 +19,7 @@ export const Register = (onNavigate) => {
   const divTitleRegister = document.createElement('li');
 
   heartImg.src = 'img/logo-title-red.png';
-  heartImg.classList.add('heart');
+  heartImg.classList.add('heartRegister');
   nameInput.classList.add('registerInputBox');
   nameInput.id = 'myNameInput';
   nameInput.placeholder = 'Nombre';
