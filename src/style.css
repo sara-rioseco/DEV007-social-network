@@ -130,10 +130,32 @@ dialog div.modal-div {
     margin: auto;
     text-align: center;
   }
- 
+
+  .actionDiv {
+    display: flex;
+    flex-direction:  row;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+  }
+
+  .actionDiv button{
+    min-width: 70px; 
+    height: 22px;
+    background: #b52b40;
+    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    font-size: .8em;
+    font-weight: normal;
+    border: 1px solid #facb80;
+    color: #facb80;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+  }
+
   /* ========== HOME ========== */
  
-  div.header-div h2 {
+  .header-div h2 {
     font-size: 150%;
     margin: 1em;
     text-align: center;
@@ -141,7 +163,7 @@ dialog div.modal-div {
     font-weight: bold;
   }
  
-  div.content-div {
+  .content-div {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
     padding: 10px;
@@ -154,7 +176,7 @@ dialog div.modal-div {
     flex-flow: column nowrap;
   }
   
-  div.content-div button {
+  .content-div button {
     min-width: 180px;
     max-width: 300px;
     height: 50px;
@@ -167,130 +189,6 @@ dialog div.modal-div {
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
-  }
-  div.content-div button:hover {
-    background-color: #ce5555;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
-  }
-
-  /*========== LOGIN ========== */
-
-  div.content-login {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
-    padding: 10px;
-    box-shadow: 7px 2px 9px 0px #B52B40;
-    position: center;
-    min-width: 200px;
-    max-width: 320px;
-    display:flex;
-    justify-content: space-around;
-    flex-flow: column nowrap;
-  }
-
-  div.content-login button  {
-    min-width: 180px;
-    max-width: 300px;
-    height: 50px;
-    background: #b52b40;
-    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
-    font-size: 1.2em;
-    font-weight: normal;
-    border: 3px solid #facb80;
-    color: #facb80;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  div.content-login button:hover {
-    background-color: #ce5555;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
-  }
-
-  input.loginInputBox {
-    margin: 6px 24px 8px 6px;
-    padding: 8px 2%;
-    background-color: white;
-    border-radius: 10px;
-    border: 3px solid orange;
-    display: block;
-    width: 97%;
-    color: rgb(50, 50, 50);
-    font-size: 0.9em;
-    height: 42px;
-    font-weight: 100;
-    cursor: pointer;
-  }
-
-  img.logoGoogle {
-    width: 100%;
-    height: 100%;
-    margin: 5px 0;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
-  img.logoGoogle:hover {
-    background-color: rgba(181, 43, 64, 0.3);
-    transition: 0.5s;
-  }
-
-/*========== REGISTER ========== */
-
-  div.content-register {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
-    padding: 10px;
-    box-shadow: 7px 2px 9px 0px #B52B40;
-    position: center;
-    min-width: 260px;
-    max-width: 320px;
-    justify-content: space-around;
-    display:flex;
-    flex-flow: column nowrap;
-    row-gap: 10px;
-    text-align: center;
-  }
-
-  input.registerInputBox{
-    margin:-3px 18px 9px 3px;
-    padding: 8px 2%;
-    background-color: white;
-    border-radius: 10px;
-    border: 2px solid orange;
-    display: block;
-    width: 97%;
-    color: rgb(50, 50, 50);
-    font-size: 0.9em;
-    height: 42px;
-    font-weight: 100;
-    cursor: pointer;
-  }
-
-  div.content-register button {
-    min-width: 180px;
-    max-width: 300px;
-    height: 50px;
-    background: #b52b40;
-    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
-    font-size: 1.2em;
-    font-weight: normal;
-    border: 3px solid #facb80;
-    color: #facb80;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-  }
-  div.content-register button:hover {
-    background-color: #ce5555;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
   }
 
 /*========== TIMELINE ========== */
@@ -478,35 +376,6 @@ dialog div.modal-div {
     color:#B52B40
   }
 
-  .actionDiv {
-    display: flex;
-    flex-direction:  row;
-    align-items: center;
-    justify-content: right;
-    gap: 10px;
-  }
-
-  .actionDiv button{
-    min-width: 70px; 
-    height: 22px;
-    background: #b52b40;
-    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
-    font-size: .8em;
-    font-weight: normal;
-    border: 1px solid #facb80;
-    color: #facb80;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .actionDiv button:hover {
-    background-color: #ce5555;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
-  }
-
   button.back-to-top-button {
     position: relative;
     background:#b52b40;
@@ -544,8 +413,140 @@ dialog div.modal-div {
     color:#B52B40;
     z-index: 2;
   }
-}
 
+  /*========== LOGIN ========== */
+
+  .content-login {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 7px 2px 9px 0px #B52B40;
+    position: center;
+    min-width: 200px;
+    max-width: 320px;
+    display:flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+  }
+
+  .content-login button {
+    min-width: 180px;
+    max-width: 300px;
+    height: 50px;
+    background: #b52b40;
+    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    font-size: 1.2em;
+    font-weight: normal;
+    border: 3px solid #facb80;
+    color: #facb80;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  input.loginInputBox {
+    margin: 6px 24px 8px 6px;
+    padding: 8px 2%;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid orange;
+    display: block;
+    width: 97%;
+    color: rgb(50, 50, 50);
+    font-size: 0.9em;
+    height: 42px;
+    font-weight: 100;
+    cursor: pointer;
+  }
+
+  img.logoGoogle {
+    width: 100%;
+    height: 100%;
+    margin: 5px 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  img.logoGoogle:hover {
+    background-color: rgba(181, 43, 64, 0.3);
+    transition: 0.5s;
+  }
+
+/*========== REGISTER ========== */
+
+  div.content-register {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 7px 2px 9px 0px #B52B40;
+    position: center;
+    min-width: 260px;
+    max-width: 320px;
+    justify-content: space-around;
+    display:flex;
+    flex-flow: column nowrap;
+    row-gap: 10px;
+    text-align: center;
+  }
+
+  input.registerInputBox{
+    margin:-3px 18px 9px 3px;
+    padding: 8px 2%;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid orange;
+    display: block;
+    width: 97%;
+    color: rgb(50, 50, 50);
+    font-size: 0.9em;
+    height: 42px;
+    font-weight: 100;
+    cursor: pointer;
+  }
+
+  div.content-register button {
+    min-width: 180px;
+    max-width: 300px;
+    height: 50px;
+    background: #b52b40;
+    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    font-size: 1.2em;
+    font-weight: normal;
+    border: 3px solid #facb80;
+    color: #facb80;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .content-login button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
+
+  .content-div button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
+
+  .actionDiv button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
+
+  div.content-register button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
+}
 /*=====================================================================================*/
 /* ===== Pantallas desde 769 px de ancho ===== */
 @media screen and (min-width:769px){
@@ -591,6 +592,28 @@ dialog div.modal-div {
     font-weight: 700;
     margin: auto;
   }
+  .actionDiv {
+    display: flex;
+    flex-direction:  row;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+  }
+  
+  .actionDiv button{
+    min-width: 70px; 
+    height: 22px;
+    background: #b52b40;
+    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    font-size: .8em;
+    font-weight: normal;
+    border: 1px solid #facb80;
+    color: #facb80;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
 /*========== HOME ========== */
 
   div.header-div h2 {
@@ -614,31 +637,9 @@ dialog div.modal-div {
     align-items: center;
   }
 
-  div.content-div button {
-    min-width: 300px;
-    max-width: 360px;
-    height: 60px;
-    background: #b52b40;
-    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
-    font-size: 1.5em;
-    border: 5px solid #facb80;
-    color: #facb80;
-    border-radius: 15px;
-    text-align: center;
-    cursor: pointer;
-    margin: -10px 20px 14px 3px;
-  }
-
-  div.content-div button:hover {
-    background-color: #ce5555;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
-  }
-
 /*========== LOGIN ========== */
 
-  div.content-login {
+  .content-login {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
     padding: 16px;
@@ -651,7 +652,7 @@ dialog div.modal-div {
     flex-flow: column nowrap;
   }
 
-  div.content-login button {
+  .content-login button {
     width:100%;
     height: 60px;
     background: #b52b40;
@@ -665,13 +666,6 @@ dialog div.modal-div {
     cursor: pointer;
   }
   
-  div.content-login button:hover {
-    background-color: #ce5555;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
-  }
-
   input.loginInputBox {
     margin: 6px 24px 8px 6px;
     padding: 8px 2%;
@@ -702,7 +696,7 @@ dialog div.modal-div {
 
 /*========== REGISTER ========== */
 
-  div.content-register {
+  .content-register {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
     padding: 12px;
@@ -732,7 +726,7 @@ dialog div.modal-div {
     cursor: pointer;
   }
 
-  div.content-register button {
+  .content-register button {
     width: 100%;
     height: 60px;
     background: #b52b40;
@@ -744,13 +738,6 @@ dialog div.modal-div {
     text-align: center;
     font-weight: 200;
     cursor: pointer;
-  }
-
-  div.content-register button:hover {
-    background-color: #ce5555;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px 1px #CC553E;
-    transition: 0.5s;
   }
 
 /*========== TIMELINE ========== */
@@ -938,35 +925,6 @@ p.usuario {
   color:#B52B40
 }
 
-.actionDiv {
-  display: flex;
-  flex-direction:  row;
-  align-items: center;
-  justify-content: right;
-  gap: 10px;
-}
-
-.actionDiv button{
-  min-width: 70px; 
-  height: 22px;
-  background: #b52b40;
-  box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
-  font-size: .8em;
-  font-weight: normal;
-  border: 1px solid #facb80;
-  color: #facb80;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.actionDiv button:hover {
-  background-color: #ce5555;
-  cursor: pointer;
-  box-shadow: 0px 2px 10px 1px #CC553E;
-  transition: 0.5s;
-}
-
 button.back-to-top-button {
   position: relative;
   background:#b52b40;
@@ -1003,5 +961,55 @@ button.back-to-top-button:hover {
   font-size: large;
   color:#B52B40;
   z-index: 2;
+}
+
+div.content-div button {
+  min-width: 300px;
+  max-width: 360px;
+  height: 60px;
+  background: #b52b40;
+  box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+  font-size: 1.5em;
+  border: 5px solid #facb80;
+  color: #facb80;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  margin: -10px 20px 14px 3px;
+}
+
+.content-register button:hover {
+  background-color: #ce5555;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
+}
+
+.content-login button:hover {
+  background-color: #ce5555;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
+}
+  
+.actionDiv button:hover {
+  background-color: #ce5555;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
+}
+
+div.content-div button:hover {
+  background-color: #ce5555;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
+}
+
+div.content-register button:hover {
+  background-color: #ce5555;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
 }
 }
