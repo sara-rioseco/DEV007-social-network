@@ -4,7 +4,7 @@ import logoTitleRed from '../img/logo-title-red.png';
 import {
   getLoggedUser,
   userLogout,
-} from '../lib/index.js';
+} from '../utils.js';
 
 // función para crear modal para editar nombre
 export const updateUsernameModal = () => {

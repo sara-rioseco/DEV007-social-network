@@ -1,5 +1,6 @@
 import logoTitleRed from '../img/logo-title-red.png';
-import { createUser, validatePassword, validateEmail } from '../lib/index.js';
+import { validatePassword, validateEmail } from '../lib/index.js';
+import { createUser } from '../utils.js';
 
 export const Register = (onNavigate) => {
   const registerDiv = document.createElement('div');
@@ -30,7 +31,7 @@ export const Register = (onNavigate) => {
   passwordInput.classList.add('registerInputBox');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
-  passwordInput.placeholder = 'Ingresa tu contraseña (al menos 6 caracteres)';
+  passwordInput.placeholder = 'Ingresa tu contraseña (al menos6 caracteres)';
   passwordInput.minLength = 6;
   passwordInput.required = true;
   passwordInput2.classList.add('registerInputBox');

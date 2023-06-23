@@ -1,22 +1,13 @@
 import {
-  createUserWithEmailAndPassword,
-  updateProfile,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-} from 'firebase/auth';
-import {
   doc,
-  addDoc,
-  collection,
-  serverTimestamp,
-  deleteDoc,
-  updateDoc,
-  arrayRemove,
-  arrayUnion,
 } from 'firebase/firestore';
 import { auth, db } from '../firebase.js';
+import {
+  editPost,
+  deletePost,
+  addLike,
+  removeLike,
+} from '../utils.js';
 
 import redPaw from '../img/red-paw-like.png';
 import greyPaw from '../img/grey-paw-like.png';
@@ -38,45 +29,6 @@ export const validateEmail = (email) => {
   }
   return false;
 };
-
-// función para crear usuario en firebase
-export const createUser = (email, password, name) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      const loggedUser = auth.currentUser;
-      loggedUser.getIdToken(true)
-        .then(() => {
-          updateProfile(loggedUser, {
-            displayName: name, photoURL: '',
-          });
-        })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.log('Error fetching user data:', error);
-        });
-    });
-};
-
-// función para login
-export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
-
-// función para login con Google
-export const userGoogleLogin = () => {
-  const provider = new GoogleAuthProvider();
-  return signInWithPopup(auth, provider);
-};
-
-// función para log out
-export const userLogout = () => signOut(auth);
-
-// función para crear post en firestore
-export const createPost = (text) => addDoc(collection(db, 'posts'), {
-  content: text,
-  time: serverTimestamp(),
-  email: auth.currentUser.email,
-  displayName: auth.currentUser.displayName,
-  likes: [],
-});
 
 // función para crear modal de confirmación para eliminar post
 export const createDeleteModal = (docId) => {
@@ -102,7 +54,7 @@ export const createDeleteModal = (docId) => {
 
   deleteButton.addEventListener('click', async () => {
     const docRef = doc(db, 'posts', docId);
-    await deleteDoc(docRef);
+    await deletePost(docRef);
   });
   cancelButton.addEventListener('click', () => deleteModal.close());
 
@@ -149,12 +101,9 @@ export const createEditModal = (content, docId) => {
   modalContentDiv.style.alignItems = 'space-between';
 
   editButton.addEventListener('click', async () => {
-    const docRef = doc(db, 'posts', docId);
     let newInput = document.getElementById('new-input').value;
     newInput = modalInput.value;
-    await updateDoc(docRef, {
-      content: `${newInput}`,
-    });
+    await editPost(newInput, docId);
   });
   cancelButton.addEventListener('click', () => editModal.close());
 
@@ -219,33 +168,6 @@ export const createPostDiv = (name, localDate, localTime, content, docId, spanLi
   return postDiv;
 };
 
-// función para eliminar un post en firestore
-export const deletePost = () => {
-  const loggedUser = auth.currentUser;
-  loggedUser.getIdToken(true)
-    .then(() => {
-      deleteDoc(loggedUser);
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log('Error fetching user data:', error);
-    });
-};
-
-// para dar like
-export const addLike = (id, likes) => {
-  if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
-    updateDoc(doc(db, 'posts', id), {
-      likes: arrayUnion(auth.currentUser.email),
-    });
-  }
-};
-
-// para quitar like
-export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
-  likes: arrayRemove(auth.currentUser.email),
-});
-
 // para mostrar íconos contador de likes
 export const spanLikeFunc = (docRef, likesArr) => {
   const spanLikeDiv = document.createElement('div');
@@ -279,22 +201,4 @@ export const spanLikeFunc = (docRef, likesArr) => {
   spanLikeDiv.appendChild(likeImg);
   spanLikeDiv.appendChild(spanLike);
   return spanLikeDiv;
-};
-
-// función para obtener nombre de usuario logueado
-export const getLoggedUser = () => auth.currentUser.displayName;
-
-// función para actualizar nombre de usuario logueado
-export const updateDisplayNameAndPhotoURL = (name, picURL) => {
-  const loggedUser = auth.currentUser;
-  loggedUser.getIdToken(true)
-    .then(() => {
-      updateProfile(loggedUser, {
-        displayName: name, photoURL: picURL,
-      });
-    })
-    .catch((error) => {
-    // eslint-disable-next-line no-console
-      console.log('Error fetching user data:', error);
-    });
 };

@@ -5,14 +5,15 @@ import {
   orderBy,
 } from 'firebase/firestore';
 import logoTitleRed from '../img/logo-title-red.png';
-
+import {
+  createPostDiv,
+  spanLikeFunc,
+} from '../lib/index.js';
 import {
   createPost,
-  createPostDiv,
   userLogout,
-  spanLikeFunc,
   getLoggedUser,
-} from '../lib/index.js';
+} from '../utils.js';
 import { db } from '../firebase.js';
 
 export const Timeline = (onNavigate) => {

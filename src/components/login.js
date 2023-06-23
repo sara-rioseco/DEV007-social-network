@@ -1,6 +1,6 @@
 import logoTitleRed from '../img/logo-title-red.png';
 import logoGoogleImg from '../img/logo_google.png';
-import { userGoogleLogin, userLogin } from '../lib/index.js';
+import { userGoogleLogin, userLogin } from '../utils.js';
 
 export const Login = (onNavigate) => {
   const loginDiv = document.createElement('div');
