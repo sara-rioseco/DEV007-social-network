@@ -10,7 +10,6 @@ html {
   margin: 0;
   padding: 0;
   font-family: 'Roboto Flex', sans-serif;
-  overflow: auto;
 }
 body {
   size:100%;
@@ -100,17 +99,17 @@ dialog div.modal-div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20% 0 20% 0;
-    row-gap: 50px;;
+    margin: 10% 0 20% 0;
+    row-gap: 50px;
   } 
   
   h1 {
     display: block;
     color: rgb(181, 43, 64);
-    width: 180px;
+    width: 100%;
     font-size: 1.5em;
     font-weight: 700;
-    margin: 6px 88px 9px 68px;
+    text-align: center;
   }
  
   h3 {
@@ -126,9 +125,10 @@ dialog div.modal-div {
     display: block;
     color: #B52B40;
     width: 180px;
-    font-size: 1.0em;
+    font-size: 1.2em;
     font-weight: 700;
     margin: auto;
+    text-align: center;
   }
  
   /* ========== HOME ========== */
@@ -166,7 +166,6 @@ dialog div.modal-div {
     color: #facb80;
     border-radius: 10px;
     text-align: center;
-    padding-right: 9px;
     cursor: pointer;
   }
   div.content-div button:hover {
@@ -186,8 +185,8 @@ dialog div.modal-div {
     position: center;
     min-width: 200px;
     max-width: 320px;
-    justify-content: space-around;
     display:flex;
+    justify-content: space-around;
     flex-flow: column nowrap;
   }
 
@@ -203,7 +202,6 @@ dialog div.modal-div {
     color: #facb80;
     border-radius: 10px;
     text-align: center;
-    padding-right: 9px;
     cursor: pointer;
   }
 
@@ -215,7 +213,7 @@ dialog div.modal-div {
   }
 
   input.loginInputBox {
-    margin: 5px 24px 8px 3px;
+    margin: 6px 24px 8px 6px;
     padding: 8px 2%;
     background-color: white;
     border-radius: 10px;
@@ -233,13 +231,13 @@ dialog div.modal-div {
     width: 100%;
     height: 100%;
     margin: 5px 0;
+    border-radius: 10px;
     cursor: pointer;
   }
 
   img.logoGoogle:hover {
     background-color: rgba(181, 43, 64, 0.3);
     transition: 0.5s;
-    border-radius: 10px;
   }
 
 /*========== REGISTER ========== */
@@ -250,11 +248,13 @@ dialog div.modal-div {
     padding: 10px;
     box-shadow: 7px 2px 9px 0px #B52B40;
     position: center;
-    min-width: 200px;
+    min-width: 260px;
     max-width: 320px;
     justify-content: space-around;
     display:flex;
     flex-flow: column nowrap;
+    row-gap: 10px;
+    text-align: center;
   }
 
   input.registerInputBox{
@@ -284,7 +284,6 @@ dialog div.modal-div {
     color: #facb80;
     border-radius: 10px;
     text-align: center;
-    padding-right: 9px;
     cursor: pointer;
   }
   div.content-register button:hover {
@@ -308,9 +307,12 @@ dialog div.modal-div {
   }
 
   .timeline-main-div {
-    overflow-y: scroll;
     height: fit-content;
     width: 100%;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    justify-items: center;
   }
 
   div .navHome {
@@ -380,7 +382,7 @@ dialog div.modal-div {
     right: 0px;
     bottom: -36px;
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: bold;
     padding: 9px;
     margin-bottom: -10px;
     cursor: pointer;
@@ -410,15 +412,22 @@ dialog div.modal-div {
     font-size: 1em;
   }
 
-  .timelinePosts {
+  div.timelinePosts {
     width: 100%;
     height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
   }
 
   #posts-div{
     width: 100%;
     height: 100%;
     padding: 14% 12% 12% 10%;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-items: center;
   }
 
   .descripcionPost{
@@ -498,6 +507,31 @@ dialog div.modal-div {
     transition: 0.5s;
   }
 
+  button.back-to-top-button {
+    position: relative;
+    background:#b52b40;
+    box-shadow: -2px -2px 1px 1px #e58677;
+    font-size: 14px;
+    border: 1px solid rgb(193 184 163);
+    color:#ffead2;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20%;
+    margin-top: -5%;
+    padding:10px;
+    min-width: fit-content;
+    max-width:200px;
+    justify-self: center;
+  }
+
+  button.back-to-top-button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
+
   .divSignOut {
     position: fixed;
     bottom: 0px;
@@ -515,420 +549,459 @@ dialog div.modal-div {
 /*=====================================================================================*/
 /* ===== Pantallas desde 769 px de ancho ===== */
 @media screen and (min-width:769px){
+/* =========== TODAS LAS VISTAS =========== */
 
-/*========== HOME ========== */
- 
   .heart {
-    height: 134px;
-    width: 283px;
-    margin: 134px 8px 69px 141px;
+    min-height: 30%;
+    min-width: 30%;
+    max-height: 30%;
+    max-width: 30%;
+    margin: 100px;
   }
+  div.home-div {
+    height: 100%;
+    width:100%;
+    margin: 0 0 0 10%;
+    row-gap: 50px;
+  } 
+  h1 {
+    display: block;
+    color: #B52B40;
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+    
+  h3 {
+    display: block;
+    font-size: 0.7em;
+    text-align: center;
+    color: rgb(101, 101, 100);
+    font-family: 'Roboto Flex', sans-serif;
+    margin: auto;
+  }
+    
+  h4 {
+    display: block;
+    color: #B52B40;
+    width: 180px;
+    font-size: 1.0em;
+    font-weight: 700;
+    margin: auto;
+  }
+/*========== HOME ========== */
 
   div.header-div h2 {
-    font-size: 1.7em;
+    font-size: 150%;
     margin: 1em;
     text-align: center;
     color: #B52B40;
- font-weight: 300;
-}
+    font-weight: bold;
+  }
 
-div.content-div {
- background-color: rgba(255, 255, 255, 0.7);
- border-radius: 20px;
- margin: -65px 8px -13px 64px;
- padding: 8px;
- box-shadow: 7px 2px 9px 0px #B52B40;
- position: absolute;
- width: 457px;
- height: 280px;
-}
+  div.content-div {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 7px 2px 9px 0px #B52B40;
+    position: absolute;
+    min-width: 320px;
+    max-width: 400px;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
 
-.homeBttn {
- width: 434px;
- height: 57px;
- background: #b52b40;
- box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
- font-size: 1.5em;
- border: 5px solid #facb80;
- color: #facb80;
- border-radius: 15px;
- text-align: center;
- padding-right: 12px;
- cursor: pointer;
- margin: -10px 20px 14px 3px;
-}
+  div.content-div button {
+    min-width: 300px;
+    max-width: 360px;
+    height: 60px;
+    background: #b52b40;
+    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    font-size: 1.5em;
+    border: 5px solid #facb80;
+    color: #facb80;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    margin: -10px 20px 14px 3px;
+  }
+
+  div.content-div button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
 
 /*========== LOGIN ========== */
 
-div.content-login {
- background-color: rgba(255, 255, 255, 0.7);
- border-radius: 20px;
- margin: 26px 11px -17px 82px;
- padding: 12px;
- position: absolute;
- width: 448px;
- height: 352px;
- box-shadow: 7px 2px 9px 0px #B52B40;
-}
+  div.content-login {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 7px 2px 9px 0px #B52B40;
+    position: absolute;
+    min-width: 300px;
+    max-width: 360px;
+    display:flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+  }
 
-.heartLogin{
- height: 125px;
- width: 255px;
- margin: 155px 42px -15px 170px;
-}
+  div.content-login button {
+    width:100%;
+    height: 60px;
+    background: #b52b40;
+    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    font-size: 1.2em;
+    border: 3px solid #facb80;
+    color: #facb80;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  
+  div.content-login button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
 
+  input.loginInputBox {
+    margin: 6px 24px 8px 6px;
+    padding: 8px 2%;
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid orange;
+    display: block;
+    width: 97%;
+    color: rgb(50, 50, 50);
+    font-size: 0.9em;
+    height: 50px;
+    font-weight: 100;
+    cursor: pointer;
+  }
 
-.loginBttnGoogle,
-.buttonRegisterGoogle {
-display: block;
-background-color: #FBD8B0;
-border: 2px solid #facb80;
-border-radius: 10px;
-transition: background-color 0.3s ease;
-margin: 13px auto;
-padding: 15px 0px;
-width: 100%;
-color: #B52B40;
-font-family: 'Roboto Flex', sans-serif;
-font-weight: 100;
-font-size: 1.0em;
-cursor: pointer;
-}
+  img.logoGoogle {
+    width: 100%;
+    height: 100%;
+    margin: 5px 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 
-.loginBttn {
- width: 413px;
- height: 56px;
- background: #b52b40;
- box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
- font-size: 1.1em;
- border: 3px solid #facb80;
- color: #facb80;
- border-radius: 10px;
- text-align: center;
- font-weight: 200;
- padding-right: 9px;
- cursor: pointer;
- margin: -5px 18px 9px 3px;
-}
-
-.loginInputBox {
- margin: 5px 24px 8px 7px;
- padding: 3px 2%;
- background-color: white;
- border-radius: 10px;
- border: 3px solid orange;
- display: block;
- width: 97%;
- color: rgb(93, 92, 92);
- font-size: 0.9em;
- height: 49px;
- font-weight: 100;
- cursor: pointer;
-
-}
-
-.logoGoogle,
-.logoGoogleRegister {
- width: 219px;
- height: 54px;
- margin: 8px 23px 5px 97px;
- margin-top: -3px;
- cursor: pointer;
-}
-
-button:hover {
-background-color: #E58677;
-cursor: pointer;
-box-shadow: 0px 2px 10px 1px #CC553E;
-transition: 0.5s;
-}
-
-h1 {
-display: block;
-color: #B52B40;
-width: 180px;
-font-size: 1.5em;
-font-weight: 700;
-margin: 5px 88px 9px 147px;
-}
-
-h3 {
-display: block;
-font-size: 0.7em;
-text-align: center;
-color: rgb(101, 101, 100);
-font-family: 'Roboto Flex', sans-serif;
-margin: auto;
-}
-
-h4 {
-display: block;
-color: #B52B40;
-width: 180px;
-font-size: 1.0em;
-font-weight: 700;
-margin: auto;
-}
+  img.logoGoogle:hover {
+    background-color: rgba(181, 43, 64, 0.3);
+    transition: 0.5s;
+  }
 
 /*========== REGISTER ========== */
 
-div.content-register {
- background-color: rgba(255, 255, 255, 0.7);
- border-radius: 20px;
- margin: 43px 12px -17px 61px;
- padding: 12px;
- position: absolute;
- width: 457px;
- height: 364px;
- box-shadow: 7px 2px 9px 0px #B52B40;
-}
+  div.content-register {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 7px 2px 9px 0px #B52B40;
+    position: absolute;
+    min-width: 320px;
+    max-width: 360px;
+    justify-content: center;
+    display:flex;
+    flex-flow: column nowrap;
+    row-gap: 5px;
+    text-align: center;
+  }
 
-.registerBttn {
- width: 424px;
- height: 50px;
- background: #b52b40;
- box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
- font-size: 1.1em;
- border: 3px solid #facb80;
- color: #facb80;
- border-radius: 10px;
- text-align: center;
- font-weight: 200;
- padding-right: 12px;
- cursor: pointer;
- margin: -5px 18px 9px 3px;
-}
+  input.registerInputBox {
+    margin:-3px 18px 9px 3px;
+    padding: 8px 2%;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid orange;
+    display: block;
+    width: 97%;
+    color: rgb(93, 92, 92);
+    font-size: 0.9em;
+    height: 42px;
+    font-weight: 100;
+    cursor: pointer;
+  }
 
-.registerInputBox{
-margin:-3px 18px 9px 3px;
-padding: 8px 2%;
-background-color: white;
-border-radius: 10px;
-border: 2px solid orange;
-display: block;
-width: 97%;
-color: rgb(93, 92, 92);
-font-size: 0.9em;
-height: 42px;
-font-weight: 100;
-cursor: pointer;
-}
+  div.content-register button {
+    width: 100%;
+    height: 60px;
+    background: #b52b40;
+    box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+    font-size: 1.2em;
+    border: 3px solid #facb80;
+    color: #facb80;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 200;
+    cursor: pointer;
+  }
 
-.heartRegister {
- height: 126px;
- width: 252px;
- margin: 144px 25px -24px 140px;
-}
+  div.content-register button:hover {
+    background-color: #ce5555;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 1px #CC553E;
+    transition: 0.5s;
+  }
 
 /*========== TIMELINE ========== */
 
-.timelineSection{
- width: 1200px;
- margin: auto;
- display: flex;
- flex-flow: row wrap;
- justify-content: center;
- border-radius: 20px 0px 20px 0px;
- margin-top: 50px;
- box-shadow: 0px 0px 30px 0px rgb(228, 84, 84);
- position: relative;
-
+.heartTimeline {
+  height: 70px;
+  margin: 0 20px 0 0;
 }
 
-.navHome {
-width: 100%;
-text-align: center;
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin: 19px 18px 19px 2px;
+.timeline-div{
+  width: 100%;
+  height: max-content;
+  display: inline;
 }
 
-.navBttn {
- background-color: rgb(181, 43, 64);
- border: 3px solid rgb(250, 203, 128);
- border-radius: 10px;
- transition: background-color 0.3s ease 0s;
- margin: -8px 21px -6px -13px;
- padding: 9px 0px;
- color: rgb(255, 234, 210);
- font-family: "Roboto Flex", sans-serif;
- font-weight: 90;
- font-size: 0.9em;
- width: 20%;
- height: 75%;
- cursor: pointer;
- box-shadow: rgb(229, 229, 229) 0px 0px 5px 1px;
+.timeline-main-div {
+  height: fit-content;
+  width: 100%;
+  display:flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  justify-items: center;
 }
 
-.divSignOut {
- height: 63px;
- width: 70%;
- justify-content: center;
- display: flex;
- font-size: large;
- align-items: center;
- z-index: 2;
- position: relative;
- top: -2327px;
- left: -474px;
+div .navHome {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items:center;
+  margin: 20px 20px 0 20px;
+  column-gap: 10px;
 }
-.logoutButton {
- background-color: rgb(181, 43, 64);
- border: 3px solid rgb(250, 203, 128);
- border-radius: 10px;
- transition: background-color 0.3s ease 0s;
- margin:-291px 21px -6px -13px;
- padding: 9px 0px;
- color: rgb(255, 234, 210);
- font-family: "Roboto Flex", sans-serif;
- font-weight: 90;
- font-size: 0.9em;
- width: 20%;
- height: 75%;
- cursor: pointer;
- box-shadow: rgb(229, 229, 229) 0px 0px 5px 1px;
+
+div .divUserName {
+  margin: 0;
+  width: 70px;
+  height: 70px;
+  background-image: url(img/user-image.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color:#FBD8B0;
+  background-attachment: local;
+}
+
+div .divUserName:hover {
+  cursor: pointer;
+}
+
+div.navHome span {
+  font-size: 1em;
+  font-weight: bold;
+  color: #B52B40;
+}
+
+div.navHome span:hover {
+  cursor: pointer;  
+}
+
+.logoutButton{
+  border-width: 0;
+  background-color: #facb80;
 }
 
 .timelineContentDiv{
-width: 96%;
-min-height: 50px;
-background-color: rgb(255, 234, 210);
-border: 3px solid #e58677;
-border-radius: 15px;
-padding: 10px;
-margin: auto;
-position: relative;
-font-size: .8em;
-box-shadow: 7px 2px 9px 0px #B52B40;
-top:20px;
-left: -1px;
+  width: 96%;
+  min-height: 50px;
+  background-color: rgb(255, 234, 210);
+  border: 3px solid #e58677;
+  border-radius: 15px;
+  padding: 10px;
+  margin: auto;
+  position: relative;
+  font-size: .8em;
+  box-shadow: 7px 2px 9px 0px #B52B40;
+  top:20px;
+  left: -1px;
 }
 
 .buttonToPost {
-background:#b52b40;
-box-shadow: -2px -2px 1px 1px #e58677;
-font-size: 14px;
-border: 1px solid rgb(193 184 163);
-color:#ffead2;
-position: absolute;
-left: 2%;
-right: 0px;
-bottom: -36px;
-border-radius: 10px;
-font-weight: 600;
-padding: 9px;
-margin-bottom: -10px;
-cursor: pointer;
+  background:#b52b40;
+  box-shadow: -2px -2px 1px 1px #e58677;
+  font-size: 14px;
+  border: 1px solid rgb(193 184 163);
+  color:#ffead2;
+  position: absolute;
+  left: 2%;
+  right: 0px;
+  bottom: -36px;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 9px;
+  margin-bottom: -10px;
+  cursor: pointer;
 }
 
 .timelineInputBox {
-width: 100%;
-height: 79px;
-box-shadow: 0px 0px 10px 0px rgb(231, 230, 230);
-color: rgb(93, 92, 92);
-font-size: 1.2em;
-background-color: #fff;
-border: 1px solid  #ffead2;
-min-height: 90px;
-border-radius: 15px;
-margin: 16px auto 8px auto;
-word-wrap: break-word;
-position: relative;
-z-index: 0;
-padding: 30px;
+  width: 100%;
+  height: 79px;
+  box-shadow: 0px 0px 10px 0px rgb(231, 230, 230);
+  color: rgb(93, 92, 92);
+  font-size: 1.2em;
+  background-color: #fff;
+  border: 1px solid  #ffead2;
+  min-height: 90px;
+  border-radius: 15px;
+  margin: 16px auto 8px auto;
+  word-wrap: break-word;
+  position: relative;
+  z-index: 0;
+  padding: 30px;
 }
 
 .timelineInputBox ::placeholder {
-color: rgb(189, 176, 176);
-font-family: Arial, Helvetica, sans-serif;
-font-weight: 100;
-font-size: 1em;
+  color: rgb(189, 176, 176);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 1em;
 }
 
-.timelinePosts {
- width: 100%;
- height: 100%;
+div.timelinePosts {
+  width: 100%;
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
 }
 
 #posts-div{
-width: 100%;
-height: 100%;
-padding: 5% 12% 12% 10%;
+  width: 100%;
+  height: 100%;
+  padding: 10% 12% 12% 10%;
+  display:flex;
+  flex-flow: column nowrap;
+  justify-items: center;
 }
 
 .descripcionPost{
-flex-grow: 1;
-margin: 20px 0;
-text-align: left;
-font-size: 12px;
+  flex-grow: 1;
+  margin: 20px 0;
+  text-align: left;
+  font-size: .8em;
+  color: #242424;
 }
 
 .publicacionPost{
-width: 100%;
-min-height: 50px;
-background-color: #fff;
-border: 1px solid #e58677;
-border-radius: 10px;
-padding: 10px;
-margin: 20px 20px 20px 1px;
-position: relative;
-font-size: 1.1em;
+  width: 100%;
+  min-height: 50px;
+  background-color: #fff;
+  border: 1px solid #e58677;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 20px 20px 1px;
+  position: relative;
+  font-size: 1em;
+  color: #242424;
+}
+p.usuario {
+  color:#242424;
+  font-weight: normal;
 }
 
 .removeLikeImg{
-height: 20px;
-width: 20px;
-display: inline-block;
-cursor: pointer;
+  height: 22px;
+  width: 22px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .likeImg{
- height: 20px;
- width: 20px;
- display: inline-block;
- cursor: pointer;
-}
-
-.spanLike {
-  width: fit-content;
-  height: 10px;
-  display: flex;
-  text-align: center;
-  font-weight: bold;
-  color: #0c0c0c;
+  height: 22px;
+  width: 22px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .spanLikeDiv {
-display:flex;
-flex-flow: row nowrap;
-align-items: center;
-justify-self: flex-end;
-gap: 10px;
+  display:flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 10px;
+  color:#B52B40
 }
 
 .actionDiv {
-display: flex;
-flex-direction:  row;
-align-items: center;
-justify-content: right;
+  display: flex;
+  flex-direction:  row;
+  align-items: center;
+  justify-content: right;
+  gap: 10px;
 }
 
-.heartTimeline{
-height: 73px;
-margin: -4px 54px -13px 7px;
-padding: 6px 10px 10px 8px;
+.actionDiv button{
+  min-width: 70px; 
+  height: 22px;
+  background: #b52b40;
+  box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+  font-size: .8em;
+  font-weight: normal;
+  border: 1px solid #facb80;
+  color: #facb80;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
 }
 
-.divUserName {
-margin: auto;
-width: 60px;
-height: 60px;
-background-color: #B52B40;
-border-radius: 50px;
-border: 3px solid rgb(243, 238, 238);
-color: white;
-text-align: center;
+.actionDiv button:hover {
+  background-color: #ce5555;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
+}
+
+button.back-to-top-button {
+  position: relative;
+  background:#b52b40;
+  box-shadow: -2px -2px 1px 1px #e58677;
+  font-size: 14px;
+  border: 1px solid rgb(193 184 163);
+  color:#ffead2;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20%;
+  margin-top: -5%;
+  padding:10px;
+  min-width: fit-content;
+  max-width:200px;
+  justify-self: center;
+}
+
+button.back-to-top-button:hover {
+  background-color: #ce5555;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 1px #CC553E;
+  transition: 0.5s;
+}
+
+.divSignOut {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(255, 207, 124);
+  justify-content: center;
+  display: flex;
+  font-size: large;
+  color:#B52B40;
+  z-index: 2;
 }
 }
- 

@@ -30,7 +30,7 @@ export const Register = (onNavigate) => {
   passwordInput.classList.add('registerInputBox');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
-  passwordInput.placeholder = 'Ingresa tu contraseña - mínimo 6 dígitos';
+  passwordInput.placeholder = 'Ingresa tu contraseña (al menos 6 caracteres)';
   passwordInput.minLength = 6;
   passwordInput.required = true;
   passwordInput2.classList.add('registerInputBox');
@@ -63,6 +63,9 @@ export const Register = (onNavigate) => {
     if (validatePassword(password1, password2) === false) {
       // eslint-disable-next-line no-alert
       alert('la contraseña ingresada no coincide');
+    } else if (password1.length < 6) {
+      // eslint-disable-next-line no-alert
+      alert('la contraseña debe tener al menos 6 caracteres');
     } else if (validateEmail(email) === false) {
       // eslint-disable-next-line no-alert
       alert('la contraseña sí coincide pero el correo electrónico no es válido');

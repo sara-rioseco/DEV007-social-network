@@ -57,7 +57,7 @@ export const Login = (onNavigate) => {
         // const user = result.user;
       },
       // eslint-disable-next-line no-alert
-      () => alert('Credenciales incorrectas'),
+      () => alert('Credenciales incorrectas o usuario no registrado'),
     );
   });
 
