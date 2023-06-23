@@ -1,5 +1,4 @@
 import logoTitleRed from '../img/logo-title-red.png';
-import backgroundPets from '../img/background_pets.png';
 import { createUser, validatePassword, validateEmail } from '../lib/index.js';
 
 export const Register = (onNavigate) => {
@@ -14,8 +13,6 @@ export const Register = (onNavigate) => {
   const passwordInput2 = document.createElement('input');
   const registerBttn = document.createElement('button');
   const homeBttn = document.createElement('button');
-  const contentImgDiv = document.createElement('div');
-  const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
 
   const divTitleRegister = document.createElement('li');
@@ -45,14 +42,10 @@ export const Register = (onNavigate) => {
   registerBttn.id = 'registerbutton';
   homeBttn.id = 'home-button';
   homeBttn.classList.add('registerBttn');
-  backgroundImg.classList.add('pets');
   divTitleRegister.classList.add('divTitleLogin');
   registerDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-register';
-  contentImgDiv.className = 'content-img';
-  backgroundImg.src = `${backgroundPets}`;
-  backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = `<img src="${logoTitleRed}" alt="logo" id="logo">`;
   registerBttn.classList.add('registerBttn');
   title.textContent = 'Regístrate';
@@ -80,8 +73,6 @@ export const Register = (onNavigate) => {
   });
 
   registerDiv.appendChild(heartImg);
-  contentImgDiv.appendChild(backgroundImg);
-  registerDiv.appendChild(contentImgDiv);
   contentDiv.appendChild(title);
   contentDiv.appendChild(nameInput);
   contentDiv.appendChild(emailInput);

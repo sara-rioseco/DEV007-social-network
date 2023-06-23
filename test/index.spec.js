@@ -18,7 +18,7 @@ import {
   updateDisplayNameAndPhotoURL,
 } from '../src/lib/index.js';
 
-// jest.mock('../src/lib');
+// jest.mock('firebase/auth');
 
 describe('validatePassword', () => {
   it('should be a function', () => {

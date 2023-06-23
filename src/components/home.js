@@ -1,5 +1,4 @@
 import logoTitleRed from '../img/logo-title-red.png';
-import backgroundPets from '../img/background_pets.png';
 
 export const Home = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -8,8 +7,6 @@ export const Home = (onNavigate) => {
   const contentDiv = document.createElement('div');
   const loginBttn = document.createElement('button');
   const registerBttn = document.createElement('button');
-  const contentImgDiv = document.createElement('div');
-  const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
 
   heartImg.src = `${logoTitleRed}`;
@@ -17,9 +14,6 @@ export const Home = (onNavigate) => {
   homeDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
-  contentImgDiv.className = 'content-img';
-  backgroundImg.src = `${backgroundPets}`;
-  backgroundImg.className = 'corner-image';
 
   subtitle.textContent = '¡Bienvenid@ a la red social para los amantes de los animales!';
   loginBttn.textContent = 'Ingresar';
@@ -34,8 +28,6 @@ export const Home = (onNavigate) => {
   contentDiv.appendChild(loginBttn);
   contentDiv.appendChild(registerBttn);
   homeDiv.appendChild(heartImg);
-  contentImgDiv.appendChild(backgroundImg);
-  homeDiv.appendChild(contentImgDiv);
   headerDiv.appendChild(subtitle);
   homeDiv.appendChild(contentDiv);
   homeDiv.appendChild(contentDiv);

@@ -1,7 +1,7 @@
 import logoTitleRed from '../img/logo-title-red.png';
-import backgroundPets from '../img/background_pets.png';
 import {
   getLoggedUser,
+  userLogout,
 } from '../lib/index.js';
 
 export const Profile = (onNavigate) => {
@@ -10,8 +10,7 @@ export const Profile = (onNavigate) => {
   const subtitle = document.createElement('h2');
   const contentDiv = document.createElement('div');
   const homeBttn = document.createElement('button');
-  const contentImgDiv = document.createElement('div');
-  const backgroundImg = document.createElement('img');
+  const logoutButton = document.createElement('button');
   const heartImg = document.createElement('img');
 
   heartImg.src = `${logoTitleRed}`;
@@ -19,20 +18,21 @@ export const Profile = (onNavigate) => {
   profileDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
-  contentImgDiv.className = 'content-img';
-  backgroundImg.src = `${backgroundPets}`;
-  backgroundImg.className = 'corner-image';
   homeBttn.classList.add('loginBttn');
+  logoutButton.classList.add('loginBttn');
 
   subtitle.textContent = `¡Bienvenid@, ${getLoggedUser()}! Este es tu perfil.`;
-  homeBttn.textContent = 'Volver al inicio';
-  homeBttn.addEventListener('click', () => onNavigate('/'));
+  homeBttn.textContent = 'Volver atrás';
+  homeBttn.addEventListener('click', () => onNavigate('/timeline'));
+  logoutButton.textContent = 'Cerrar sesión';
+  logoutButton.addEventListener('click', () => {
+    userLogout().then(() => onNavigate('/'));
+  });
   contentDiv.appendChild(headerDiv);
   profileDiv.appendChild(heartImg);
-  contentImgDiv.appendChild(backgroundImg);
-  profileDiv.appendChild(contentImgDiv);
   headerDiv.appendChild(subtitle);
   contentDiv.appendChild(homeBttn);
+  contentDiv.appendChild(logoutButton);
   profileDiv.appendChild(contentDiv);
 
   return profileDiv;

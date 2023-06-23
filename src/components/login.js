@@ -1,5 +1,4 @@
 import logoTitleRed from '../img/logo-title-red.png';
-import backgroundPets from '../img/background_pets.png';
 import logoGoogleImg from '../img/logo_google.png';
 import { userGoogleLogin, userLogin } from '../lib/index.js';
 
@@ -12,8 +11,6 @@ export const Login = (onNavigate) => {
   const passwordInput = document.createElement('input');
   const loginBttn = document.createElement('button');
   const homeBttn = document.createElement('button');
-  const contentImgDiv = document.createElement('div');
-  const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
   const logoGoogle = document.createElement('img');
   const divTitleLogin = document.createElement('li');
@@ -34,16 +31,11 @@ export const Login = (onNavigate) => {
   loginBttn.classList.add('loginBttn');
   logoGoogle.className = 'logoGoogle';
   homeBttn.classList.add('loginBttn');
-
-  backgroundImg.classList.add('pets');
   divTitleLogin.classList.add('divTitleLogin');
 
   loginDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-login';
-  contentImgDiv.className = 'content-img';
-  backgroundImg.src = `${backgroundPets}`;
-  backgroundImg.className = 'corner-image';
   headerDiv.innerHTML = `<img src="${logoTitleRed}" alt="logo" id="logo">`;
   logoGoogle.src = `${logoGoogleImg}`;
 
@@ -80,8 +72,6 @@ export const Login = (onNavigate) => {
   });
 
   loginDiv.appendChild(heartImg);
-  contentImgDiv.appendChild(backgroundImg);
-  loginDiv.appendChild(contentImgDiv);
   contentDiv.appendChild(title);
   contentDiv.appendChild(emailInput);
   contentDiv.appendChild(passwordInput);

@@ -4,53 +4,47 @@ import {
   onSnapshot,
   orderBy,
 } from 'firebase/firestore';
-
 import logoTitleRed from '../img/logo-title-red.png';
-import backgroundPets from '../img/background_pets.png';
 
 import {
   createPost,
   createPostDiv,
   userLogout,
   spanLikeFunc,
+  getLoggedUser,
 } from '../lib/index.js';
 import { db } from '../firebase.js';
 
 export const Timeline = (onNavigate) => {
   const timelineDiv = document.createElement('div');
-  const navigationDiv = document.createElement('div');
+  const navHomeDiv = document.createElement('div');
+  const timelineMainDiv = document.createElement('div');
   const logoImg = document.createElement('img');
-  const profileButton = document.createElement('button');
-  const homeButton = document.createElement('button');
   const logoutButton = document.createElement('button');
-
+  const divUserName = document.createElement('div');
+  const userName = document.createElement('span');
+  const divSignOut = document.createElement('div');
   const contentDiv = document.createElement('div');
   const contentPostDiv = document.createElement('div');
   const postsDiv = document.createElement('div');
-
   const title = document.createElement('h4');
   const postInput = document.createElement('input');
   const publishButton = document.createElement('button');
-  const backgroundImg = document.createElement('img');
-  const contentImgDiv = document.createElement('div');
-
   const postsRef = query(collection(db, 'posts'), orderBy('time', 'desc'));
 
+  divUserName.classList.add('divUserName');
+  divSignOut.classList.add('divSignOut');
+  userName.textContent = `¡Bienvenid@, ${getLoggedUser()}!`;
   logoImg.src = `${logoTitleRed}`;
   logoImg.alt = 'Logo';
-  logoImg.classList.add('timelineLogo');
-  profileButton.textContent = 'Perfil';
-  profileButton.classList.add('navBttn');
-  homeButton.textContent = 'Inicio';
-  homeButton.classList.add('navBttn');
+  logoImg.classList.add('heartTimeline');
   logoutButton.textContent = 'Cerrar sesión';
-  logoutButton.classList.add('navBttn');
+  logoutButton.classList.add('logoutButton');
   postInput.classList.add('timelineInputBox');
   postInput.id = 'myPostInput';
   postInput.placeholder = 'Escribe lo que quieras publicar';
   postInput.required = true;
   postInput.autocomplete = 'off';
-
   postsDiv.id = 'posts-div';
   postsDiv.className = 'publicacionPost';
 
@@ -58,19 +52,17 @@ export const Timeline = (onNavigate) => {
   publishButton.textContent = 'Publicar';
   publishButton.className = 'buttonToPost';
   title.textContent = 'Comparte tu historia';
-  backgroundImg.src = `${backgroundPets}`;
-  backgroundImg.className = 'timelineCornerImage';
-  navigationDiv.className = 'navigation';
+  navHomeDiv.className = 'navHome';
 
-  timelineDiv.className = 'timelineSection';
+  timelineMainDiv.className = 'timeline-main-div';
+  timelineMainDiv.style = 'overflow-y:scroll';
+  timelineDiv.className = 'timeline-div';
   contentDiv.className = 'timelineContentDiv';
   contentPostDiv.className = 'timelinePosts';
   postsDiv.className = '';
-  contentImgDiv.className = 'corner-image';
 
-  homeButton.addEventListener('click', () => onNavigate('/'));
-
-  profileButton.addEventListener('click', () => onNavigate('/profile'));
+  divUserName.addEventListener('click', () => onNavigate('/profile'));
+  userName.addEventListener('click', () => onNavigate('/profile'));
 
   logoutButton.addEventListener('click', () => {
     userLogout().then(() => onNavigate('/'));
@@ -83,21 +75,20 @@ export const Timeline = (onNavigate) => {
     postInput.value = '';
   });
 
-  navigationDiv.appendChild(logoImg);
-  navigationDiv.appendChild(profileButton);
-  navigationDiv.appendChild(homeButton);
-  navigationDiv.appendChild(logoutButton);
-
+  navHomeDiv.appendChild(divUserName);
+  navHomeDiv.appendChild(userName);
+  navHomeDiv.appendChild(logoImg);
+  navHomeDiv.appendChild(logoutButton);
   contentDiv.appendChild(title);
   contentDiv.appendChild(postInput);
   contentDiv.appendChild(publishButton);
-  contentImgDiv.appendChild(backgroundImg);
-  timelineDiv.appendChild(navigationDiv);
+  timelineDiv.appendChild(navHomeDiv);
   contentPostDiv.appendChild(postsDiv);
-
-  timelineDiv.appendChild(contentDiv);
-  timelineDiv.appendChild(contentPostDiv);
-  timelineDiv.appendChild(contentImgDiv);
+  timelineMainDiv.appendChild(contentDiv);
+  timelineMainDiv.appendChild(contentPostDiv);
+  timelineDiv.appendChild(timelineMainDiv);
+  timelineDiv.appendChild(divSignOut);
+  divSignOut.appendChild(logoutButton);
 
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';
