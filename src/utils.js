@@ -18,22 +18,18 @@ import {
 } from 'firebase/firestore';
 import { auth, db } from './firebase.js';
 
+// función para actualizar nombre de usuario
+export const updateUsername = async (name) => {
+  const currentAuth = auth.currentUser;
+  await updateProfile(currentAuth, {
+    displayName: name, photoURL: '',
+  });
+};
+
 // función para crear usuario en firebase
-export const createUser = (email, password, name) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      const loggedUser = auth.currentUser;
-      loggedUser.getIdToken(true)
-        .then(() => {
-          updateProfile(loggedUser, {
-            displayName: name, photoURL: '',
-          });
-        })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.log('Error fetching user data:', error);
-        });
-    });
+export const createUser = async (email, password, name) => {
+  await createUserWithEmailAndPassword(auth, email, password);
+  updateUsername(name);
 };
 
 // función para login
@@ -49,18 +45,10 @@ export const userGoogleLogin = () => {
 export const getLoggedUser = () => auth.currentUser.displayName;
 
 // función para actualizar nombre de usuario logueado
-export const updateDisplayNameAndPhotoURL = (name, picURL) => {
-  const loggedUser = auth.currentUser;
-  loggedUser.getIdToken(true)
-    .then(() => {
-      updateProfile(loggedUser, {
-        displayName: name, photoURL: picURL,
-      });
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log('Error fetching user data:', error);
-    });
+export const updateDisplayNameAndPhotoURL = async (name, picURL) => {
+  await updateProfile(auth.currentUser, {
+    displayName: name, photoURL: picURL,
+  });
 };
 
 // función para log out
