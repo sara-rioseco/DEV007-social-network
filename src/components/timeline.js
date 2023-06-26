@@ -41,8 +41,6 @@ export const Timeline = (onNavigate) => {
   const title = document.createElement('h4');
   const postInput = document.createElement('input');
   const publishButton = document.createElement('button');
-  const backToTopButton = document.createElement('button');
-  const backToTopDiv = document.createElement('div');
   const postsRef = query(collection(db, 'posts'), orderBy('time', 'desc'));
 
   divUserName.classList.add('divUserName');
@@ -71,8 +69,6 @@ export const Timeline = (onNavigate) => {
   publishButton.id = 'publishbutton';
   publishButton.textContent = 'Publicar';
   publishButton.className = 'buttonToPost';
-  backToTopButton.textContent = 'Volver arriba';
-  backToTopButton.className = 'back-to-top-button';
   title.textContent = 'Comparte tu historia';
 <<<<<<< HEAD
   // backgroundImg.src = 'img/background_pets.png';
@@ -107,15 +103,6 @@ export const Timeline = (onNavigate) => {
     postInput.value = '';
   });
 
-<<<<<<< HEAD
-  navHomeDiv.appendChild(divUserName);
-  navHomeDiv.appendChild(userName);
-  navHomeDiv.appendChild(logoImg);
-  navHomeDiv.appendChild(profileButton);
-  navHomeDiv.appendChild(homeButton);
-=======
-  backToTopButton.addEventListener('click', () => onNavigate('/timeline'));
-
   navHomeDiv.appendChild(divUserName);
   navHomeDiv.appendChild(userName);
   navHomeDiv.appendChild(logoImg);
@@ -135,9 +122,7 @@ export const Timeline = (onNavigate) => {
   timelineDiv.appendChild(divSignOut);
 =======
   timelineDiv.appendChild(navHomeDiv);
-  backToTopDiv.appendChild(backToTopButton);
   contentPostDiv.appendChild(postsDiv);
-  contentPostDiv.appendChild(backToTopDiv);
   timelineMainDiv.appendChild(contentDiv);
   timelineMainDiv.appendChild(contentPostDiv);
   timelineDiv.appendChild(timelineMainDiv);
