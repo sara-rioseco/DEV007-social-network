@@ -15,13 +15,8 @@ export const Login = (onNavigate) => {
   const logoGoogle = document.createElement('img');
   const divTitleLogin = document.createElement('li');
 
-<<<<<<< HEAD
-  heartImg.src = 'img/logo-title-red.png';
-  heartImg.classList.add('heartLogin');
-=======
   heartImg.src = `${logoTitleRed}`;
   heartImg.classList.add('heart');
->>>>>>> main
 
   emailInput.classList.add('loginInputBox');
   emailInput.id = 'myEmailInput';

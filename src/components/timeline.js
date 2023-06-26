@@ -19,22 +19,12 @@ import { db } from '../firebase.js';
 export const Timeline = (onNavigate) => {
   const timelineDiv = document.createElement('div');
   const navHomeDiv = document.createElement('div');
-<<<<<<< HEAD
-=======
   const timelineMainDiv = document.createElement('div');
->>>>>>> main
   const logoImg = document.createElement('img');
   const logoutButton = document.createElement('button');
   const divUserName = document.createElement('div');
   const userName = document.createElement('span');
   const divSignOut = document.createElement('div');
-<<<<<<< HEAD
-
-  divUserName.classList.add('divUserName');
-  divSignOut.classList.add('divSignOut');
-
-=======
->>>>>>> main
   const contentDiv = document.createElement('div');
   const contentPostDiv = document.createElement('div');
   const postsDiv = document.createElement('div');
@@ -49,13 +39,6 @@ export const Timeline = (onNavigate) => {
   logoImg.src = `${logoTitleRed}`;
   logoImg.alt = 'Logo';
   logoImg.classList.add('heartTimeline');
-<<<<<<< HEAD
-  profileButton.textContent = 'Perfil';
-  profileButton.classList.add('navBttn');
-  homeButton.textContent = 'Inicio';
-  homeButton.classList.add('navBttn');
-=======
->>>>>>> main
   logoutButton.textContent = 'Cerrar sesión';
   logoutButton.classList.add('logoutButton');
   postInput.classList.add('timelineInputBox');
@@ -70,24 +53,12 @@ export const Timeline = (onNavigate) => {
   publishButton.textContent = 'Publicar';
   publishButton.className = 'buttonToPost';
   title.textContent = 'Comparte tu historia';
-<<<<<<< HEAD
-  // backgroundImg.src = 'img/background_pets.png';
-  // backgroundImg.className = 'corner-image';
-  navHomeDiv.className = 'navHome';
-
-  timelineDiv.className = 'timelineSection';
-  contentDiv.className = 'timelineContentDiv';
-  contentPostDiv.className = 'timelinePosts';
-  postsDiv.className = '';
-  // contentImgDiv.className = 'corner-image';
-=======
   navHomeDiv.className = 'navHome';
   timelineMainDiv.className = 'timeline-main-div';
   timelineDiv.className = 'timeline-div';
   contentDiv.className = 'timelineContentDiv';
   contentPostDiv.className = 'timelinePosts';
   postsDiv.className = '';
->>>>>>> main
 
   divUserName.addEventListener('click', () => onNavigate('/profile'));
   userName.addEventListener('click', () => onNavigate('/profile'));
@@ -106,21 +77,10 @@ export const Timeline = (onNavigate) => {
   navHomeDiv.appendChild(divUserName);
   navHomeDiv.appendChild(userName);
   navHomeDiv.appendChild(logoImg);
->>>>>>> main
   navHomeDiv.appendChild(logoutButton);
   contentDiv.appendChild(title);
   contentDiv.appendChild(postInput);
   contentDiv.appendChild(publishButton);
-<<<<<<< HEAD
-  contentImgDiv.appendChild(backgroundImg);
-  timelineDiv.appendChild(navHomeDiv);
-  contentPostDiv.appendChild(postsDiv);
-  divSignOut.appendChild(logoutButton);
-  timelineDiv.appendChild(contentDiv);
-  timelineDiv.appendChild(contentPostDiv);
-  timelineDiv.appendChild(contentImgDiv);
-  timelineDiv.appendChild(divSignOut);
-=======
   timelineDiv.appendChild(navHomeDiv);
   contentPostDiv.appendChild(postsDiv);
   timelineMainDiv.appendChild(contentDiv);
@@ -128,7 +88,6 @@ export const Timeline = (onNavigate) => {
   timelineDiv.appendChild(timelineMainDiv);
   timelineDiv.appendChild(divSignOut);
   divSignOut.appendChild(logoutButton);
->>>>>>> main
 
   onSnapshot(postsRef, (querySnapshot) => {
     postsDiv.innerHTML = '';
