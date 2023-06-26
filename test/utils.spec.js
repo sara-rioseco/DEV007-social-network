@@ -11,7 +11,6 @@ import {
 import {
   addDoc, updateDoc, onSnapshot, deleteDoc, query, doc,
 } from 'firebase/firestore';
-import { Register } from '../src/components/register.js';
 import { auth, db } from '../src/firebase.js';
 import {
   updateUsername,
