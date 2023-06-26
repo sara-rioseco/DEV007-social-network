@@ -27,9 +27,8 @@ export const updateUsername = async (name) => {
 };
 
 // función para crear usuario en firebase
-export const createUser = async (email, password, name) => {
+export const createUser = async (email, password) => {
   await createUserWithEmailAndPassword(auth, email, password);
-  updateUsername(name);
 };
 
 // función para login

@@ -1,6 +1,6 @@
 import logoTitleRed from '../img/logo-title-red.png';
 import { validatePassword, validateEmail } from '../lib/index.js';
-import { createUser } from '../utils.js';
+import { createUser, updateUsername } from '../utils.js';
 
 export const Register = (onNavigate) => {
   const registerDiv = document.createElement('div');
@@ -71,7 +71,10 @@ export const Register = (onNavigate) => {
       // eslint-disable-next-line no-alert
       alert('la contraseña sí coincide pero el correo electrónico no es válido');
     } else {
-      createUser(email, password1, name);
+      createUser(email, password1)
+        .then(updateUsername(name))
+        // eslint-disable-next-line no-console
+        .catch((err) => console.log('ERROR', err));
       onNavigate('/timeline');
     }
   });
