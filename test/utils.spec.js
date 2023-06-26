@@ -6,6 +6,7 @@ import {
   updateProfile,
   signInWithPopup,
   signOut,
+  getIdToken,
 } from 'firebase/auth';
 import {
   addDoc, updateDoc, deleteDoc, doc,
@@ -38,6 +39,7 @@ jest.mock('../src/firebase.js', () => ({
     signInWithEmailAndPassword: jest.fn(),
     signInWithPopup: jest.fn(),
     signOut: jest.fn(),
+    getIdToken: jest.fn(),
   },
   db: {
     collection: jest.fn().mockReturnThis(),
@@ -141,12 +143,19 @@ describe('deletePost', () => {
     expect(typeof deletePost).toBe('function');
   });
   it('should call deleteDoc()', async () => {
-    await deletePost(''); // error con auth.currentUser
+    const deleteDocMock = jest.fn().mockResolvedValue();
+    const getIdTokenMock = jest.fn().mockResolvedValue(true);
+    deleteDoc.mockImplementation(deleteDocMock);
+    auth.currentUser.getIdToken = getIdTokenMock;
+    await deletePost('123456789'); // Assuming a valid docId
     expect(deleteDoc).toHaveBeenCalled();
   });
-  it('should throw error', async () => {
-    await deletePost(); // error con auth.currentUser
-    expect(deleteDoc).toThrowError();
+  it('should throw an error', async () => {
+    const deleteDocMock = jest.fn().mockResolvedValue();
+    const getIdTokenMock = jest.fn().mockImplementation(() => Promise.reject(new Error('Mock error')));
+    deleteDoc.mockImplementation(deleteDocMock);
+    auth.currentUser.getIdToken = getIdTokenMock;
+    await expect(deletePost('123456789')).rejects.toThrowError('Mock error');
   });
 });
 
@@ -156,7 +165,7 @@ describe('addLike', () => {
   });
 
   it('should call updateDoc() to add a like', async () => {
-    const docId = '123456789'; // Assuming a valid document ID
+    const docId = '123456789'; // Assuming a valid docId
     const updateDocMock = jest.fn().mockResolvedValue();
     updateDoc.mockImplementationOnce(updateDocMock);
     const likes = ['testuser@example.com']; // Provide an array with existing likes
@@ -169,14 +178,21 @@ describe('removeLike', () => {
   it('should be a function', () => {
     expect(typeof removeLike).toBe('function');
   });
+  it('should call updateDoc() to remove a like', async () => {
+    const docId = '123456789'; // Assuming a valid docId
+    const updateDocMock = jest.fn().mockResolvedValue();
+    updateDoc.mockImplementationOnce(updateDocMock);
+    await removeLike(docId);
+    expect(updateDocMock).toHaveBeenCalled();
+  });
 });
 
 describe('getLoggedUser', () => {
   it('should be a function', () => {
     expect(typeof getLoggedUser).toBe('function');
   });
-  it('should return the displayName of current user', () => {
-    getLoggedUser().mockReturnValueOnce('name');
-    expect(getLoggedUser()).toBe('name'); // error con auth.currentUser
+  it('should return the displayName of current user', async () => {
+    await getLoggedUser();
+    expect(getLoggedUser()).toBe('Test User'); // error con auth.currentUser
   });
 });

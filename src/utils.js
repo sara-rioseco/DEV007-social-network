@@ -66,13 +66,15 @@ export const editPost = async (newInput, docId) => {
 
 //  función para eliminar post en firestore
 export const deletePost = async (docRef) => {
-  const loggedUser = auth.currentUser;
-  await loggedUser.getIdToken(true)
-    .then(() => deleteDoc(docRef))
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log('Error deleting post:', error);
-    });
+  const currentAuth = auth.currentUser;
+  try {
+    await currentAuth.getIdToken(true);
+    await deleteDoc(docRef);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log('Error deleting post:', error);
+    throw error; // Propagate the error
+  }
 };
 
 // para dar like
