@@ -1,28 +1,18 @@
 import {
-  createUserWithEmailAndPassword,
-  updateProfile,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-} from 'firebase/auth';
-import {
   doc,
-  addDoc,
-  collection,
-  serverTimestamp,
-  deleteDoc,
-  updateDoc,
-  arrayRemove,
-  arrayUnion,
 } from 'firebase/firestore';
-import {
-  getStorage,
-  ref,
-  getDownloadURL,
-} from 'firebase/storage';
 import { auth, db } from '../firebase.js';
+import {
+  editPost,
+  deletePost,
+  addLike,
+  removeLike,
+} from '../utils.js';
 
+import redPaw from '../img/red-paw-like.png';
+import greyPaw from '../img/grey-paw-like.png';
+
+// función para validar contraseña
 export const validatePassword = (password1, password2) => {
   if (password1 === password2) {
     return true;
@@ -30,6 +20,7 @@ export const validatePassword = (password1, password2) => {
   return false;
 };
 
+// función para validar formato de correo
 export const validateEmail = (email) => {
   /* const validFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; */
   // eslint-disable-next-line no-useless-escape
@@ -39,47 +30,7 @@ export const validateEmail = (email) => {
   return false;
 };
 
-export const createUser = (email, password, name) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      const loggedUser = auth.currentUser;
-      loggedUser.getIdToken(true)
-        .then(() => {
-          updateProfile(loggedUser, {
-            displayName: name, photoURL: '',
-          });
-        })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.log('Error fetching user data:', error);
-        });
-    });
-};
-
-const storage = getStorage();
-
-export const imgReference = (useruid) => {
-  // eslint-disable-next-line no-console
-  console.log(`${useruid}.`);
-  return getDownloadURL(ref(storage, (`${useruid}.png`)));
-};
-
-export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
-
-export const userGoogleLogin = () => {
-  const provider = new GoogleAuthProvider();
-  return signInWithPopup(auth, provider);
-};
-
-export const userLogout = () => signOut(auth);
-
-export const createPost = (text) => addDoc(collection(db, 'posts'), {
-  content: text,
-  time: serverTimestamp(),
-  email: auth.currentUser.email,
-  displayName: auth.currentUser.displayName,
-});
-
+// función para crear modal de confirmación para eliminar post
 export const createDeleteModal = (docId) => {
   const deleteModal = document.createElement('dialog');
   const modalContentDiv = document.createElement('div');
@@ -103,7 +54,7 @@ export const createDeleteModal = (docId) => {
 
   deleteButton.addEventListener('click', async () => {
     const docRef = doc(db, 'posts', docId);
-    await deleteDoc(docRef);
+    await deletePost(docRef);
   });
   cancelButton.addEventListener('click', () => deleteModal.close());
 
@@ -116,6 +67,7 @@ export const createDeleteModal = (docId) => {
   return deleteModal;
 };
 
+// función para crear modal de edición de un post
 export const createEditModal = (content, docId) => {
   const editModal = document.createElement('dialog');
   const modalContentDiv = document.createElement('div');
@@ -140,7 +92,7 @@ export const createEditModal = (content, docId) => {
   modalInput.id = 'new-input';
   modalInput.attribute = 'rows=3';
   modalInput.style.height = '70px';
-  modalInput.placeholder = content;
+  modalInput.innerHTML = content;
   modalInput.style.width = '400px';
   editButton.textContent = 'Editar';
   cancelButton.textContent = 'Cancelar';
@@ -149,12 +101,9 @@ export const createEditModal = (content, docId) => {
   modalContentDiv.style.alignItems = 'space-between';
 
   editButton.addEventListener('click', async () => {
-    const docRef = doc(db, 'posts', docId);
     let newInput = document.getElementById('new-input').value;
     newInput = modalInput.value;
-    await updateDoc(docRef, {
-      content: `${newInput}`,
-    });
+    await editPost(newInput, docId);
   });
   cancelButton.addEventListener('click', () => editModal.close());
 
@@ -168,6 +117,7 @@ export const createEditModal = (content, docId) => {
   return editModal;
 };
 
+// función para crear cada post en un div
 export const createPostDiv = (name, localDate, localTime, content, docId, spanLike) => {
   const postDiv = document.createElement('div');
   const actionDiv = document.createElement('div');
@@ -218,63 +168,37 @@ export const createPostDiv = (name, localDate, localTime, content, docId, spanLi
   return postDiv;
 };
 
-export const deletePost = () => {
-  const loggedUser = auth.currentUser;
-  loggedUser.getIdToken(true)
-    .then(() => {
-      deleteDoc(loggedUser);
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log('Error fetching user data:', error);
-    });
-};
-
-// para dar like
-export const addLike = (id, likes) => {
-  if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
-    updateDoc(doc(db, 'posts', id), {
-      likes: arrayUnion(auth.currentUser.email),
-    });
-  }
-};
-
-// para quitar like
-export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
-  likes: arrayRemove(auth.currentUser.email),
-});
-
 // para mostrar íconos contador de likes
-
-export const spanLikeFunc = (docRef) => {
+export const spanLikeFunc = (docRef, likesArr) => {
   const spanLikeDiv = document.createElement('div');
   const spanLike = document.createElement('span');
   const likeImg = document.createElement('img');
-  const removeLikeImg = document.createElement('img');
-  likeImg.src = 'img/red-paw-like.png';
   likeImg.alt = 'icono de motita like';
   likeImg.className = 'likeImg';
-  removeLikeImg.src = 'img/grey-paw-like.png';
-  removeLikeImg.alt = 'icono de motita like';
-  removeLikeImg.className = 'removeLikeImg';
   spanLike.innerHTML = '(0)';
   spanLike.classList.add('spanLike');
   spanLikeDiv.className = 'spanLikeDiv';
-  if (docRef.data().likes !== undefined) {
-    spanLike.innerHTML = `(${docRef.data().likes.length})`;
+  if (likesArr.includes(auth.currentUser.email)) {
+    spanLike.innerHTML = `(${likesArr.length})`;
+    likeImg.src = `${redPaw}`;
+    likeImg.addEventListener('click', () => {
+      removeLike(docRef.id)
+        .then(() => {
+          likeImg.src = `${greyPaw}`;
+        })
+        .catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log('Error removing like:', error);
+        });
+    });
+  } else {
+    spanLike.innerHTML = `(${likesArr.length})`;
+    likeImg.src = `${greyPaw}`;
+    likeImg.addEventListener('click', () => {
+      addLike(docRef.id, likesArr);
+    });
   }
-  likeImg.addEventListener('click', () => {
-    if (docRef.likes === undefined) {
-      addLike(docRef.id, []);
-    } else {
-      addLike(docRef.id, docRef.data().likes);
-    }
-  });
-  removeLikeImg.addEventListener('click', () => {
-    removeLike(docRef.id);
-  });
   spanLikeDiv.appendChild(likeImg);
   spanLikeDiv.appendChild(spanLike);
-  spanLikeDiv.appendChild(removeLikeImg);
   return spanLikeDiv;
 };

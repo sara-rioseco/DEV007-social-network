@@ -1,4 +1,6 @@
-import { createUser, validatePassword, validateEmail } from '../lib/index.js';
+import logoTitleRed from '../img/logo-title-red.png';
+import { validatePassword, validateEmail } from '../lib/index.js';
+import { createUser } from '../utils.js';
 
 export const Register = (onNavigate) => {
   const registerDiv = document.createElement('div');
@@ -12,14 +14,17 @@ export const Register = (onNavigate) => {
   const passwordInput2 = document.createElement('input');
   const registerBttn = document.createElement('button');
   const homeBttn = document.createElement('button');
-  const contentImgDiv = document.createElement('div');
-  const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
 
   const divTitleRegister = document.createElement('li');
 
+<<<<<<< HEAD
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heartRegister');
+=======
+  heartImg.src = `${logoTitleRed}`;
+  heartImg.classList.add('heart');
+>>>>>>> main
   nameInput.classList.add('registerInputBox');
   nameInput.id = 'myNameInput';
   nameInput.placeholder = 'Nombre';
@@ -31,7 +36,7 @@ export const Register = (onNavigate) => {
   passwordInput.classList.add('registerInputBox');
   passwordInput.type = 'password';
   passwordInput.id = 'myPasswordInput';
-  passwordInput.placeholder = 'Ingresa tu contraseña - mínimo 6 dígitos';
+  passwordInput.placeholder = 'Ingresa tu contraseña (al menos6 caracteres)';
   passwordInput.minLength = 6;
   passwordInput.required = true;
   passwordInput2.classList.add('registerInputBox');
@@ -43,15 +48,11 @@ export const Register = (onNavigate) => {
   registerBttn.id = 'registerbutton';
   homeBttn.id = 'home-button';
   homeBttn.classList.add('registerBttn');
-  backgroundImg.classList.add('pets');
   divTitleRegister.classList.add('divTitleLogin');
   registerDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-register';
-  contentImgDiv.className = 'content-img';
-  backgroundImg.src = 'img/background_pets.png';
-  backgroundImg.className = 'corner-image';
-  headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
+  headerDiv.innerHTML = `<img src="${logoTitleRed}" alt="logo" id="logo">`;
   registerBttn.classList.add('registerBttn');
   title.textContent = 'Regístrate';
   subtitle.textContent = 'O con tu cuenta de Google';
@@ -68,6 +69,9 @@ export const Register = (onNavigate) => {
     if (validatePassword(password1, password2) === false) {
       // eslint-disable-next-line no-alert
       alert('la contraseña ingresada no coincide');
+    } else if (password1.length < 6) {
+      // eslint-disable-next-line no-alert
+      alert('la contraseña debe tener al menos 6 caracteres');
     } else if (validateEmail(email) === false) {
       // eslint-disable-next-line no-alert
       alert('la contraseña sí coincide pero el correo electrónico no es válido');
@@ -78,8 +82,6 @@ export const Register = (onNavigate) => {
   });
 
   registerDiv.appendChild(heartImg);
-  contentImgDiv.appendChild(backgroundImg);
-  registerDiv.appendChild(contentImgDiv);
   contentDiv.appendChild(title);
   contentDiv.appendChild(nameInput);
   contentDiv.appendChild(emailInput);

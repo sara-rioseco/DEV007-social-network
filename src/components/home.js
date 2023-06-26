@@ -7,7 +7,10 @@ export const Home = (onNavigate) => {
   const contentDiv = document.createElement('div');
   const loginBttn = document.createElement('button');
   const registerBttn = document.createElement('button');
+<<<<<<< HEAD
   const contentImgDiv = document.createElement('div');
+=======
+>>>>>>> main
   const heartImg = document.createElement('img');
   const backgroundImg = document.createElement('img');
 
@@ -16,7 +19,10 @@ export const Home = (onNavigate) => {
   homeDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-div';
+<<<<<<< HEAD
   backgroundImg.classList.add('pets');
+=======
+>>>>>>> main
 
   subtitle.textContent = '¡Bienvenid@ a la red social para los amantes de los animales!';
   loginBttn.textContent = 'Ingresar';

@@ -1,4 +1,6 @@
-import { userGoogleLogin, userLogin } from '../lib/index.js';
+import logoTitleRed from '../img/logo-title-red.png';
+import logoGoogleImg from '../img/logo_google.png';
+import { userGoogleLogin, userLogin } from '../utils.js';
 
 export const Login = (onNavigate) => {
   const loginDiv = document.createElement('div');
@@ -9,14 +11,17 @@ export const Login = (onNavigate) => {
   const passwordInput = document.createElement('input');
   const loginBttn = document.createElement('button');
   const homeBttn = document.createElement('button');
-  const contentImgDiv = document.createElement('div');
-  const backgroundImg = document.createElement('img');
   const heartImg = document.createElement('img');
   const logoGoogle = document.createElement('img');
   const divTitleLogin = document.createElement('li');
 
+<<<<<<< HEAD
   heartImg.src = 'img/logo-title-red.png';
   heartImg.classList.add('heartLogin');
+=======
+  heartImg.src = `${logoTitleRed}`;
+  heartImg.classList.add('heart');
+>>>>>>> main
 
   emailInput.classList.add('loginInputBox');
   emailInput.id = 'myEmailInput';
@@ -33,18 +38,13 @@ export const Login = (onNavigate) => {
   loginBttn.classList.add('loginBttn');
   logoGoogle.className = 'logoGoogle';
   homeBttn.classList.add('loginBttn');
-
-  backgroundImg.classList.add('pets');
   divTitleLogin.classList.add('divTitleLogin');
 
   loginDiv.className = 'home-div';
   headerDiv.className = 'header-div';
   contentDiv.className = 'content-login';
-  contentImgDiv.className = 'content-img';
-  backgroundImg.src = 'img/background_pets.png';
-  backgroundImg.className = 'corner-image';
-  headerDiv.innerHTML = '<img src="./img/logo-title-red.png" alt="logo" id="logo">';
-  logoGoogle.src = 'img/logo_google.png';
+  headerDiv.innerHTML = `<img src="${logoTitleRed}" alt="logo" id="logo">`;
+  logoGoogle.src = `${logoGoogleImg}`;
 
   title.textContent = 'Iniciar Sesión';
   loginBttn.textContent = 'Iniciar Sesión';
@@ -64,7 +64,7 @@ export const Login = (onNavigate) => {
         // const user = result.user;
       },
       // eslint-disable-next-line no-alert
-      () => alert('Credenciales incorrectas'),
+      () => alert('Credenciales incorrectas o usuario no registrado'),
     );
   });
 
@@ -79,8 +79,6 @@ export const Login = (onNavigate) => {
   });
 
   loginDiv.appendChild(heartImg);
-  contentImgDiv.appendChild(backgroundImg);
-  loginDiv.appendChild(contentImgDiv);
   contentDiv.appendChild(title);
   contentDiv.appendChild(emailInput);
   contentDiv.appendChild(passwordInput);
