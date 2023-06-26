@@ -1,17 +1,14 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithPopup,
   signOut,
-  getIdToken,
 } from 'firebase/auth';
 import {
-  addDoc, updateDoc, deleteDoc, doc,
+  addDoc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
-import { auth, db } from '../src/firebase.js';
+import { auth } from '../src/firebase.js';
 import {
   updateUsername,
   createUser,
@@ -132,7 +129,6 @@ describe('editPost', () => {
     expect(typeof editPost).toBe('function');
   });
   it('should call updateDoc()', async () => {
-    const docRef = doc(db, 'posts', '');
     await editPost('my new content', '');
     expect(updateDoc).toHaveBeenCalled();
   });
@@ -193,6 +189,6 @@ describe('getLoggedUser', () => {
   });
   it('should return the displayName of current user', async () => {
     await getLoggedUser();
-    expect(getLoggedUser()).toBe('Test User'); // error con auth.currentUser
+    expect(getLoggedUser()).toBe('Test User');
   });
 });
