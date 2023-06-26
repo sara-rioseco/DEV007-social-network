@@ -29,7 +29,6 @@ export const Login = (onNavigate) => {
   passwordInput.minLength = 6;
   passwordInput.required = true;
   const errorMessagePassword = document.createElement('span');
-  
   errorMessagePassword.textContent = '';
   loginBttn.classList.add('loginBttn');
   logoGoogle.className = 'logoGoogle';

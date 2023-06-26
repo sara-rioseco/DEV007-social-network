@@ -61,10 +61,10 @@ export const Register = (onNavigate) => {
   homeBttn.addEventListener('click', () => onNavigate('/'));
   registerBttn.addEventListener('click', (e) => {
     e.preventDefault();
-    const name = document.getElementById('myNameInput').value;
-    const email = document.getElementById('myEmailInput').value;
-    const password1 = document.getElementById('myPasswordInput').value;
-    const password2 = document.getElementById('myPasswordInput2').value;
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const password1 = passwordInput.value;
+    const password2 = passwordInput2.value;
     if (validatePassword(password1, password2) === false) {
       // eslint-disable-next-line no-alert
       alert('la contraseña ingresada no coincide');
