@@ -21,9 +21,12 @@ import { auth, db } from './firebase.js';
 // función para actualizar nombre de usuario
 export const updateUsername = async (name) => {
   const currentAuth = auth.currentUser;
-  await updateProfile(currentAuth, {
-    displayName: name, photoURL: '',
-  });
+  if (currentAuth) { // agregamos una condicional para validar si obtenemos o no el usuario logueado
+    await updateProfile(currentAuth, {
+      displayName: name,
+      photoURL: '',
+    });
+  }
 };
 
 // función para crear usuario en firebase
