@@ -19,18 +19,13 @@ import {
 import { auth, db } from './firebase.js';
 
 // función para actualizar nombre de usuario
-export const updateUsername = async (name) => {
-  const currentAuth = auth.currentUser;
-  await updateProfile(currentAuth, {
-    displayName: name, photoURL: '',
-  });
-};
+export const updateUsername = (name) => updateProfile(auth.currentUser, {
+  displayName: name, photoURL: '',
+});
 
 // función para crear usuario en firebase
-export const createUser = async (email, password) => {
-  await createUserWithEmailAndPassword(auth, email, password);
-};
-
+// eslint-disable-next-line max-len
+export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 // función para login
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
@@ -42,13 +37,6 @@ export const userGoogleLogin = () => {
 
 // función para obtener nombre de usuario logueado
 export const getLoggedUser = () => auth.currentUser.displayName;
-
-// función para actualizar nombre de usuario logueado
-export const updateDisplayNameAndPhotoURL = async (name, picURL) => {
-  await updateProfile(auth.currentUser, {
-    displayName: name, photoURL: picURL,
-  });
-};
 
 // función para log out
 export const userLogout = () => signOut(auth);
@@ -73,9 +61,8 @@ export const editPost = async (newInput, docId) => {
 //  función para eliminar post en firestore
 export const deletePost = async (docRef) => {
   const loggedUser = auth.currentUser;
-  await loggedUser.getIdToken(true).then(() => {
-    deleteDoc(docRef);
-  })
+  await loggedUser.getIdToken(true)
+    .then(() => deleteDoc(docRef))
     .catch((error) => {
       // eslint-disable-next-line no-console
       console.log('Error deleting post:', error);

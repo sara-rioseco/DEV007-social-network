@@ -9,7 +9,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import {
-  addDoc, updateDoc, onSnapshot, deleteDoc, query, doc,
+  addDoc, updateDoc, onSnapshot, deleteDoc, query, doc, DocumentReference,
 } from 'firebase/firestore';
 import { auth, db } from '../src/firebase.js';
 import {
@@ -18,7 +18,6 @@ import {
   userLogin,
   userGoogleLogin,
   getLoggedUser,
-  updateDisplayNameAndPhotoURL,
   userLogout,
   createPost,
   editPost,
@@ -79,10 +78,6 @@ describe('createUser', () => {
     await createUser('myEmail@mail.com', 'password', 'name');
     expect(createUserWithEmailAndPassword).toHaveBeenCalled();
   });
-  /* it('should call updateUsername()', async () => {
-    await createUser('myEmail@mail.com', 'password', 'name');
-    expect(updateUsername).toHaveBeenCalled();
-  }); */
 });
 
 describe('userLogin', () => {
@@ -136,22 +131,34 @@ describe('editPost', () => {
   it('should be a function', () => {
     expect(typeof editPost).toBe('function');
   });
-  /* it('should call updateDoc()', async () => {
-    const docRef = doc(db, 'posts', docId);
-    await editPost('new content', docId);
+  it('should call updateDoc()', async () => {
+    const docRef = doc(db, 'posts', '');
+    await editPost('my new content', '');
     expect(updateDoc).toHaveBeenCalled();
-  }); */
+  });
 });
 
 describe('deletePost', () => {
   it('should be a function', () => {
     expect(typeof deletePost).toBe('function');
   });
+  it('should call deleteDoc()', async () => {
+    await deletePost(''); // error con auth.currentUser
+    expect(deleteDoc).toHaveBeenCalled();
+  });
+  it('should throw error', async () => {
+    await deletePost(); // error con auth.currentUser
+    expect(deleteDoc).toThrowError();
+  });
 });
 
 describe('addLike', () => {
   it('should be a function', () => {
     expect(typeof addLike).toBe('function');
+  });
+  it('should call updateDoc()', async () => {
+    await addLike(''); // error con auth.currentUser
+    expect(updateDoc).toHaveBeenCalled();
   });
 });
 
@@ -165,26 +172,8 @@ describe('getLoggedUser', () => {
   it('should be a function', () => {
     expect(typeof getLoggedUser).toBe('function');
   });
-  /* it('should return the displayName of current user', () => {
-    getLoggedUser.mockReturnValueOnce();
-    expect(getLoggedUser()).toBe();
-  }); */
-});
-
-describe('updateDisplayNameAndPhotoURL', () => {
-  it('should be a function', () => {
-    expect(typeof updateDisplayNameAndPhotoURL).toBe('function');
+  it('should return the displayName of current user', () => {
+    getLoggedUser().mockReturnValueOnce('name');
+    expect(getLoggedUser()).toBe('name'); // error con auth.currentUser
   });
-  /* it('should call updateProfile()', async () => {
-    const auth = jest.fn();
-    auth.mockReturnValue({
-      currentUser: {
-        email: 'myEmail@mail.com',
-      },
-    });
-    updateProfile.mockReturnValueOnce({});
-
-    await updateDisplayNameAndPhotoURL('myNewName', '');
-    expect(updateProfile).toHaveBeenCalled();
-  }); */
 });
