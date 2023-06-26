@@ -5,11 +5,10 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithPopup,
-  GoogleAuthProvider,
   signOut,
 } from 'firebase/auth';
 import {
-  addDoc, updateDoc, onSnapshot, deleteDoc, query, doc, DocumentReference,
+  addDoc, updateDoc, deleteDoc, doc,
 } from 'firebase/firestore';
 import { auth, db } from '../src/firebase.js';
 import {
@@ -28,45 +27,41 @@ import {
 
 jest.mock('firebase/auth');
 jest.mock('firebase/firestore');
-jest.mock(auth);
+jest.mock('../src/firebase.js', () => ({
+  auth: {
+    currentUser: {
+      displayName: 'Test User',
+      email: 'test@example.com',
+    },
+    updateProfile: jest.fn(),
+    createUserWithEmailAndPassword: jest.fn(),
+    signInWithEmailAndPassword: jest.fn(),
+    signInWithPopup: jest.fn(),
+    signOut: jest.fn(),
+  },
+  db: {
+    collection: jest.fn().mockReturnThis(),
+    addDoc: jest.fn(),
+    updateDoc: jest.fn(),
+    deleteDoc: jest.fn(),
+    doc: jest.fn(),
+  },
+}));
 
 beforeEach(() => {
-  signInWithEmailAndPassword.mockClear();
-  createUserWithEmailAndPassword.mockClear();
-  updateProfile.mockClear();
-  signInWithPopup.mockClear();
-  GoogleAuthProvider.mockClear();
-  addDoc.mockClear();
-  updateDoc.mockClear();
-  onSnapshot.mockClear();
-  deleteDoc.mockClear();
-  query.mockClear();
+  jest.clearAllMocks();
 });
-
-/* describe('Register', () => {
-  afterEach(() => {
-    document.body.innerHTML = '';
-  });
-  it('debería ser una función', () => {
-    expect(typeof Register).toBe('function');
-  });
-  it('debería tener 2 botones', () => {
-    const DOM = document.createElement('div');
-    DOM.append(Register());
-    const butonRegister = DOM.querySelector('#registerbutton');
-    expect(butonRegister).not.toBe(undefined);
-    const butonHome = DOM.querySelector('#home-button');
-    expect(butonHome).not.toBe(undefined);
-  });
-}); */
 
 describe('updateUsername', () => {
   it('should be a function', () => {
     expect(typeof updateUsername).toBe('function');
   });
+
   it('should call updateProfile()', async () => {
-    await updateUsername('newName'); // error con auth.currentUser
-    expect(updateProfile).toHaveBeenCalled();
+    const updateProfileMock = jest.fn().mockResolvedValue();
+    updateProfile.mockImplementationOnce(updateProfileMock);
+    await updateUsername('myNewName', '');
+    expect(updateProfileMock).toHaveBeenCalled();
   });
 });
 
@@ -121,9 +116,12 @@ describe('createPost', () => {
   it('should be a function', () => {
     expect(typeof createPost).toBe('function');
   });
+
   it('should call addDoc()', async () => {
-    await createPost('my post content'); // error con auth.currentUser
-    expect(addDoc).toHaveBeenCalled();
+    const addDocMock = jest.fn().mockResolvedValue();
+    addDoc.mockImplementationOnce(addDocMock);
+    await createPost('my post content');
+    expect(addDocMock).toHaveBeenCalled();
   });
 });
 
@@ -156,9 +154,14 @@ describe('addLike', () => {
   it('should be a function', () => {
     expect(typeof addLike).toBe('function');
   });
-  it('should call updateDoc()', async () => {
-    await addLike(''); // error con auth.currentUser
-    expect(updateDoc).toHaveBeenCalled();
+
+  it('should call updateDoc() to add a like', async () => {
+    const docId = '123456789'; // Assuming a valid document ID
+    const updateDocMock = jest.fn().mockResolvedValue();
+    updateDoc.mockImplementationOnce(updateDocMock);
+    const likes = ['testuser@example.com']; // Provide an array with existing likes
+    await addLike(docId, likes);
+    expect(updateDocMock).toHaveBeenCalled();
   });
 });
 
