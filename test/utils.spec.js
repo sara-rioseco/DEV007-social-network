@@ -86,7 +86,7 @@ describe('userLogin', () => {
     expect(signInWithEmailAndPassword).toHaveBeenCalled();
   });
   it('should return an object', async () => {
-    signInWithEmailAndPassword.mockReturnValueOnce({ // mock OK
+    signInWithEmailAndPassword.mockReturnValueOnce({
       user: { email: 'myEmail@mail.com' },
     });
     const response = await userLogin('myEmail@mail.com', 'password');
