@@ -21,11 +21,15 @@ import { auth, db } from './firebase.js';
 // función para actualizar nombre de usuario
 export const updateUsername = async (name) => {
   const currentAuth = auth.currentUser;
-  if (currentAuth) { // agregamos una condicional para validar si obtenemos o no el usuario logueado
+  try {
     await updateProfile(currentAuth, {
       displayName: name,
       photoURL: '',
     });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log('Error deleting post:', error);
+    throw error; // Propagate the error
   }
 };
 
@@ -79,10 +83,16 @@ export const deletePost = async (docRef) => {
 
 // para dar like
 export const addLike = (id, likes) => {
-  if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
-    updateDoc(doc(db, 'posts', id), {
-      likes: arrayUnion(auth.currentUser.email),
-    });
+  try {
+    if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
+      updateDoc(doc(db, 'posts', id), {
+        likes: arrayUnion(auth.currentUser.email),
+      });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log('Error deleting post:', error);
+    throw error; // Propagate the error
   }
 };
 

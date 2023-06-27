@@ -62,6 +62,11 @@ describe('updateUsername', () => {
     await updateUsername('myNewName', '');
     expect(updateProfileMock).toHaveBeenCalled();
   });
+  it('should throw an error', async () => {
+    const updateProfileMock = jest.fn(() => Promise.reject(new Error('Mock error')));
+    updateProfile.mockImplementation(updateProfileMock);
+    await expect(updateUsername('myNewName', '')).rejects.toThrowError('Mock error');
+  });
 });
 
 describe('createUser', () => {
@@ -167,6 +172,15 @@ describe('addLike', () => {
     const likes = ['testuser@example.com']; // Provide an array with existing likes
     await addLike(docId, likes);
     expect(updateDocMock).toHaveBeenCalled();
+  });
+
+  it('should throw an error when the same user tries to add a second like', async () => {
+    const docId = '123456789'; // Assuming a valid docId
+    const updateDocMock = jest.fn().mockImplementation(() => Promise.reject(new Error('Mock error')));
+    updateDoc.mockImplementationOnce(updateDocMock);
+    const likes = ['test@example.com']; // Provide an array with existing likes
+    await addLike(docId, likes);
+    await expect(updateDocMock).rejects.toThrowError('Mock error');
   });
 });
 
