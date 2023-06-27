@@ -179,7 +179,7 @@ describe('addLike', () => {
     const updateDocMock = jest.fn().mockImplementation(() => Promise.reject(new Error('Mock error')));
     updateDoc.mockImplementationOnce(updateDocMock);
     const likes = ['test@example.com']; // Provide an array with existing likes
-    await addLike(docId, likes);
+    addLike(docId, likes);
     await expect(updateDocMock).rejects.toThrowError('Mock error');
   });
 });

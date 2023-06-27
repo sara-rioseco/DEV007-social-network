@@ -83,16 +83,10 @@ export const deletePost = async (docRef) => {
 
 // para dar like
 export const addLike = (id, likes) => {
-  try {
-    if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
-      updateDoc(doc(db, 'posts', id), {
-        likes: arrayUnion(auth.currentUser.email),
-      });
-    }
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('Error deleting post:', error);
-    throw error; // Propagate the error
+  if (likes.length === 0 || !(likes.includes(auth.currentUser.email))) {
+    updateDoc(doc(db, 'posts', id), {
+      likes: arrayUnion(auth.currentUser.email),
+    }).catch((error) => error);
   }
 };
 
