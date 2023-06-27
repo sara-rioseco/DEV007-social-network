@@ -133,7 +133,7 @@ describe('editPost', () => {
   it('should be a function', () => {
     expect(typeof editPost).toBe('function');
   });
-  it('should call updateDoc()', async () => {
+  it('should call updateDoc() to edit a post', async () => {
     await editPost('my new content', '');
     expect(updateDoc).toHaveBeenCalled();
   });
@@ -143,7 +143,7 @@ describe('deletePost', () => {
   it('should be a function', () => {
     expect(typeof deletePost).toBe('function');
   });
-  it('should call deleteDoc()', async () => {
+  it('should call deleteDoc() to delete a post', async () => {
     const deleteDocMock = jest.fn().mockResolvedValue();
     const getIdTokenMock = jest.fn().mockResolvedValue(true);
     deleteDoc.mockImplementation(deleteDocMock);
