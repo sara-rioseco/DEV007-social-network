@@ -167,17 +167,17 @@ describe('addLike', () => {
 
   it('should call updateDoc() to add a like', async () => {
     const docId = '123456789'; // Assuming a valid docId
-    const updateDocMock = jest.fn().mockResolvedValue();
+    const updateDocMock = jest.fn().mockRejectedValue(new Error('Mock error'));
     updateDoc.mockImplementationOnce(updateDocMock);
     const likes = ['testuser@example.com']; // Provide an array with existing likes
     await addLike(docId, likes);
     expect(updateDocMock).toHaveBeenCalled();
   });
 
-  it('should throw an error when the same user tries to add a second like', async () => {
+  it('should throw an error when updateDoc() is rejected', async () => {
     const docId = '123456789'; // Assuming a valid docId
     const updateDocMock = jest.fn().mockImplementation(() => Promise.reject(new Error('Mock error')));
-    updateDoc.mockImplementationOnce(updateDocMock);
+    updateDoc.mockImplementation(updateDocMock);
     const likes = ['test@example.com']; // Provide an array with existing likes
     addLike(docId, likes);
     await expect(updateDocMock).rejects.toThrowError('Mock error');
