@@ -202,3 +202,37 @@ export const spanLikeFunc = (docRef, likesArr) => {
   spanLikeDiv.appendChild(spanLike);
   return spanLikeDiv;
 };
+
+// función para crear modal about
+export const descriptionModal = () => {
+  const aboutModal = document.createElement('dialog');
+  const modalContentDiv = document.createElement('div');
+  const modalActionDiv = document.createElement('div');
+  const modalTitle = document.createElement('h2');
+  const modalMsg = document.createElement('h4');
+  const modalBr = document.createElement('br');
+  const closeButton = document.createElement('button');
+
+  modalContentDiv.classList.add('about-div');
+  modalActionDiv.classList.add('about-div');
+  closeButton.classList.add('navBttn');
+  aboutModal.id = 'about-modal';
+  aboutModal.classList.add('about-div');
+  closeButton.id = 'cancel-button';
+  modalTitle.innerHTML = '';
+  modalMsg.innerHTML = '';
+  modalMsg.innerHTML = "Pets' Diaries es una aplicación para quienes aman a los animales y quieran compartir ese infinito cariño por ellos. Hemos creado este espacio, que funciona como una red social, para poder publicar historias graciosas, tiernas o de rescate y adopción. Además de datos curiosos, tips de cuidado y consejos varios. Te invitamos a compartir una historia con nosotras. ¡Que te diviertas!";
+  modalTitle.innerHTML = 'Acerca de Nosotras';
+  closeButton.textContent = 'Cerrar';
+
+  closeButton.addEventListener('click', () => aboutModal.close());
+
+  modalContentDiv.appendChild(modalTitle);
+  modalContentDiv.appendChild(modalBr);
+  modalContentDiv.appendChild(modalMsg);
+  modalActionDiv.appendChild(closeButton);
+  aboutModal.appendChild(modalContentDiv);
+  aboutModal.appendChild(modalActionDiv);
+
+  return aboutModal;
+};

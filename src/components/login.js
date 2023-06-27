@@ -1,6 +1,7 @@
 import logoTitleRed from '../img/logo-title-red.png';
 import logoGoogleImg from '../img/logo_google.png';
 import { userGoogleLogin, userLogin } from '../utils.js';
+import { descriptionModal } from '../lib';
 
 export const Login = (onNavigate) => {
   const loginDiv = document.createElement('div');
@@ -14,10 +15,12 @@ export const Login = (onNavigate) => {
   const heartImg = document.createElement('img');
   const logoGoogle = document.createElement('img');
   const divTitleLogin = document.createElement('li');
+  const descModal = descriptionModal();
 
   heartImg.src = `${logoTitleRed}`;
   heartImg.classList.add('heart');
 
+  descModal.id = 'about-modal';
   emailInput.classList.add('loginInputBox');
   emailInput.id = 'myEmailInput';
   emailInput.placeholder = 'Ingresa tu Correo';
@@ -43,6 +46,7 @@ export const Login = (onNavigate) => {
   loginBttn.textContent = 'Iniciar Sesión';
   homeBttn.textContent = 'Volver al inicio';
 
+  heartImg.addEventListener('click', () => descModal.showModal());
   homeBttn.addEventListener('click', () => onNavigate('/'));
   loginBttn.addEventListener('click', () => {
     const email = document.getElementById('myEmailInput').value;
@@ -72,6 +76,7 @@ export const Login = (onNavigate) => {
   });
 
   loginDiv.appendChild(heartImg);
+  loginDiv.appendChild(descModal);
   contentDiv.appendChild(title);
   contentDiv.appendChild(emailInput);
   contentDiv.appendChild(passwordInput);

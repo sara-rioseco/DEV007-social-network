@@ -5,6 +5,7 @@ import {
   getLoggedUser,
   userLogout,
 } from '../utils.js';
+import { descriptionModal } from '../lib';
 
 // función para crear modal para editar nombre
 export const updateUsernameModal = () => {
@@ -74,6 +75,7 @@ export const Profile = (onNavigate) => {
   const logoutButton = document.createElement('button');
   const updateUsernameButton = document.createElement('button');
   const heartImg = document.createElement('img');
+  const descModal = descriptionModal();
   const updateNameModal = updateUsernameModal(onNavigate);
 
   heartImg.src = `${logoTitleRed}`;
@@ -83,7 +85,9 @@ export const Profile = (onNavigate) => {
   contentDiv.className = 'content-div';
   homeBttn.classList.add('loginBttn');
   logoutButton.classList.add('loginBttn');
+  descModal.id = 'about-modal';
 
+  heartImg.addEventListener('click', () => descModal.showModal());
   subtitle.textContent = `¡Bienvenid@, ${getLoggedUser()}! Este es tu perfil.`;
   updateUsernameButton.textContent = 'Cambiar nombre';
   updateUsernameButton.addEventListener('click', () => updateNameModal.showModal());
@@ -95,6 +99,7 @@ export const Profile = (onNavigate) => {
   });
   contentDiv.appendChild(headerDiv);
   profileDiv.appendChild(heartImg);
+  profileDiv.appendChild(descModal);
   headerDiv.appendChild(subtitle);
   contentDiv.appendChild(updateUsernameButton);
   contentDiv.appendChild(homeBttn);

@@ -8,6 +8,7 @@ import logoTitleRed from '../img/logo-title-red.png';
 import {
   createPostDiv,
   spanLikeFunc,
+  descriptionModal,
 } from '../lib/index.js';
 import {
   createPost,
@@ -32,6 +33,7 @@ export const Timeline = (onNavigate) => {
   const postInput = document.createElement('input');
   const publishButton = document.createElement('button');
   const postsRef = query(collection(db, 'posts'), orderBy('time', 'desc'));
+  const descModal = descriptionModal();
 
   divUserName.classList.add('divUserName');
   divSignOut.classList.add('divSignOut');
@@ -48,6 +50,7 @@ export const Timeline = (onNavigate) => {
   postInput.autocomplete = 'off';
   postsDiv.id = 'posts-div';
   postsDiv.className = 'publicacionPost';
+  descModal.id = 'about-modal';
 
   publishButton.id = 'publishbutton';
   publishButton.textContent = 'Publicar';
@@ -60,6 +63,7 @@ export const Timeline = (onNavigate) => {
   contentPostDiv.className = 'timelinePosts';
   postsDiv.className = '';
 
+  logoImg.addEventListener('click', () => descModal.showModal());
   divUserName.addEventListener('click', () => onNavigate('/profile'));
   userName.addEventListener('click', () => onNavigate('/profile'));
 
@@ -77,6 +81,7 @@ export const Timeline = (onNavigate) => {
   navHomeDiv.appendChild(divUserName);
   navHomeDiv.appendChild(userName);
   navHomeDiv.appendChild(logoImg);
+  navHomeDiv.appendChild(descModal);
   navHomeDiv.appendChild(logoutButton);
   contentDiv.appendChild(title);
   contentDiv.appendChild(postInput);

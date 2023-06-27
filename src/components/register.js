@@ -1,5 +1,5 @@
 import logoTitleRed from '../img/logo-title-red.png';
-import { validatePassword, validateEmail } from '../lib/index.js';
+import { validatePassword, validateEmail, descriptionModal } from '../lib/index.js';
 import { createUser, updateUsername } from '../utils.js';
 
 export const Register = (onNavigate) => {
@@ -15,6 +15,7 @@ export const Register = (onNavigate) => {
   const registerBttn = document.createElement('button');
   const homeBttn = document.createElement('button');
   const heartImg = document.createElement('img');
+  const descModal = descriptionModal();
 
   const divTitleRegister = document.createElement('li');
 
@@ -53,7 +54,9 @@ export const Register = (onNavigate) => {
   subtitle.textContent = 'O con tu cuenta de Google';
   registerBttn.textContent = 'Registrarme';
   homeBttn.textContent = 'Volver al inicio';
+  descModal.id = 'about-modal';
 
+  heartImg.addEventListener('click', () => descModal.showModal());
   homeBttn.addEventListener('click', () => onNavigate('/'));
   registerBttn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -80,6 +83,7 @@ export const Register = (onNavigate) => {
   });
 
   registerDiv.appendChild(heartImg);
+  registerDiv.appendChild(descModal);
   contentDiv.appendChild(title);
   contentDiv.appendChild(nameInput);
   contentDiv.appendChild(emailInput);

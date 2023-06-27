@@ -27,7 +27,7 @@ div#root {
 }
 
 /* ========= ESTILOS MODAL ========= */
-dialog {
+dialog.big-modal-div {
   position:absolute;
   background: #facb80;
   padding: 10px;
@@ -41,14 +41,14 @@ dialog {
   font-size: .8em;
 }
 
-dialog[open] {
+dialog.big-modal-div[open] {
   display:flex;
   flex-direction: column;
   justify-content: space-around;
   align-content: space-around;
 }
 
-dialog::backdrop {
+dialog.big-modal-div dialog::backdrop {
   background-color: rgba(54, 54, 54, 0.5);
 }
 
@@ -81,6 +81,34 @@ dialog div.modal-div {
   transition: 0.5s;
 }
 
+#about-modal{
+  position:absolute;
+  background: #facb80;
+  padding: 10px;
+  margin: 100px;
+  align-content: space-around;
+  text-align: center;
+  color:#B52B40;
+  min-height: 50px;
+  background-color: rgb(255, 234, 210);
+  border: 3px solid #facb80;
+  border-radius: 15px;
+  font-size: .8em;
+  justify-content: center;
+}
+
+#about-modal[open] {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  margin:auto;
+  width:500px;
+}
+.about-div {
+  justify-content: center;
+}
+
 /* ===== Pantallas hasta 768 px de ancho ===== */
 @media screen and (max-width:768px) {
 
@@ -92,6 +120,9 @@ dialog div.modal-div {
     max-width: 50%;
     min-width: 50%;
     margin: 20px;
+  }
+  .heart:hover {
+    cursor: pointer;
   }
 
   div.home-div {
@@ -124,11 +155,13 @@ dialog div.modal-div {
   h4 {
     display: block;
     color: #B52B40;
-    width: 180px;
+    min-width: 200px;
+    max-width: 400px;
     font-size: 1.2em;
     font-weight: 700;
-    margin: auto;
+    margin: 20px;
     text-align: center;
+    align-self: center;
   }
 
   .actionDiv {
@@ -196,6 +229,9 @@ dialog div.modal-div {
   .heartTimeline {
     height: 70px;
     margin: 0 20px 0 0;
+  }
+  .heartTimeline:hover {
+    cursor: pointer;
   }
 
   .timeline-div{
@@ -559,6 +595,11 @@ dialog div.modal-div {
     max-width: 30%;
     margin: 50px 0 50px 50px;
   }
+
+  .heart:hover {
+    cursor: pointer;
+  }
+
   div.home-div {
     height: 100%;
     width:80%;
@@ -587,10 +628,13 @@ dialog div.modal-div {
   h4 {
     display: block;
     color: #B52B40;
-    width: 180px;
-    font-size: 1.0em;
+    min-width: 200px;
+    max-width: 400px;
+    font-size: 1.2em;
     font-weight: 700;
-    margin: auto;
+    margin: 20px;
+    text-align: center;
+    align-self: center;
   }
   .actionDiv {
     display: flex;
@@ -745,6 +789,10 @@ dialog div.modal-div {
 .heartTimeline {
   height: 70px;
   margin: 0 20px 0 0;
+}
+
+.heartTimeline:hover {
+  cursor: pointer;
 }
 
 .timeline-div{
