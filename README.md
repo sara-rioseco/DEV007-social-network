@@ -188,35 +188,35 @@ A continuación se exponen imágenes de todo lo descrito anteriormente.
 
 Diseño final Home (pantalla grande):
 
-![Diseño Final Dispositivo Pantalla Grande]()
+![Diseño Final Dispositivo Pantalla Grande](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/home-laptop.JPG?raw=true)
 
 Diseño final Home (pantalla celular o tablet):
 
-![Diseño Final Dispositivo Pantalla Pequeña]()
+![Diseño Final Dispositivo Pantalla Pequeña](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/home-mobile.png?raw=true)
 
 Vista final Login:
-![Vista final login]()
+![Vista final login](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/login.JPG?raw=true)
 
 Vista final Register:
-![Vista de mensaje sin input]()
+![Vista final register](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/register.JPG?raw=true)
 
 Vista final Profile:
-![Vista de búsqueda sin resultados]()
+![Vista final profile](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/profile.JPG?raw=true)
 
 Vista de dialog para editar nombre de usuario:
-![Vista de dropdown con filtro]()
+![Vista dialog editar nombre](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/dialog-nuevo-nombre.JPG?raw=true)
 
 Vista final Timeline:
-![Vista de menú select para ordenar]()
+![Vista final timeline](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/timeline.JPG?raw=true)
 
 Vista de dialog para editar post:
-![Mensaje para contar pokemones en pantalla]()
+![Vista dialog editar post](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/dialog-editar.JPG?raw=true)
 
 Vista de dialog para eliminar post:
-![Mensaje para contar pokemones en pantalla]()
+![Vista dialog eliminar post](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/dialog-eliminar.JPG?raw=true)
 
 Vista de acerca de:
-![Mensaje para contar pokemones en pantalla]()
+![Vista dialog acerca de](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/dialog-acerca-de.JPG?raw=true)
 
 ## 4. Unit Testing con Jest
 
