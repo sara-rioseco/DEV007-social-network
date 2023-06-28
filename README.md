@@ -1,6 +1,6 @@
 ![homebanner](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/home-banner2.JPG?raw=true)
 
-# Pets' Diaries
+# Pets' Diaries 🐶🐱
 
 ## Índice
 
@@ -13,7 +13,7 @@
 
 ***
 
-## 1. Definición de producto
+## 1. Definición de producto 🤟
 
 **Pets' Diaries** es una aplicación para quienes aman a los animales y quieran compartir ese infinito cariño por ellos. Hemos creado este proyecto, que funciona como una red social, para poder publicar historias graciosas, tiernas o de rescate y adopción. Además de datos curiosos, tips de cuidado y consejos varios. Te invitamos a compartir una historia con nosotras. 
 
@@ -21,18 +21,18 @@ La aplicación está desarrollada como una SPA, que utiliza Firebase para la aut
 
 Para poder desarrollar estas implementaciones, creamos distintos prototipos, que podemos ver a continuación.
 
-Primeros prototipos de baja fidelidad:
+Primeros prototipos de baja fidelidad: 📜
 
 ![Prototipo Baja Fidelidad1](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-fidelidad-elena.jpg?raw=true)
 ![Prototipo Baja Fidelidad2](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-sara.png?raw=true)
 ![Prototipo Baja Fidelidad3](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-fidelidad-yanet1.png?raw=true)
 ![Prototipo Baja Fidelidad4](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-fidelidad-yanet2.png?raw=true)
 
-Prototipo final de baja fidelidad:
+Prototipo final de baja fidelidad: 🖥️
 
 ![Prototipo Final Baja Fidelidad](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-definitivo-mobile.png?raw=true)
 
-Prototipos de alta fidelidad:
+Prototipos de alta fidelidad: 💻
 
 ![Prototipo Alta Fidelidad1](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-alta-desktop.JPG?raw=true)
 ![Prototipo Alta Fidelidad2](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-alta-desktop2.JPG?raw=true)
@@ -41,7 +41,7 @@ Prototipos de alta fidelidad:
 
 [Enlace a Prototipo en Figma](https://www.figma.com/proto/Ms8OHJzCKR2xYZ8newuYJR/Prototipos?node-id=114-184&starting-point-node-id=114%3A184&scaling=scale-down&mode=design)
 
-## 2. Historias de usuario
+## 2. Historias de usuario 🧑‍🤝‍🧑
 
 Los principales usuarios del producto son jóvenes con acceso a internet/smartphone que quieran compartir o leer historias, consejos, o información en general acerca de sus mascotas. Está pensado para usuarios casuales, fanáticos de los animales o que busquen contenido gracioso o tierno respecto a ellos. Para poder identificar a nuestro público objetivo y desarrollar las distintas funcionalidades trabajamos con metodologías ágiles. Esto nos llevó a crear historias de usuario para cada funcionalidad que estos usuarios requerían. Trbajamos con 6 historias de usuario mínimas y 5 opcionales, las que detallamos a continuación:
 
@@ -170,7 +170,7 @@ HU9 *Yo como usuario logueado quiero poder agregar imágenes a mi post para comp
 HU10 *Yo como usuario logueado quiero poder comentar o responder una publicación ya creada para poder interactuar con los demás usuarios*
 HU11 *Yo como usuario logueado quiero poder cambiar como aparece mi nombre de usuario para modificar la forma en la que aparecen mis post*
 
-## 3. Interfaz
+## 3. Interfaz 🚀
 
 La interfaz es simple y en tonos claros, con solo un color más oscuro en un tono rojo, para dar contraste. El fondo tiene una imagen de un perro y un gato, en la misma paleta de colores, en un estilo de acuarela. El texto de toda la página se dejo en este color oscuro de la paleta para facilitar la lectura.
 
@@ -218,7 +218,7 @@ Vista de dialog para eliminar post:
 Vista de acerca de:
 ![Vista dialog acerca de](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/dialog-acerca-de.JPG?raw=true)
 
-## 4. Unit Testing con Jest
+## 4. Unit Testing con Jest 🤡
 
 Se ejecutaron tests unitarios con Jest, alcanzando coverage de 100% de statements, branches, funciones y lines. 
 Los resultados son los siguientes:
@@ -230,7 +230,7 @@ Detectamos los siguientes errores al hacer nuestros tests:
 - Tuvimos que reorganizar todo el orden de nuestras funciones, dejando aquellas que testearíamos, es decir las que interactuaban con firebase, en utils.js para solo testear ese archivo. Dejamos en el archivo index.js y en los archivos de los componentes todo lo que interactuaba con el DOM.
 - Hubo un par de funciones que tuvimos que ajustar, ya que no estaban retornando exactamente lo que esperábamos.
 
-## 5.  Tests de usabilidad
+## 5.  Tests de usabilidad 📱
 
 Hicimos pruebas de usabilidad en dos etapas. La primera fue con nuestro prototipo de alta fidelidad, que contaba con interacciones. En esta primera parte recibimos muy buen feedback respecto al diseño e interfaz. Sí hubo algunos problemas de funcionalidad que fueron solucionados para la segunda etapa.
 Esta última ya se realizó con la implementación final. Los resultados fueron los siguientes:
@@ -249,7 +249,7 @@ Además de estas preguntas implementamos una parte final en la que los usuarios 
 - Implementar carga de imágenes a los posts.
 - Mejorar visibilidad del botón Cerrar Sesión o cambiar la ubicación.
 
-## 6.  Organización, planificación y trabajo en equipo
+## 6.  Organización, planificación y trabajo en equipo 🫂
 
 Para nuestra planificación utilizamos la herramienta Trello. En esta ubicamos las historias de usuario a la izquierda, luego el product backlog con todas las funcionalidades que queríamos implementar, luego columnas "Doing" y "Done" y finalmente al terminar un sprint, dejábamos todos los avances de ese sprint en la columna "Sprint backlog" con el número correspondiente. Este sistema nos ayudó mucho a la organización y a entender de manera visual los avances que llevábamos y cuánto trabajo nos faltaba por hacer. También tener las historias de usuario siempre visibles fue muy útil para tener siempre en mente las funcionalidades y criterios de aceptación que debíamos cumplir. 
 A continuación dejamos una imagen de nuestro tablero.
@@ -257,4 +257,3 @@ A continuación dejamos una imagen de nuestro tablero.
 ![Tablero trello](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/trello.JPG?raw=true)
 
 Además de Trello utilizamos Google calendar para agendar horarios de almuerzo y reuniones fuera del horario de bootcamp según nuestra disponibilidad.
-
