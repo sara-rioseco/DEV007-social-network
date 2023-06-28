@@ -7,7 +7,7 @@
 * [1. Definición de producto](#1-definición)
 * [2. Historias de usuario](#2-historias-de-usuarios)
 * [3. Interfaz](#3-interfaz)
-* [4. Test](#4-test)
+* [4. Unit Testing con Jest](#4-unit)
 * [5. Tests de usabilidad](#5-tests)
 * [6. Organización, planificación y trabajo en equipo](#6-organización)
 
@@ -43,141 +43,184 @@ Prototipos de alta fidelidad:
 
 ## 2. Historias de usuario
 
-Los principales usuarios del producto son jóvenes con acceso a internet/smartphone que quieran buscar información acerca de Pokemon. Está pensado tanto para usuarios casuales que pueden ser jugadores de alguno de los videojuegos de Pokemon, o para usuarios más avanzados que quieran ver información más detallada. Para poder identificar a nuestro público objetivo y desarrollar las distintas funcionalidades trabajamos con metodologías ágiles. Esto nos llevó a crear historias de usuario para cada funcionalidad que estos usuarios requerían. Trbajamos con 6 historias de usuario en particular, las que detallamos a continuación:
+Los principales usuarios del producto son jóvenes con acceso a internet/smartphone que quieran compartir o leer historias, consejos, o información en general acerca de sus mascotas. Está pensado para usuarios casuales, fanáticos de los animales o que busquen contenido gracioso o tierno respecto a ellos. Para poder identificar a nuestro público objetivo y desarrollar las distintas funcionalidades trabajamos con metodologías ágiles. Esto nos llevó a crear historias de usuario para cada funcionalidad que estos usuarios requerían. Trbajamos con 6 historias de usuario mínimas y 5 opcionales, las que detallamos a continuación:
 
 **Historia de Usuario 1:**
-*Yo como usuario que no sabe mucho de pokemon quiero ver una imagen, el nombre y el número de todos los pokemones para conocerlos.*
+*Yo como usuario nuevo de la aplicación quiero poder registrarme con mi correo para poder ingresar*
 
 **Criterios de aceptación:**
-- Quiero una vista de grilla.
+- Quiero poder registrarme con un correo personal.
 - Quiero que sea responsive.
-- Quiero ver la imagen del Pokemon, su nombre y número.
-- No hay ningún tipo de interacción.
+- Quiero que si el correo o password no son válidos me muestre un mensaje de aviso.
+- Quiero que el diseño sea sencillo y amigable.
 
 **Definición de terminado:**
-- Pruebas de usabilidad realizadas con al menos 2 usuarios.
+- Pruebas de usabilidad realizadas con al menos 3 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
-- Se ha publicado el proyecto en Github Pages.
+- Se ha publicado el proyecto en Github Pages/Firebase Hosting con sus tags correspondientes.
+- Debe ser una SPA.
+- Debe ser responsive.
+- Debe haber recibido code review de al menos una compañera de otro equipo.
+- Debe tener test unitarios realizados.
+- Debe buscarse manualmente errores e imperfecciones simples.
 
 **Historia de Usuario 2:**
-*Yo, como jugador casual de juegos de Pokemon, quiero poder ver el tipo de Pokemon para saber a qué categoría pertenece.*
+*Yo como usuario nuevo de la aplicación quiero poder iniciar sesión con mi cuenta o desde google para poder acceder a la página*
 
 **Criterios de aceptación:**
-- Quiero una vista de grilla.
+- Quiero poder acceder con mi cuenta de google o con un correo personal.
 - Quiero que sea responsive.
-- Quiero ver la imagen del Pokemon, su nombre y número.
-- Quiero hacer click en la imagen y que me muestre el tipo de Pokemon y otros detalles en un pop-up.
-- Quiero poder cerrar ese pop-up y volver a la pantalla principal.
+- Quiero que si el correo o password no son válidos me muestre un mensaje de aviso.
+- Quiero que el diseño sea sencillo y amigable.
 
 **Definición de terminado:**
-- Pruebas de usabilidad realizadas con al menos 2 usuarios.
+- Pruebas de usabilidad realizadas con al menos 3 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
-- Se ha publicado el proyecto en Github Pages.
+- Se ha publicado el proyecto en Github Pages/Firebase Hosting con sus respectivos tags.
+- Debe ser una SPA.
+- Debe ser responsive.
+- Debe haber recibido code review de al menos una compañera de otro equipo.
+- Debe tener test unitarios realizados.
+- Debe buscarse manualmente errores e imperfecciones simples.
 
 **Historia de Usuario 3:**
-*Yo, como jugador de juegos de Pokemon, quiero poder ver el detalle de fortalezas y debilidades de cada pokemon, así como la tasa de captura, para utilizar esa información al jugar.*
+*Yo como usuario logueado de la aplicación quiero poder visualizar todos los post creados desde el más reciente al más antiguo para poder estar actualizado en las últimas publicaciones*
 
 **Criterios de aceptación:**
-- Quiero una vista de grilla.
+- Quiero poder visualizar todos los post creados.
+- Quiero que los post aparezcan ordenados del más reciente al más antiguo.
+- Quiero poder ordenar del más antiguo al más reciente.
 - Quiero que sea responsive.
-- Quiero ver la imagen del Pokemon, su nombre y número.
-- Quiero hacer click en la imagen y que me muestre las fortalezas y debilidades de cada Pokemon.
-- Quiero que además se incluya información acerca de la tasa de captura del pokemon.
-- Quiero poder cerrar ese pop-up y volver a la pantalla principal.
+- Quiero que el diseño sea sencillo y amigable.
 
 **Definición de terminado:**
-- Pruebas de usabilidad realizadas con al menos 2 usuarios.
+- Pruebas de usabilidad realizadas con al menos 3 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
-- Se ha publicado el proyecto en Github Pages.
+- Se ha publicado el proyecto en Github Pages/Firebase Hosting con sus respectivos tags.
+- Debe ser una SPA.
+- Debe ser responsive.
+- Debe haber recibido code review de al menos una compañera de otro equipo.
+- Debe tener test unitarios realizados.
+- Debe buscarse manualmente errores e imperfecciones simples.
 
 **Historia de Usuario 4:**
-*Yo como jugador avanzado de juegos Pokemon quiero poder buscar un Pokemon determinado para encontrar información específica de él.*
+*Yo como usuario logueado quiero poder agregar un post de texto o editar un post ya creado por mí, para compartir con los demás usuarios registrados*
 
 **Criterios de aceptación:**
-- Quiero una vista de grilla.
+- Quiero poder crear un post de texto.
+- Quiero que mi post aparezca en el timeline/muro.
+- Quiero poder editar un post ya creado por mí.
 - Quiero que sea responsive.
-- Quiero ver la imagen del Pokemon, su nombre y número.
-- Quiero que exista una barra de búsqueda para escribir el nombre del Pokemon que quiero buscar.
-- Quiero que me muestre el resultado de esa búsqueda.
+- Quiero que el diseño sea sencillo y amigable.
 
 **Definición de terminado:**
-- Pruebas de usabilidad realizadas con al menos 2 usuarios.
+- Pruebas de usabilidad realizadas con al menos 3 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
-- Se ha publicado el proyecto en Github Pages.
+- Se ha publicado el proyecto en Github Pages/Firebase Hosting con sus respectivos tags.
+- Debe ser una SPA.
+- Debe ser responsive.
+- Debe haber recibido code review de al menos una compañera de otro equipo.
+- Debe tener test unitarios realizados.
+- Debe buscarse manualmente errores e imperfecciones simples.
 
 **Historia de Usuario 5:**
-*Yo como jugador avanzado de juegos Pokemon quiero poder ordenar la información por distintos criterios (como alfabético, por orden numérico, etc.) para ver los datos de manera organizada.*
+*o como usuario logueado quiero poder eliminar un post creado por mí para poder editar o borrar un error*
 
 **Criterios de aceptación:**
-- Quiero una vista de grilla.
+- Quiero poder eliminar un post creado por mí.
+- Quiero que me pida una confirmación antes de eliminar definitivamente.
 - Quiero que sea responsive.
-- Quiero ver la imagen del Pokemon, su nombre y número.
-- Quiero que exista una opción para ordenar por orden alfabético o numérico, de manera ascendente y descendente.
-- Quiero ver los resultados ordenados de acuerdo a la opción seleccionada.
+- Quiero que el diseño sea sencillo y amigable.
 
 **Definición de terminado:**
-- Pruebas de usabilidad realizadas con al menos 2 usuarios.
+- Pruebas de usabilidad realizadas con al menos 3 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
-- Se ha publicado el proyecto en Github Pages.
+- Se ha publicado el proyecto en Github Pages/Firebase Hosting con sus resectivos tags.
+- Debe ser una SPA.
+- Debe ser responsive.
+- Debe haber recibido code review de al menos una compañera de otro equipo.
+- Debe tener test unitarios realizados.
+- Debe buscarse manualmente errores e imperfecciones simples.
 
 **Historia de Usuario 6:**
-*Yo como jugador avanzado de juegos Pokemon quiero poder filtrar la lista de pokemon por tipo de Pokemon para ver solo los resultados que me interesan.*
+*Yo como usuario logueado quiero poder dar o quitar like a una publicación, además de ver la cantidad de likes, para compartir nuestras preferencias con los demás usuarios*
 
 **Criterios de aceptación:**
-- Quiero una vista de grilla.
+- Quiero poder dar like a una publicación ya creada.
+- Quiero poder quitar el like a una publicación que tenía mi like.
+- Quiero poder visualizar cuántos like tiene una publicación.
 - Quiero que sea responsive.
-- Quiero ver la imagen del Pokemon, su nombre y número.
-- Quiero que exista una opción para filtrar la lista de Pokemon por tipo.
-- Quiero ver únicamente los resultados de acuerdo al filtro seleccionado.
+- Quiero que el diseño sea sencillo y amigable.
 
 **Definición de terminado:**
-- Pruebas de usabilidad realizadas con al menos 2 usuarios.
+- Pruebas de usabilidad realizadas con al menos 3 usuarios.
 - Todo el código está en la rama principal de nuestro Repositorio en Github.
-- Se ha publicado el proyecto en Github Pages.
+- Se ha publicado el proyecto en Github Pages/Firebase Hosting con sus respectivos tags.
+- Debe ser una SPA.
+- Debe ser responsive.
+- Debe haber recibido code review de al menos una compañera de otro equipo.
+- Debe tener test unitarios realizados.
+- Debe buscarse manualmente errores e imperfecciones simples.
+
+**Historias de Usuario Opcionales**
+
+HU7 *Yo como usuario logueado quiero poder ver mi perfil de usuario con foto para poder visualizar mis datos o editarlos*
+HU8 *Yo como usuario logueado quiero poder agregar o eliminar amigos a mi perfil para conectar con personas que conozco*
+HU9 *Yo como usuario logueado quiero poder agregar imágenes a mi post para compartir un elemento visual*
+HU10 *Yo como usuario logueado quiero poder comentar o responder una publicación ya creada para poder interactuar con los demás usuarios*
+HU11 *Yo como usuario logueado quiero poder cambiar como aparece mi nombre de usuario para modificar la forma en la que aparecen mis post*
 
 ## 3. Interfaz
 
-La interfaz es simple y en tonos claros, el fondo tiene ilustraciones de distintos pokemones en colores variados, pero todos cercanos a tonalidades pasteles, además se presentan dos imágenes en el banner inicial de personajes de la serie. Los títulos son de color gris oscuro y los elementos de la barra de navegación, como el menú para ordenar, filtrar y barra de búsqueda están en tonos blancos con letras negras para facilitar la lectura. 
+La interfaz es simple y en tonos claros, con solo un color más oscuro en un tono rojo, para dar contraste. El fondo tiene una imagen de un perro y un gato, en la misma paleta de colores, en un estilo de acuarela. El texto de toda la página se dejo en este color oscuro de la paleta para facilitar la lectura.
 
-Dentro de la barra de navegación, tenemos primero el menú para filtrar. Con este podemos escoger qué pokemon queremos ver por tipo. Luego, con la barra de búsqueda podemos ingresar como texto el nombre o número de pokemon y buscar todas las coincidencias que existan dentro de la data. Además hay mensajes personalizados en caso de no encontrar resultados y de no recibir ningún criterio de búsqueda. Finalmente está el menú para ordenar la data de manera alfabética o numérica, en orden ascendente o descendente.
+Los componentes Home, Login y Register tienen una estructura bastante similar, se encuentra nuestro logo, abajo un recuadro con el contenido, el título y los campos o botones según la acción que se quiera relizar. 
 
-Ya en la parte principal de nuestra aplicación, los pokemones se muestran en un diseño de grilla, que como máximo mostrará 4 columnas y como mínimo 2, dependiendo del tamaño de la pantalla. Cada pokemon aparece dentro de una tarjeta con su número, imagen y nombre. Al presionar cada una de las tarjetas se abre una ventana que muestra primero un botón cerrar para volver a la pantalla anterior, y luego, lla misma información mencionada antes (número, nombre e imegen) pero también el tipo de pokemon, sus fortalezas, debilidades, ataques rápidos, ataques cargados, tasas de aparición, captura y huída, además de todas las evoluciones dentro de la línea de ese pokemon.
-Se optó por un diseño minimalista y sencillo, que fuese lo suficientemente claro y que tenga la información más buscada por los jugadores.
+La sección que sí es distinta es nuestro Timeline. En este encontraremos primero una barra de navegación, que tiene un ícono de usuario y una bienvenida con el nombre del usuario, además de nuestro logo en tamaño más pequeño en la esquina superior derecha. Ya en la parte principal del Timeline, los posts se muestran en un diseño de lista hacia abajo. Cada post tiene el nombre de quién lo escribió y la hora, que se mostrará en formato local. En la parte inferior del post, aparece un botón de "me gusta". Si la imagen está en gris es porque el usuario no ha clickeado "me gusta" aún, si aparece en rojo es porque ya lo hizo. Al lado también se muestra un contador para saber cuántos usuarios ya han dado "me gusta". Además, en los posts que haya creado el mismo usuario que está visualizando la página, aparecerán dos opciones. Un botón para editar y otro para eliminar el mensaje. Con cada uno de estos se abre una ventana que permite ejecutar estas acciones o cancelar.
 
-Finalmente en el pie de página se agregó una opción para contabilizar los pokemones que se muestran en pantalla.
+Como extra se implementó el componente Profile, al que se puede acceder haciendo click en el logo de usuario o en la bienvenida que se encuentra en el timeline. Este tiene casi la  misma estructura que el Login, solo que desde aquí se puede cambiar el nombre de usuario que se mostrará al hacer posts.
+
+Otro detalle adicional que se implementó, es una sección "acerca de" a la que se puede acceder haciendo click en cualquiera de nuestros logos en toda la implementación. Al ejecutar esta acción se abrirá una ventana con una breve descripción de nuestro proyecto.
+
+Se optó por un diseño minimalista y sencillo, que fuese lo suficientemente intuitivo para acceder de manera fácil y rápida a las publicaciones.
 
 A continuación se exponen imágenes de todo lo descrito anteriormente.
 
-Diseño final home (pantalla grande):
+Diseño final Home (pantalla grande):
 
 ![Diseño Final Dispositivo Pantalla Grande]()
 
-Diseño final home (pantalla celular o tablet):
+Diseño final Home (pantalla celular o tablet):
 
 ![Diseño Final Dispositivo Pantalla Pequeña]()
 
-Vista de dialog con información detallada:
-![Vista de detalles de pokemon]()
+Vista final Login:
+![Vista final login]()
 
-Vista de mensaje sin input en la búsqueda:
+Vista final Register:
 ![Vista de mensaje sin input]()
 
-Vista de mensaje para búsqueda sin resultados:
+Vista final Profile:
 ![Vista de búsqueda sin resultados]()
 
-Vista de menú dropdown con filtro por tipos de pokemon:
+Vista de dialog para editar nombre de usuario:
 ![Vista de dropdown con filtro]()
 
-Vista de menú select para ordenar alfabéticamente/numéricamente:
+Vista final Timeline:
 ![Vista de menú select para ordenar]()
 
-Vista de mensaje para contar pokemones en pantalla:
-
+Vista de dialog para editar post:
 ![Mensaje para contar pokemones en pantalla]()
 
-## 4. Test
+Vista de dialog para eliminar post:
+![Mensaje para contar pokemones en pantalla]()
 
-Se ejecutaron test con jest, alcanzando coverage de 100% de statements, branches, funciones y lines. 
+Vista de acerca de:
+![Mensaje para contar pokemones en pantalla]()
+
+## 4. Unit Testing con Jest
+
+Se ejecutaron tests unitarios con Jest, alcanzando coverage de 100% de statements, branches, funciones y lines. 
 Los resultados son los siguientes:
 
 ![Tests](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/tests.JPG?raw=true)
@@ -193,13 +236,9 @@ Hicimos pruebas de usabilidad en dos etapas. La primera fue con nuestro prototip
 Esta última ya se realizó con la implementación final. Los resultados fueron los siguientes:
 
 1.¿Qué tanto te gusta el diseño y colores de nuestra página?
-
 2.¿Crees que el diseño es lo suficientemente intuitivo y amigable?	
-
 3.¿Que tanto te gusta la temática y el enfoque de nuestra aplicación?
-
 4.¿Crees que el diseño se adapta bien a esta temática?
-
 5.¿Qué tanta disposición tendrías de participar (registrarte, publicar y leer comentarios) en una red social así?
 
 ![Respuestas](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/encuesta-usabilidad-2.JPG?raw=true)
