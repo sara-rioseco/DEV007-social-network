@@ -4,12 +4,12 @@
 
 ## Índice
 
-* [1. Definición de producto](#1-definición)
-* [2. Historias de usuario](#2-historias-de-usuarios)
+* [1. Definición de producto](#1-definición-de-producto)
+* [2. Historias de usuario](#2-historias-de-usuario)
 * [3. Interfaz](#3-interfaz)
-* [4. Unit Testing con Jest](#4-unit)
-* [5. Tests de usabilidad](#5-tests)
-* [6. Organización, planificación y trabajo en equipo](#6-organización)
+* [4. Unit Testing con Jest](#4-unit-testing-con-jest)
+* [5. Tests de usabilidad](#5-tests-de-usabilidad)
+* [6. Organización, planificación y trabajo en equipo](#6-organización-planificación-y-trabajo-en-equipo)
 
 ***
 
