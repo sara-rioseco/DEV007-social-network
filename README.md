@@ -15,31 +15,29 @@
 
 ## 1. Definición de producto
 
-**Pets' Diaries** es una aplicación web para
-La idea de la aplicación es que los usuarios puedan buscar esa información y encontrar las estadísticas que necesitan, filtrando, ordenando y viendo los detalles de cada pokemon, de manera clara, sencilla y rápida.
+**Pets' Diaries** es una aplicación para quienes aman a los animales y quieran compartir ese infinito cariño por ellos. Hemos creado este proyecto, que funciona como una red social, para poder publicar historias graciosas, tiernas o de rescate y adopción. Además de datos curiosos, tips de cuidado y consejos varios. Te invitamos a compartir una historia con nosotras. 
 
-Para esto, creamos distintos prototipos, que podemos ver a continuación.
+La aplicación está desarrollada como una SPA, que utiliza Firebase para la autenticación de usuarios y hosting, de la mano con Cloud Firestore para la recopilación, almacenamiento y sincronización de datos. Nuestra web está dividida en 5 componentes: un Home, que es el inicio y punto de entrada; un Login, en donde se puede iniciar sesión con un usuario ya registrado o con una cuenta de Google; un Register, en donde se puede registrar un usuario con correo y contraseña; un Timeline, que permite visualizar los posts ya creados o publicar un nuevo post; y finalmente, un Profile, que permite ver el nombre de usuario y cambiarlo.
+
+Para poder desarrollar estas implementaciones, creamos distintos prototipos, que podemos ver a continuación.
 
 Primeros prototipos de baja fidelidad:
 
-![Prototipo Baja Fidelidad1]()
-![Prototipo Baja Fidelidad2]()
-![Prototipo Baja Fidelidad3]()
+![Prototipo Baja Fidelidad1](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-fidelidad-elena.jpg?raw=true)
+![Prototipo Baja Fidelidad2](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-sara.png?raw=true)
+![Prototipo Baja Fidelidad3](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-fidelidad-yanet1.png?raw=true)
+![Prototipo Baja Fidelidad4](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-fidelidad-yanet2.png?raw=true)
 
 Prototipo final de baja fidelidad:
 
-![Prototipo Final Baja Fidelidad]()
+![Prototipo Final Baja Fidelidad](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-baja-definitivo-mobile.png?raw=true)
 
 Prototipos de alta fidelidad:
 
-![Prototipo Alta Fidelidad1]()
-![Prototipo Alta Fidelidad2]()
-![Prototipo Alta Fidelidad3]()
-![Prototipo Alta Fidelidad4]()
-
-Prototipo final:
-
-![Prototipo final]()
+![Prototipo Alta Fidelidad1](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-alta-desktop.JPG?raw=true)
+![Prototipo Alta Fidelidad2](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-alta-desktop2.JPG?raw=true)
+![Prototipo Alta Fidelidad3](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-alta-desktop3.JPG?raw=true)
+![Prototipo Alta Fidelidad4](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/prototipo-alta-desktop4.JPG?raw=true)
 
 [Enlace a Prototipo en Figma](https://www.figma.com/proto/Ms8OHJzCKR2xYZ8newuYJR/Prototipos?node-id=114-184&starting-point-node-id=114%3A184&scaling=scale-down&mode=design)
 
@@ -192,12 +190,16 @@ Detectamos los siguientes errores al hacer nuestros tests:
 ## 5.  Tests de usabilidad
 
 Hicimos pruebas de usabilidad en dos etapas. La primera fue con nuestro prototipo de alta fidelidad, que contaba con interacciones. En esta primera parte recibimos muy buen feedback respecto al diseño e interfaz. Sí hubo algunos problemas de funcionalidad que fueron solucionados para la segunda etapa.
-Esta etapa ya incluyó la implementación final. Los resultados fueron los siguientes:
+Esta última ya se realizó con la implementación final. Los resultados fueron los siguientes:
 
 1.¿Qué tanto te gusta el diseño y colores de nuestra página?
+
 2.¿Crees que el diseño es lo suficientemente intuitivo y amigable?	
+
 3.¿Que tanto te gusta la temática y el enfoque de nuestra aplicación?
+
 4.¿Crees que el diseño se adapta bien a esta temática?
+
 5.¿Qué tanta disposición tendrías de participar (registrarte, publicar y leer comentarios) en una red social así?
 
 ![Respuestas](https://github.com/sara-rioseco/DEV007-social-network/blob/main/src/img/project/encuesta-usabilidad-2.JPG?raw=true)
@@ -206,7 +208,7 @@ Además de estas preguntas implementamos una parte final en la que los usuarios 
 
 - Errores con usuarios registrados en que no se guardó el nombre de usuario (displayName) y al publicar se mostró como "null".
 - Implementar carga de imágenes a los posts.
-- Mejorar visibilidad del botón Cerra Sesión o cambiar la ubicación.
+- Mejorar visibilidad del botón Cerrar Sesión o cambiar la ubicación.
 
 ## 6.  Organización, planificación y trabajo en equipo
 
