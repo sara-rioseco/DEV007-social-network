@@ -95,7 +95,7 @@ describe('userLogin', () => {
     expect(response.user.email).toBe('myEmail@mail.com');
   });
 });
-
+//  testing mock elena login con google
 describe('userGoogleLogin', () => {
   it('should be a function', () => {
     expect(typeof userGoogleLogin).toBe('function');
@@ -104,6 +104,12 @@ describe('userGoogleLogin', () => {
     await userGoogleLogin('myEmail@mail.com', 'password');
     expect(signInWithPopup).toHaveBeenCalled();
   });
+});
+
+it('should throw an error', async () => {
+  const signInWithPopupMock = jest.fn(() => Promise.reject(new Error('Mock error')));
+  signInWithPopup.mockImplementation(signInWithPopupMock);
+  await expect(userGoogleLogin('myEmail@mail.com', 'password')).rejects.toThrowError('Mock error');
 });
 
 describe('userLogout', () => {
@@ -115,7 +121,7 @@ describe('userLogout', () => {
     expect(signOut).toHaveBeenCalled();
   });
 });
-
+//  testing mocks create post elena
 describe('createPost', () => {
   it('should be a function', () => {
     expect(typeof createPost).toBe('function');
@@ -127,6 +133,12 @@ describe('createPost', () => {
     await createPost('my post content');
     expect(addDocMock).toHaveBeenCalled();
   });
+});
+
+it('should throw an error when no content is provided', async () => {
+  const addDocMock = jest.fn(() => Promise.reject(new Error('Mock error')));
+  addDoc.mockImplementationOnce(addDocMock);
+  await expect(createPost('', '')).rejects.toThrowError('Mock error');
 });
 
 describe('editPost', () => {

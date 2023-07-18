@@ -40,6 +40,7 @@ export const createUser = (email, password) => createUserWithEmailAndPassword(au
 export const userLogin = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // función para login con Google
+
 export const userGoogleLogin = () => {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
@@ -52,6 +53,7 @@ export const getLoggedUser = () => auth.currentUser.displayName;
 export const userLogout = () => signOut(auth);
 
 // función para crear post en firestore
+
 export const createPost = (text) => addDoc(collection(db, 'posts'), {
   content: text,
   time: serverTimestamp(),
