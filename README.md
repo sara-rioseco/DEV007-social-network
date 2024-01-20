@@ -1,4 +1,4 @@
-#Pets' Diaries
+# Pets' Diaries
 
 This repository is archived. You can find the new refactored version here:
 
